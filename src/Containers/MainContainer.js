@@ -6,13 +6,13 @@ export class MainContainer extends Component {
 
     state = {
         sortValue: "Mortality",
-        hypertension: "Unknown",
-        age: "Unknown",
-        covidExposure: "Unknown",
-        diabetes: "Unknown",
-        cad: "Unknown",
-        rr24: "Unknown",
-        temp: "Unknown",
+        // hypertension: "Unknown",
+        // age: "Unknown",
+        // covidExposure: "Unknown",
+        // diabetes: "Unknown",
+        // cad: "Unknown",
+        // rr24: "Unknown",
+        // temp: "Unknown",
     }
 
     handleSort = (newSortValue) => {
@@ -21,32 +21,47 @@ export class MainContainer extends Component {
         })
     }
 
-    handleOption = (title, newOptionValue) => {
-        this.setState({
-            [title]: newOptionValue
-        })
-    }
+    // handleOption = (title, newOptionValue) => {
+    //     this.setState({
+    //         [title]: newOptionValue
+    //     })
+    // }
 
     displaySorted = () => {
         let {sortValue} = this.state
+        // sorted from the lowest to the highest value
+
         if (sortValue === "Mortality"){
             return [
-                {"state": "hypertension", "title": "Hypertension"}]
-
+                {"state": "age", "title": "Age (>/=65yr)"},
+                {"state": "diabetes", "title": "Diabetes"},
+                {"state": "hypertension", "title": "Hypertension"},
+                {"state": "rr24", "title": "RR>24"},
+                {"state": "cad", "title": "CAD"},
+                {"state": "covidExposure", "title": "COVID-19 Exposure"} //doesn't have a value in excel
+            ]
         } else if (sortValue === "ARDS"){
-            console.log("here we'll plug in ARDS data")
+            return [
+                {"state": "temp", "title": "Temp. >/= 39C"},
+                {"state": "hypertension", "title": "Hypertension"},
+                {"state": "diabetes", "title": "Diabetes"},
+                {"state": "age", "title": "Age (>/=65yr)"},
+                {"state": "rr24", "title": "RR>24"}, //excel value unclear
+            ]
         } else {
-            console.log("here we'll plug in ARDS Death data")
+            return [
+                {"state": "temp", "title": "Temp. >/= 39C"},
+                {"state": "age", "title": "Age (>/=65yr)"},
+            ]
         }
     }
 
     render() {
-        console.log("hypertension state", this.state.hypertension)
         return (
             <main>
                 MAIN CONT
                 <SortContainer handleSort={this.handleSort}/>
-                <FormContainer data={this.displaySorted()} handleOption={this.handleOption}/>
+                <FormContainer data={this.displaySorted()} />
             </main>
         )
     }
