@@ -9,6 +9,7 @@ export class FormContainer extends Component {
         
         return (
             <section style={{"border":"black solid 2px"}}>
+                BASICS | MORTALITY | ARDS | ARDS Death
                 {this.props.data.map(rowData => <FormRowContainer rowData={rowData}/>)}
                 
             </section>

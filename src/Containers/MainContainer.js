@@ -16,14 +16,13 @@ export class MainContainer extends Component {
 
     displaySorted = () => {
         let {sortValue} = this.state
-        if (sortValue == "Mortality"){
-            console.log("here we'll plug in Mortality data")
+        if (sortValue === "Mortality"){
 
             return [
                 {"title": "Basics", "options": ["Mortality", "ARDS", "ARDS Death"]},
-                {"title": "Age", "options": ["OR 1.10", "HR 3.26", "HR 6.17"]}]
+                {"title": "Hypertension", "options": ["OR 3.05*", "HR 1.82", ""]}]
 
-        } else if (sortValue == "ARDS"){
+        } else if (sortValue === "ARDS"){
             console.log("here we'll plug in ARDS data")
         } else {
             console.log("here we'll plug in ARDS Death data")

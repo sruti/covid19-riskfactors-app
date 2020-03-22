@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 export class FormRowContainer extends Component {
 
     handleChange = (e) => {
-        console.log("what")
+        this.props.handleOption(this.props.title, e.target.value)
     }
 
     render() {
