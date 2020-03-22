@@ -5,7 +5,8 @@ import React, { Component } from 'react'
 export class FormRowContainer extends Component {
 
     handleChange = (e) => {
-        this.props.handleOption(this.props.title, e.target.value)
+        // console.log("ROW", this.props.rowData.title, e.target.value)
+        this.props.handleOption(this.props.rowData.state, e.target.value)
     }
 
     render() {
@@ -17,9 +18,9 @@ export class FormRowContainer extends Component {
                 form row
                 <p>{this.props.rowData.title}</p>
                 <select onChange={this.handleChange}> 
-                    {this.props.rowData.options.map(option => 
-                        <option value={option}> {option}</option>)
-                    }
+                    <option value="Yes">Yes </option>
+                    <option value="No"> No </option>
+                    <option value="Unknown"> Unknown </option>
                 </select> 
             </section>
         )

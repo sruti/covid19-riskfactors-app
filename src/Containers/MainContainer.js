@@ -5,7 +5,14 @@ import FormContainer from './FormContainer';
 export class MainContainer extends Component {
 
     state = {
-        sortValue: "Mortality"
+        sortValue: "Mortality",
+        hypertension: "Unknown",
+        age: "Unknown",
+        covidExposure: "Unknown",
+        diabetes: "Unknown",
+        cad: "Unknown",
+        rr24: "Unknown",
+        temp: "Unknown",
     }
 
     handleSort = (newSortValue) => {
@@ -14,13 +21,18 @@ export class MainContainer extends Component {
         })
     }
 
+    handleOption = (title, newOptionValue) => {
+        // console.log("HANDLE OPTION", title, newOptionValue);
+        this.setState({
+            [title]: newOptionValue
+        })
+    }
+
     displaySorted = () => {
         let {sortValue} = this.state
         if (sortValue === "Mortality"){
-
             return [
-                {"title": "Basics", "options": ["Mortality", "ARDS", "ARDS Death"]},
-                {"title": "Hypertension", "options": ["OR 3.05*", "HR 1.82", ""]}]
+                {"state": "hypertension", "title": "Hypertension"}]
 
         } else if (sortValue === "ARDS"){
             console.log("here we'll plug in ARDS data")
@@ -29,14 +41,13 @@ export class MainContainer extends Component {
         }
     }
 
-
     render() {
-        // console.log("state", this.state)
+        console.log("hypertension state", this.state.hypertension)
         return (
             <main>
                 MAIN CONT
                 <SortContainer handleSort={this.handleSort}/>
-                <FormContainer data={this.displaySorted()}/>
+                <FormContainer data={this.displaySorted()} handleOption={this.handleOption}/>
             </main>
         )
     }
