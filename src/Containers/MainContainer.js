@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import ResultContainer from './ResultContainer';
-
 
 export class MainContainer extends Component {
 
@@ -24,7 +22,6 @@ export class MainContainer extends Component {
                 MAIN CONT
                 <SortContainer handleSort={this.handleSort}/>
                 <FormContainer/>
-                <ResultContainer/>
             </main>
         )
     }
