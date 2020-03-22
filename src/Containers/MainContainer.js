@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import FilterContainer from './FilterContainer';
+import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
 import ResultContainer from './ResultContainer';
 
 
 export class MainContainer extends Component {
+
+    state = {
+        sortValue: "Mortality"
+    }
+
+    handleSort = (newSortValue) => {
+        this.setState({
+          sortValue: newSortValue
+        })
+    }
+
+
     render() {
+        console.log("state", this.state)
         return (
             <main>
                 MAIN CONT
-                <FilterContainer/>
+                <SortContainer handleSort={this.handleSort}/>
                 <FormContainer/>
                 <ResultContainer/>
             </main>
