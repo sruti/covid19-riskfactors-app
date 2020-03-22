@@ -7,14 +7,16 @@ export class FormRowContainer extends Component {
     }
 
     render() {
-        if (this.props.rowData.state == "age"){
-            console.log("CURRENT STATE OF", this.props.rowData.title, this.props.currentState);
+        let {rowData, currentState, index} = this.props
+
+        if (rowData.state == "age"){
+            console.log("CURRENT STATE OF", rowData.title, currentState);
         }
+
         return (
-            <section>
-                ---------- <br/>
-            <h2>{this.props.index}. {this.props.rowData.title}</h2>
-                <select onChange={this.handleChange} value={this.props.currentState}> 
+            <section> 
+            <h2>{index}. {rowData.title}</h2>
+                <select onChange={this.handleChange} value={currentState}> 
                     <option value="Yes">Yes </option>
                     <option value="No"> No </option>
                     <option value="Unknown"> Unknown </option>

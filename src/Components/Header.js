@@ -3,7 +3,7 @@ import React from 'react'
 export default function Header() {
     return (
         <header>
-            COVID-19 Risk Factor
+            <h1> COVID-19 Risk Factors </h1>
         </header>
     )
 }
