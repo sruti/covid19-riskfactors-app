@@ -28,7 +28,7 @@ export class MainContainer extends Component {
                 { "state": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
                 { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "" }, //doesn't have a value in excel
                 { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }]},
-                {"advanced": []}
+                {"advanced": [{ "state": "age", "title": "Age (>/=65yr)", "ratio": "HR 3.26" }]}
             ]
         } else if (sortValue === "ARDS") {
             return [
