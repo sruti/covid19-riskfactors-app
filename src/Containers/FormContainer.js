@@ -5,6 +5,7 @@ import FormRowContainer from './FormRowContainer';
 export class FormContainer extends Component {
 
     state = {
+        show: false,
         hypertension: "Unknown",
         age: "Unknown",
         covidExposure: "Unknown",
@@ -12,7 +13,23 @@ export class FormContainer extends Component {
         cad: "Unknown",
         rr24: "Unknown",
         temp: "Unknown",
-        show: false
+        sofa: "Unknown",
+        neutro: "Unknown",
+        lympho: "Unknown",
+        ddimer: "Unknown",
+        ferritin: "Unknown",
+        ldh: "Unknown",
+        plateles: "Unknown",
+        pt: "Unknown",
+        procal: "Unknown",
+        cr: "Unknown",
+        hstrop: "Unknown",
+        hscrp: "Unknown",
+        albumin: "Unknown",
+        bilirubin: "Unknown",
+        ast: "Unknown",
+        urea: "Unknown",
+        glucose: "Unknown",
     }
 
     handleOption = (title, newOptionValue) => {        
