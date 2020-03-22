@@ -23,12 +23,13 @@ export class FormContainer extends Component {
     render() {
         return (
             <section style={{"border":"black solid 2px"}}>
-                {this.props.data.map(rowData => { 
+                {this.props.data.map((rowData, index) => { 
                 return <FormRowContainer 
                         rowData={rowData} 
                         key={rowData.title}
                         handleOption={this.handleOption}
-                        currentState={this.state[rowData.state]}/>})}
+                        currentState={this.state[rowData.state]}
+                        index = {index+1}/>})}
             </section>
         )
     }

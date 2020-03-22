@@ -6,10 +6,6 @@ export class FormRowContainer extends Component {
         this.props.handleOption(this.props.rowData.state, e.target.value)
     }
 
-    componentDidMount(){
-        // debugger
-    }
-
     render() {
         if (this.props.rowData.state == "age"){
             console.log("CURRENT STATE OF", this.props.rowData.title, this.props.currentState);
@@ -17,7 +13,7 @@ export class FormRowContainer extends Component {
         return (
             <section>
                 ---------- <br/>
-                <p>{this.props.rowData.title}</p>
+            <h2>{this.props.index}. {this.props.rowData.title}</h2>
                 <select onChange={this.handleChange} value={this.props.currentState}> 
                     <option value="Yes">Yes </option>
                     <option value="No"> No </option>
