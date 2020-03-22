@@ -6,13 +6,6 @@ export class MainContainer extends Component {
 
     state = {
         sortValue: "Mortality",
-        // hypertension: "Unknown",
-        // age: "Unknown",
-        // covidExposure: "Unknown",
-        // diabetes: "Unknown",
-        // cad: "Unknown",
-        // rr24: "Unknown",
-        // temp: "Unknown",
     }
 
     handleSort = (newSortValue) => {
@@ -20,12 +13,6 @@ export class MainContainer extends Component {
             sortValue: newSortValue
         })
     }
-
-    // handleOption = (title, newOptionValue) => {
-    //     this.setState({
-    //         [title]: newOptionValue
-    //     })
-    // }
 
     displaySorted = () => {
         let { sortValue } = this.state
