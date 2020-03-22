@@ -17,7 +17,7 @@ export class MainContainer extends Component {
 
     handleSort = (newSortValue) => {
         this.setState({
-          sortValue: newSortValue
+            sortValue: newSortValue
         })
     }
 
