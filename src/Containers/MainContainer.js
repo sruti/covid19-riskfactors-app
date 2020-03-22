@@ -17,7 +17,7 @@ export class MainContainer extends Component {
 
     handleSort = (newSortValue) => {
         this.setState({
-          sortValue: newSortValue
+            sortValue: newSortValue
         })
     }
 
@@ -28,12 +28,12 @@ export class MainContainer extends Component {
     }
 
     displaySorted = () => {
-        let {sortValue} = this.state
-        if (sortValue === "Mortality"){
+        let { sortValue } = this.state
+        if (sortValue === "Mortality") {
             return [
-                {"state": "hypertension", "title": "Hypertension"}]
+                { "state": "hypertension", "title": "Hypertension" }]
 
-        } else if (sortValue === "ARDS"){
+        } else if (sortValue === "ARDS") {
             console.log("here we'll plug in ARDS data")
         } else {
             console.log("here we'll plug in ARDS Death data")
@@ -45,8 +45,8 @@ export class MainContainer extends Component {
         return (
             <main>
                 MAIN CONT
-                <SortContainer handleSort={this.handleSort}/>
-                <FormContainer data={this.displaySorted()} handleOption={this.handleOption}/>
+                <SortContainer handleSort={this.handleSort} />
+                <FormContainer data={this.displaySorted()} handleOption={this.handleOption} />
             </main>
         )
     }
