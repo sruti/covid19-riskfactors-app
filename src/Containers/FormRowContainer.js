@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
-// import FormOptionText from '../Components/FormOptionText'
-// import FormOptionButton from '../Components/FormOptionButton'
 
 export class FormRowContainer extends Component {
 
     handleChange = (e) => {
-        // console.log("ROW", this.props.rowData.title, e.target.value)
         this.props.handleOption(this.props.rowData.state, e.target.value)
     }
 
     render() {
-        // console.log(this.props.rowData);
         
         return (
             <section>
