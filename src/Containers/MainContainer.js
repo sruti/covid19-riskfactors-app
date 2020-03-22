@@ -22,7 +22,6 @@ export class MainContainer extends Component {
     }
 
     handleOption = (title, newOptionValue) => {
-        // console.log("HANDLE OPTION", title, newOptionValue);
         this.setState({
             [title]: newOptionValue
         })
