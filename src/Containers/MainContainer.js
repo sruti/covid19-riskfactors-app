@@ -10,7 +10,7 @@ export class MainContainer extends Component {
 
     handleSort = (newSortValue) => {
         this.setState({
-          sortValue: newSortValue
+            sortValue: newSortValue
         })
     }
 
@@ -19,9 +19,8 @@ export class MainContainer extends Component {
         console.log("state", this.state)
         return (
             <main>
-                MAIN CONT
-                <SortContainer handleSort={this.handleSort}/>
-                <FormContainer/>
+                <SortContainer handleSort={this.handleSort} />
+                <FormContainer />
             </main>
         )
     }

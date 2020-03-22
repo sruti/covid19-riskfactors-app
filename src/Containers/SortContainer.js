@@ -1,19 +1,17 @@
 import React from 'react';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export default function SortContainer(props) {
-
-    const handleChange = (e) => {
-        props.handleSort(e.target.value)
+    const handleChange = (val) => {
+        props.handleSort(val)
     }
 
     return (
-        <section>
-            <select onChange={handleChange}> 
-                <option value="Mortality">Mortality </option>
-                <option value="ARDS"> ARDS </option>
-                <option value="ARDS Death"> ARDS Death </option>
-            </select>     
-            </section>
+        <ToggleButtonGroup type="radio" name="studyOptions" defaultValue={"Mortality"} onChange={handleChange}>
+            <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
+            <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
+            <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
+        </ToggleButtonGroup >
     )
-
 }
