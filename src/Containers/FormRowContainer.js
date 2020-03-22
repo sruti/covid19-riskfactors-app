@@ -22,7 +22,10 @@ export class FormRowContainer extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <p>{index}. {rowData.title}</p>
+                        <p>{rowData.title}</p>
+                    </Col>
+                    <Col>
+                        <p> {rowData.ratio}</p>
                     </Col>
                     <Col>
                         <ToggleButtonGroup type="radio" name="studyOptions" value={currentState} onChange={this.handleChange}>

@@ -16,29 +16,37 @@ export class MainContainer extends Component {
 
     displaySorted = () => {
         let { sortValue } = this.state
-        // sorted from the lowest to the highest value
+        // sorted from the highest to the lowest value
 
         if (sortValue === "Mortality") {
             return [
-                { "state": "age", "title": "Age (>/=65yr)" },
-                { "state": "diabetes", "title": "Diabetes" },
-                { "state": "hypertension", "title": "Hypertension" },
-                { "state": "rr24", "title": "RR>24" },
-                { "state": "cad", "title": "CAD" },
-                { "state": "covidExposure", "title": "COVID-19 Exposure" } //doesn't have a value in excel
+                { "state": "cad", "title": "CAD", "ratio": "OD 21.40" },
+                { "state": "rr24", "title": "RR>24", "ratio": "OR 8.89" },
+                { "state": "hypertension", "title": "Hypertension", "ratio": "OR 3.05" },
+                { "state": "diabetes", "title": "Diabetes", "ratio": "OR 2.85" },
+                { "state": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
+                { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "" }, //doesn't have a value in excel
+                { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }
             ]
         } else if (sortValue === "ARDS") {
             return [
-                { "state": "temp", "title": "Temp. >/= 39C" },
-                { "state": "hypertension", "title": "Hypertension" },
-                { "state": "diabetes", "title": "Diabetes" },
-                { "state": "age", "title": "Age (>/=65yr)" },
-                { "state": "rr24", "title": "RR>24" }, //excel value unclear
+                { "state": "age", "title": "Age (>/=65yr)", "ratio": "HR 3.26" },
+                { "state": "diabetes", "title": "Diabetes", "ratio": "HR 2.34" },
+                { "state": "hypertension", "title": "Hypertension", "ratio": "HR 1.82" },
+                { "state": "temp", "title": "Temp. >/= 39C", "ratio": "HR 1.77" },
+                { "state": "rr24", "title": "RR>24", "ratio": "HR 3.26", "ratio": "" }, //excel value unclear
+                { "state": "cad", "title": "CAD", "ratio": "Insignificant" },
+                { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
             ]
         } else {
             return [
-                { "state": "temp", "title": "Temp. >/= 39C" },
-                { "state": "age", "title": "Age (>/=65yr)" },
+                { "state": "age", "title": "Age (>/=65yr)", "ratio": "HR 6.17" },
+                { "state": "temp", "title": "Temp. >/= 39C", "ratio": "HR 0.41" },
+                { "state": "hypertension", "title": "Hypertension", "ratio": "Insignificant" },
+                { "state": "diabetes", "title": "Diabetes", "ratio": "Insignificant" },
+                { "state": "cad", "title": "CAD", "ratio": "Insignificant" },
+                { "state": "rr24", "title": "RR>24", "ratio": "Insignificant" },
+                { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
             ]
         }
     }
