@@ -20,13 +20,15 @@ export class MainContainer extends Component {
 
         if (sortValue === "Mortality") {
             return [
+                {"basic": [
                 { "state": "cad", "title": "CAD", "ratio": "OD 21.40" },
                 { "state": "rr24", "title": "RR>24", "ratio": "OR 8.89" },
                 { "state": "hypertension", "title": "Hypertension", "ratio": "OR 3.05" },
                 { "state": "diabetes", "title": "Diabetes", "ratio": "OR 2.85" },
                 { "state": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
                 { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "" }, //doesn't have a value in excel
-                { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }
+                { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }]},
+                {"advanced": []}
             ]
         } else if (sortValue === "ARDS") {
             return [
