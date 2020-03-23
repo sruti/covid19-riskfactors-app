@@ -62,7 +62,7 @@ export class FormContainer extends Component {
                 }
                 {this.state.show ?
                     <>
-                        <Button variant="link" onClick={this.handleChange}>Hide Advanced</Button>
+                        <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
                         {this.props.data[1].advanced.map((rowData, index) =>
                             <FormRowContainer
                                 rowData={rowData} key={rowData.title}
@@ -71,7 +71,7 @@ export class FormContainer extends Component {
                                 index={index + 1} />)}
                     </>
                     :
-                    <Button variant="link" onClick={this.handleChange}>Advanced</Button>
+                    <Button variant="link" onClick={this.handleChange}>Labs</Button>
                 }
             </section>
         )
