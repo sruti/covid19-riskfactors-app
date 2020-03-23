@@ -75,7 +75,7 @@ export class FormRowContainer extends Component {
                             <ToggleButton variant={btnvariant} value={currentState ? "Yes" : "No"} >{currentState ? "Yes" : "No"}</ToggleButton>
                         </ToggleButtonGroup>
                     </Col>
-                </Row>
+                </Row> 
             </Container>
         )
     }
