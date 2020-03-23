@@ -67,8 +67,8 @@ export class FormRowContainer extends Component {
                     </Col>
                     <Col>
                         <ToggleButtonGroup type="checkbox" name="studyOptions" value={currentState} onChange={this.handleChange}>
-                            <ToggleButton variant={btnvariant} value={"Yes"}>Yes</ToggleButton>
-                        </ToggleButtonGroup >
+                            <ToggleButton variant={btnvariant} value={currentState ? "Yes" : "No"} >{currentState ? "Yes" : "No"}</ToggleButton>
+                        </ToggleButtonGroup>
                     </Col>
                 </Row>
             </Container>
