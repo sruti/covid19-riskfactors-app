@@ -7,35 +7,38 @@ export class FormContainer extends Component {
 
     state = {
         show: false,
-        hypertension: "Unknown",
-        age: "Unknown",
-        covidExposure: "Unknown",
-        diabetes: "Unknown",
-        cad: "Unknown",
-        rr24: "Unknown",
-        temp: "Unknown",
-        sofa: "Unknown",
-        neutro: "Unknown",
-        lympho: "Unknown",
-        ddimer: "Unknown",
-        ferritin: "Unknown",
-        ldh: "Unknown",
-        plateles: "Unknown",
-        pt: "Unknown",
-        procal: "Unknown",
-        cr: "Unknown",
-        hstrop: "Unknown",
-        hscrp: "Unknown",
-        albumin: "Unknown",
-        bilirubin: "Unknown",
-        ast: "Unknown",
-        urea: "Unknown",
-        glucose: "Unknown",
+        hypertension: false,
+        age: false,
+        covidExposure: false,
+        diabetes: false,
+        cad: false,
+        rr24: false,
+        temp: false,
+        sofa: false,
+        neutro: false,
+        lympho: false,
+        ddimer: false,
+        ferritin: false,
+        ldh: false,
+        plateles: false,
+        pt: false,
+        procal: false,
+        cr: false,
+        hstrop: false,
+        hscrp: false,
+        albumin: false,
+        bilirubin: false,
+        ast: false,
+        urea: false,
+        glucose: false,
     }
 
-    handleOption = (title, newOptionValue) => {
-        this.setState({
-            [title]: newOptionValue
+    //these two methods could become one
+    handleClick = (title, newOptionValue) => {
+        this.setState(prevState => {
+            return {
+                [title]: !prevState[title]
+            }
         })
     }
 
@@ -55,7 +58,7 @@ export class FormContainer extends Component {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
-                        handleOption={this.handleOption}
+                        handleClick={this.handleClick}
                         currentState={this.state[rowData.state]}
                         index={index + 1} />
                 })
@@ -66,7 +69,7 @@ export class FormContainer extends Component {
                         {this.props.data[1].advanced.map((rowData, index) =>
                             <FormRowContainer
                                 rowData={rowData} key={rowData.title}
-                                handleOption={this.handleOption}
+                                handleClick={this.handleClick}
                                 currentState={this.state[rowData.state]}
                                 index={index + 1} />)}
                     </>

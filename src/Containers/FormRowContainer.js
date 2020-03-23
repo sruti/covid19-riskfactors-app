@@ -8,26 +8,42 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 export class FormRowContainer extends Component {
 
     handleChange = (val) => {
-        this.props.handleOption(this.props.rowData.state, val)
+        // console.log(this.props.rowData.state, val);
+        // (2) [false, "Yes"]0: false1: "Yes"
+        
+        this.props.handleClick(this.props.rowData.state, val)
     }
 
     render() {
         let { rowData, currentState } = this.props
 
-        var btnvariant = ""
-        var bgcolor = ""
+        let btnvariant;
+        let bgcolor;
+
         switch (rowData.ratio) {
             case "Insignificant":
                 btnvariant = "outline-danger"
-                bgcolor = "lightcoral"
+                currentState 
+                ?
+                    bgcolor = "lightcoral"
+                : 
+                    bgcolor = "white"
                 break
             case "Excluded":
                 btnvariant = "outline-secondary"
-                bgcolor = "lightgrey"
+                currentState 
+                ?
+                    bgcolor = "lightgrey"
+                : 
+                    bgcolor = "white"
                 break
             default:
                 btnvariant = "outline-success"
-                bgcolor = "lightgreen"
+                currentState 
+                ?
+                    bgcolor = "lightgreen"
+                :
+                    bgcolor = "white"
         }
 
         return (

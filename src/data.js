@@ -14,7 +14,7 @@ const mortality = [
         "advanced": [
             { "state": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "OR 80.07" },
             { "state": "ldh", "title": "LDH >245", "ratio": "OR 45.43" },
-            { "state": "ast", "title": "AST/ALT (U/L)", "ratio": ">40 OR 2.87" },
+            { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "ALT >40" },
             { "state": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "OR 18.42" },
             { "state": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "OR 13.75" },
             { "state": "neutro", "title": "Neutrophilia", "ratio": "? Leukocytosis >10 (OR 6.60)" },
