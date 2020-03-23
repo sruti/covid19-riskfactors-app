@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import FormRowContainer from './FormRowContainer';
+import Button from 'react-bootstrap/Button'
 
 
 export class FormContainer extends Component {
@@ -32,7 +33,7 @@ export class FormContainer extends Component {
         glucose: "Unknown",
     }
 
-    handleOption = (title, newOptionValue) => {        
+    handleOption = (title, newOptionValue) => {
         this.setState({
             [title]: newOptionValue
         })
@@ -47,32 +48,30 @@ export class FormContainer extends Component {
     }
 
     render() {
-        
+
         return (
-            <section style={{"border":"black solid 2px"}}>
-                <h2> basic</h2>
-                {this.props.data[0].basic.map((rowData, index) => { 
-                    return <FormRowContainer 
-                            rowData={rowData} 
-                            key={rowData.title}
-                            handleOption={this.handleOption}
-                            currentState={this.state[rowData.state]}
-                            index = {index+1}/>})
+            <section style={{ "border": "black solid 2px" }}>
+                {this.props.data[0].basic.map((rowData, index) => {
+                    return <FormRowContainer
+                        rowData={rowData}
+                        key={rowData.title}
+                        handleOption={this.handleOption}
+                        currentState={this.state[rowData.state]}
+                        index={index + 1} />
+                })
                 }
-                {this.state.show ? 
+                {this.state.show ?
                     <>
-                    <h2> advanced</h2>
-                    <label> 
-                        <span> Hide advanced</span>
-                        <input type="checkbox" onChange={this.handleChange}/> 
-                    </label>
-                    {this.props.data[1].advanced.map((rowData, index) => <FormRowContainer rowData={rowData} key={rowData.title} handleOption={this.handleOption} currentState={this.state[rowData.state]} index = {index+1}/>)}
+                        <Button variant="link" onClick={this.handleChange}>Hide Advanced</Button>
+                        {this.props.data[1].advanced.map((rowData, index) =>
+                            <FormRowContainer
+                                rowData={rowData} key={rowData.title}
+                                handleOption={this.handleOption}
+                                currentState={this.state[rowData.state]}
+                                index={index + 1} />)}
                     </>
-                :                 
-                    <label> 
-                        <span> Show advanced</span>
-                        <input type="checkbox" onChange={this.handleChange}/> 
-                    </label>
+                    :
+                    <Button variant="link" onClick={this.handleChange}>Advanced</Button>
                 }
             </section>
         )
