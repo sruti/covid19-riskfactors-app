@@ -54,24 +54,24 @@ export class FormContainer extends Component {
 
         return (
             <section style={{ "border": "black solid 2px" }}>
-                {this.props.data[0].basic.map((rowData, index) => {
+                {this.props.data[0].basic.map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
                         handleClick={this.handleClick}
                         currentState={this.state[rowData.state]}
-                        index={index + 1} />
+                        />
                 })
                 }
                 {this.state.show ?
                     <>
                         <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
-                        {this.props.data[1].advanced.map((rowData, index) =>
+                        {this.props.data[1].advanced.map((rowData) =>
                             <FormRowContainer
                                 rowData={rowData} key={rowData.title}
                                 handleClick={this.handleClick}
                                 currentState={this.state[rowData.state]}
-                                index={index + 1} />)}
+                                />)}
                     </>
                     :
                     <Button variant="link" onClick={this.handleChange}>Labs</Button>

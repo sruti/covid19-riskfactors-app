@@ -8,10 +8,11 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 export class FormRowContainer extends Component {
 
     handleChange = (val) => {
-        // console.log(this.props.rowData.state, val);
-        // (2) [false, "Yes"]0: false1: "Yes"
-        
         this.props.handleClick(this.props.rowData.state, val)
+    }
+
+    determineColor = () => {
+
     }
 
     render() {
