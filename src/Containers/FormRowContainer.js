@@ -14,12 +14,33 @@ export class FormRowContainer extends Component {
     render() {
         let { rowData, currentState, index } = this.props
 
+        var btcolor = ""
+        var bgcolor = ""
+        switch (rowData.ratio) {
+            case "Insignificant":
+                btcolor = "danger"
+                bgcolor = "lightcoral"
+                break
+            case "Excluded":
+                btcolor = "secondary"
+                bgcolor = "lightgrey"
+                break
+            default:
+                btcolor = "success"
+                bgcolor = "lightgreen"
+        }
+
         if (rowData.state == "age") {
             console.log("CURRENT STATE OF", rowData.title, currentState);
         }
 
         return (
-            <Container>
+            <Container
+                style={{
+                    backgroundColor: bgcolor,
+                    marginTop: "2px",
+                    marginBottom: "2px",
+                }}>
                 <Row>
                     <Col>
                         <p>{rowData.title}</p>
@@ -29,9 +50,9 @@ export class FormRowContainer extends Component {
                     </Col>
                     <Col>
                         <ToggleButtonGroup type="radio" name="studyOptions" value={currentState} onChange={this.handleChange}>
-                            <ToggleButton value={"Yes"}>Yes</ToggleButton>
-                            <ToggleButton value={"No"}>No</ToggleButton>
-                            <ToggleButton value={"Unknown"}>Unknown</ToggleButton>
+                            <ToggleButton variant={btcolor} value={"Yes"}>Yes</ToggleButton>
+                            <ToggleButton variant={btcolor} value={"No"}>No</ToggleButton>
+                            <ToggleButton variant={btcolor} value={"Unknown"}>Unknown</ToggleButton>
                         </ToggleButtonGroup >
                     </Col>
                 </Row>
