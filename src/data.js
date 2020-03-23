@@ -7,7 +7,7 @@ const mortality = [
             { "state": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },
             { "state": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
             { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
-            { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }
+            { "state": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "Excluded" }
         ]
     },
     {
@@ -39,7 +39,7 @@ const ards = [
             { "state": "age", "title": "Age (>/=65yr)", "ratio": "HR 3.26" },
             { "state": "diabetes", "title": "Diabetes", "ratio": "HR 2.34" },
             { "state": "hypertension", "title": "Hypertension", "ratio": "HR 1.82" },
-            { "state": "temp", "title": "Temp. >/= 39C", "ratio": "HR 1.77" },
+            { "state": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 1.77" },
             { "state": "rr24", "title": "RR>24", "ratio": "?" }, // ?dyspnea (green)
             { "state": "cad", "title": "CAD", "ratio": "Insignificant" },
             { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
@@ -72,7 +72,7 @@ const ardsDeath = [
     {
         "basic": [
             { "state": "age", "title": "Age (>/=65yr)", "ratio": "HR 6.17" },
-            { "state": "temp", "title": "Temp. >/= 39C", "ratio": "HR 0.41" },
+            { "state": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 0.41" },
             { "state": "hypertension", "title": "Hypertension", "ratio": "Insignificant" },
             { "state": "diabetes", "title": "Diabetes", "ratio": "Insignificant" },
             { "state": "cad", "title": "CAD", "ratio": "Insignificant" },
