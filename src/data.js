@@ -1,10 +1,10 @@
 const mortality = [
     {
         "basic": [
-            { "state": "cad", "title": "CAD", "ratio": "OD 21.40" },
-            { "state": "rr24", "title": "RR>24", "ratio": "OR 8.89" },
-            { "state": "hypertension", "title": "Hypertension", "ratio": "OR 3.05" },
-            { "state": "diabetes", "title": "Diabetes", "ratio": "OR 2.85" },
+            { "state": "cad", "title": "CAD", "ratio": "OD 21.40*" },
+            { "state": "rr24", "title": "RR>24", "ratio": "OR 8.89*" },
+            { "state": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*" },
+            { "state": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },
             { "state": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
             { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
             { "state": "temp", "title": "Temp. >/= 39C", "ratio": "Excluded" }
@@ -12,16 +12,16 @@ const mortality = [
     },
     {
         "advanced": [
-            { "state": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "OR 80.07" },
-            { "state": "ldh", "title": "LDH >245", "ratio": "OR 45.43" },
-            { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "ALT >40" },
+            { "state": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "OR 80.07*" },
+            { "state": "ldh", "title": "LDH >245", "ratio": "OR 45.43*" },
+            { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "ALT >40*" },
             { "state": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "OR 18.42" },
-            { "state": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "OR 13.75" },
-            { "state": "neutro", "title": "Neutrophilia", "ratio": "? Leukocytosis >10 (OR 6.60)" },
+            { "state": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "OR 13.75*" },
+            { "state": "neutro", "title": "Neutrophilia", "ratio": "? Leukocytosis >10 (OR 6.60*)" },
             { "state": "sofa", "title": "↑ SOFA", "ratio": "OR 5.65" },
-            { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62" },
-            { "state": "pt", "title": "PT >/= 16", "ratio": "OR 4.62" },
-            { "state": "cr", "title": "Cr >133 umol/L", "ratio": "OR 4.3" },
+            { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62*" },
+            { "state": "pt", "title": "PT >/= 16", "ratio": "OR 4.62*" },
+            { "state": "cr", "title": "Cr >133 umol/L", "ratio": "OR 4.3*" },
             { "state": "plateles", "title": "Low Platelets", "ratio": "P <0.05" },
             { "state": "albumin", "title": "↑ Albumin (g/L)", "ratio": "P <0.05" },
             { "state": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "P <0.05" },
