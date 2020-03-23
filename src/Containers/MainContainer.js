@@ -92,9 +92,24 @@ export class MainContainer extends Component {
                     { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
                 ]},
                 {"advanced": [
-                    
-                ]}
-            ]
+                    { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR HR 3.53" },
+                    { "state": "ldh", "title": "LDH >245", "ratio": "HR 1.30" },
+                    { "state": "albumin", "title": "Elevated Albumin (g/L)", "ratio": "HR 0.19" },
+                    { "state": "urea", "title": "Elevated Urea", "ratio": "HR 1.13" },
+                    { "state": "pt", "title": "PT >/= 16", "ratio": "HR 1.08" },
+                    { "state": "neutro", "title": "Neutrophilia", "ratio": "HR 1.08" },
+                    { "state": "bilirubin", "title": "Elevated Total Bilirubin", "ratio": "HR 1.07" },
+                    { "state": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.02" },
+                    { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "" }, //this one is white
+                    { "state": "procal", "title": "Elevated Procalcitonin <0.1", "ratio": "Excluded" },
+                    { "state": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded" },
+                    { "state": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "Insignificant" },
+                    { "state": "plateles", "title": "Low Platelets", "ratio": "Insignificant" },
+                    { "state": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant" },
+                    { "state": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Insignificant" },
+                    { "state": "glucose", "title": "Elevated Glucose", "ratio": "Insignificant" },
+                ]
+            }]
         }
     }
 
