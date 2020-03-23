@@ -58,7 +58,12 @@ export class FormRowContainer extends Component {
                         <p>{rowData.title}</p>
                     </Col>
                     <Col>
+                    { currentState 
+                    ?
                         <p> {rowData.ratio}</p>
+                    : 
+                        null 
+                    }
                     </Col>
                     <Col>
                         <ToggleButtonGroup type="checkbox" name="studyOptions" value={currentState} onChange={this.handleChange}>
