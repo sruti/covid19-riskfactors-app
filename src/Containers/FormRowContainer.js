@@ -9,23 +9,23 @@ import { FormRowContainer as FormRow } from './FormRowContainer';
 
 export class FormRowContainer extends Component {
 
-    // this state exists here only for the two exceptions when this component is recursive
+    // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
     state = {
         leukocytosis: false,
         dyspnea: false,
     }
 
-    handleChange = (val) => { 
-            this.props.handleClick(this.props.rowData.state, val)
-    }
-
-    // because in recursive situation, this component becomes the parent, we need to place this function here as well as we can pass it
+    // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
     handleClick = (stateName, val) =>{
         this.setState( prevState => {      
             return {
                 [stateName]: !prevState[stateName]
             }
         })
+    }
+
+    handleChange = (val) => { 
+            this.props.handleClick(this.props.rowData.state, val)
     }
 
     render() {
@@ -46,7 +46,7 @@ export class FormRowContainer extends Component {
                 : 
                     bgcolor = "white"
                 break
-            case "?":
+            case /\?/: //"?" leaves it white and regex makes it green; I'm leaving regex because perhaps we want to ask the question
                 // btnvariant = "outline-danger"
                     bgcolor = "white"
                 break
@@ -95,7 +95,7 @@ export class FormRowContainer extends Component {
                     ? 
                         rowData.ratio.includes("dyspnea") 
                         ? < FormRow 
-                            rowData={{ "state": "dyspnea", "title": "Dyspnea", "ratio": "" }} 
+                            rowData={{ "state": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
                             handleChange={this.handleChange} 
                             handleClick={this.handleClick}
                             currentState={this.state.dyspnea}/>
@@ -130,30 +130,3 @@ export class FormRowContainer extends Component {
 }
 
 export default FormRowContainer
-
-
-{/* <Container 
-                style={{
-                    backgroundColor: bgcolor,
-                    marginTop: "2px",
-                    marginBottom: "2px",
-                }}>
-                <Row>
-                    <Col>
-                        <p>{rowData.title}</p>
-                    </Col>
-                    <Col>
-                    { currentState 
-                    ?
-                        <p> {rowData.ratio.includes("?") ? null : rowData.ratio}</p>
-                    : 
-                        null 
-                    }
-                    </Col>
-                    <Col>
-                        <ToggleButtonGroup type="checkbox" name="studyOptions" value={currentState} onChange={this.handleChange}>
-                            <ToggleButton variant={btnvariant} value={currentState ? "Yes" : "No"} >{currentState ? "Yes" : "No"}</ToggleButton>
-                        </ToggleButtonGroup>
-                    </Col>
-                </Row>
-            </Container> */}
