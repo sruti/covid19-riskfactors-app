@@ -12,7 +12,7 @@ export class FormRowContainer extends Component {
     }
 
     render() {
-        let { rowData, currentState, index } = this.props
+        let { rowData, currentState } = this.props
 
         var btcolor = ""
         var bgcolor = ""
@@ -29,11 +29,7 @@ export class FormRowContainer extends Component {
                 btcolor = "success"
                 bgcolor = "lightgreen"
         }
-
-        if (rowData.state == "age") {
-            console.log("CURRENT STATE OF", rowData.title, currentState);
-        }
-
+        
         return (
             <Container
                 style={{

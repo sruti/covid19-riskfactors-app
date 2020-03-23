@@ -47,7 +47,6 @@ export class FormContainer extends Component {
     }
 
     render() {
-        console.log(this.props.data[0]);
         
         return (
             <section style={{"border":"black solid 2px"}}>
