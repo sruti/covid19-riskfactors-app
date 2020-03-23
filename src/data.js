@@ -17,7 +17,7 @@ const mortality = [
             { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "ALT >40*" },
             { "state": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "OR 18.42" },
             { "state": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "OR 13.75*" },
-            { "state": "neutro", "title": "Neutrophilia", "ratio": "? Leukocytosis >10 (OR 6.60*)" },
+            { "state": "neutro", "title": "Neutrophilia", "ratio": "?" }, //?Leukocytosis >10 (OR 6.60*)
             { "state": "sofa", "title": "↑ SOFA", "ratio": "OR 5.65" },
             { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62*" },
             { "state": "pt", "title": "PT >/= 16", "ratio": "OR 4.62*" },
@@ -40,7 +40,7 @@ const ards = [
             { "state": "diabetes", "title": "Diabetes", "ratio": "HR 2.34" },
             { "state": "hypertension", "title": "Hypertension", "ratio": "HR 1.82" },
             { "state": "temp", "title": "Temp. >/= 39C", "ratio": "HR 1.77" },
-            { "state": "rr24", "title": "RR>24", "ratio": "P <0.05" },
+            { "state": "rr24", "title": "RR>24", "ratio": "?" }, // ?dyspnea (green)
             { "state": "cad", "title": "CAD", "ratio": "Insignificant" },
             { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
         ]

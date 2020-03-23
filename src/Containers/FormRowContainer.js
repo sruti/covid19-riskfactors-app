@@ -18,20 +18,24 @@ export class FormRowContainer extends Component {
     render() {
         let { rowData, currentState } = this.props
 
-        let btnvariant;
+        let btnvariant = "outline-success"
         let bgcolor;
 
         switch (rowData.ratio) {
             case "Insignificant":
-                btnvariant = "outline-danger"
+                // btnvariant = "outline-danger"
                 currentState 
                 ?
                     bgcolor = "lightcoral"
                 : 
                     bgcolor = "white"
                 break
+            case "?":
+                // btnvariant = "outline-danger"
+                    bgcolor = "white"
+                break
             case "Excluded":
-                btnvariant = "outline-secondary"
+                // btnvariant = "outline-secondary"
                 currentState 
                 ?
                     bgcolor = "lightgrey"
@@ -39,7 +43,7 @@ export class FormRowContainer extends Component {
                     bgcolor = "white"
                 break
             default:
-                btnvariant = "outline-success"
+                // btnvariant = "outline-success"
                 currentState 
                 ?
                     bgcolor = "lightgreen"
@@ -61,7 +65,7 @@ export class FormRowContainer extends Component {
                     <Col>
                     { currentState 
                     ?
-                        <p> {rowData.ratio}</p>
+                        <p> {rowData.ratio.includes("?") ? null : rowData.ratio}</p>
                     : 
                         null 
                     }
