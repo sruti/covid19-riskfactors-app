@@ -39,14 +39,14 @@ export class MainContainer extends Component {
                     { "state": "sofa", "title": "Elevated SOFA", "ratio": "OR 5.65" },
                     { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62" },
                     { "state": "pt", "title": "PT >/= 16", "ratio": "OR 4.62" },
-                    { "state": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "" },
+                    { "state": "cr", "title": "Cr >133 umol/L", "ratio": "OR 4.3" },
                     { "state": "plateles", "title": "Low Platelets", "ratio": "" },
                     { "state": "albumin", "title": "Elevated Albumin (g/L)", "ratio": "" },
-                    { "state": "plateles", "title": "Low Platelets", "ratio": "" },
-                    { "state": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "" },
-                    { "state": "bilirubin", "title": "Elevated Total Bilirubin", "ratio": "" },
-                    { "state": "urea", "title": "Elevated Urea", "ratio": "" },
-                    { "state": "glucose", "title": "Elevated Glucose", "ratio": "" },
+                    { "state": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "" },
+                    { "state": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Excluded" },
+                    { "state": "bilirubin", "title": "Elevated Total Bilirubin", "ratio": "Excluded" },
+                    { "state": "urea", "title": "Elevated Urea", "ratio": "Excluded" },
+                    { "state": "glucose", "title": "Elevated Glucose", "ratio": "Excluded" },
                 ]}
             ]
         } else if (sortValue === "ARDS") {
@@ -61,7 +61,23 @@ export class MainContainer extends Component {
                     { "state": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
                 ]},
                 {"advanced": [
-
+                    { "state": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "HR 4.81" },
+                    { "state": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR HR 3.53" },
+                    { "state": "ldh", "title": "LDH >245", "ratio": "HR 1.61" },
+                    { "state": "pt", "title": "PT >/= 16", "ratio": "HR 1.56" },
+                    { "state": "neutro", "title": "Neutrophilia", "ratio": "HR 1.14" },
+                    { "state": "urea", "title": "Elevated Urea", "ratio": "HR 1.13" },
+                    { "state": "glucose", "title": "Elevated Glucose", "ratio": "HR 1.13" }, //this one is white in the diagram
+                    { "state": "bilirubin", "title": "Elevated Total Bilirubin", "ratio": "HR 1.05" },
+                    { "state": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.03" },
+                    { "state": "ast", "title": "AST/ALT (U/L)", "ratio": "AST HR 1.02" },
+                    { "state": "albumin", "title": "Elevated Albumin (g/L)", "ratio": "HR 0.49" },
+                    { "state": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "HR 0.37" },
+                    { "state": "sofa", "title": "Elevated SOFA", "ratio": "Excluded" },
+                    { "state": "procal", "title": "Elevated Procalcitonin <0.1", "ratio": "Excluded" },
+                    { "state": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded" },
+                    { "state": "plateles", "title": "Low Platelets", "ratio": "Insignificant" },
+                    { "state": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant" },
                 ]}
             ]
         } else {
