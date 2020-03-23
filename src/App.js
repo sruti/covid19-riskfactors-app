@@ -5,10 +5,10 @@ import MainContainer from './Containers/MainContainer';
 
 function App() {
   return (
-    <div className="App">
+    <section className="App">
       <Header/>
       <MainContainer/>
-    </div>
+    </section>
   );
 }
 

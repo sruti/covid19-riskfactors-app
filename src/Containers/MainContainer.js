@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import {mortality} from '../data.js'
-import {ards} from '../data.js'
-import {ardsDeath} from '../data.js'
-
-
+import {mortality, ards, ardsDeath} from '../data.js'
 
 export class MainContainer extends Component {
 
@@ -21,8 +17,8 @@ export class MainContainer extends Component {
 
     displaySorted = () => {
         let { sortValue } = this.state
-        // sorted from the highest to the lowest value
 
+        // sorted from the highest to the lowest value
         if (sortValue === "Mortality") {
             return mortality
         } else if (sortValue === "ARDS") {
@@ -35,7 +31,6 @@ export class MainContainer extends Component {
     render() {
         return (
             <main>
-                {/* MAIN CONT */}
                 <SortContainer handleSort={this.handleSort} />
                 <FormContainer data={this.displaySorted()} />
             </main>
