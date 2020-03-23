@@ -25,12 +25,12 @@ export class FormRowContainer extends Component {
     }
 
     handleChange = (val) => { 
-            this.props.handleClick(this.props.rowData.state, val)
+            this.props.handleClick(this.props.rowData.stateName, val)
     }
 
     render() {
-        let { rowData, currentState } = this.props
-        if (rowData.state === "leukocytosis"){
+        let { rowData, currentParentState } = this.props
+        if (rowData.stateName === "leukocytosis"){
             console.log(this.state.leukocytosis);
         }
 
@@ -40,7 +40,7 @@ export class FormRowContainer extends Component {
         switch (rowData.ratio) {
             case "Insignificant":
                 // btnvariant = "outline-danger"
-                currentState 
+                currentParentState 
                 ?
                     bgcolor = "lightcoral"
                 : 
@@ -52,7 +52,7 @@ export class FormRowContainer extends Component {
                 break
             case "Excluded":
                 // btnvariant = "outline-secondary"
-                currentState 
+                currentParentState 
                 ?
                     bgcolor = "lightgrey"
                 : 
@@ -60,7 +60,7 @@ export class FormRowContainer extends Component {
                 break
             default:
                 // btnvariant = "outline-success"
-                currentState 
+                currentParentState 
                 ?
                     bgcolor = "lightgreen"
                 :
@@ -89,31 +89,31 @@ export class FormRowContainer extends Component {
                     <ToggleButtonGroup 
                         type="checkbox" 
                         name="studyOptions" 
-                        value={currentState} 
+                        value={currentParentState} 
                         onChange={this.handleChange}
                     >
                         <ToggleButton 
                             variant={btnvariant} 
-                            value={currentState ? "Yes" : "No"} 
-                        >{currentState ? "Yes" : "No"}</ToggleButton>
+                            value={currentParentState ? "Yes" : "No"} 
+                        >{currentParentState ? "Yes" : "No"}</ToggleButton>
                     </ToggleButtonGroup>
                 </Col>
             </Row>
             <Row>
                 {/* if you click on the button, create a new row*/}
-                { currentState 
+                { currentParentState 
                 ? 
                     rowData.ratio.includes("dyspnea") 
                     ? < FormRow 
-                        rowData={{ "state": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
+                        rowData={{ "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick}
-                        currentState={this.state.dyspnea}/>
+                        currentParentState={this.state.dyspnea}/>
                     : < FormRow 
-                        rowData={{ "state": "leukocytosis", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
+                        rowData={{ "stateName": "leukocytosis", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick} 
-                        currentState={this.state.leukocytosis}/>
+                        currentParentState={this.state.leukocytosis}/>
                 : null }
             </Row>
             </>
@@ -123,19 +123,19 @@ export class FormRowContainer extends Component {
                     <p>{rowData.title}</p>
                 </Col>
                 <Col>
-                    <p> { currentState ? rowData.ratio : null}</p>
+                    <p> { currentParentState ? rowData.ratio : null}</p>
                 </Col>
                 <Col>
                     <ToggleButtonGroup 
                         type="checkbox" 
                         name="studyOptions" 
-                        value={currentState} 
+                        value={currentParentState} 
                         onChange={this.handleChange}
                     >
                         <ToggleButton 
                             variant={btnvariant} 
-                            value={currentState ? "Yes" : "No"} 
-                        >{currentState ? "Yes" : "No"}</ToggleButton>
+                            value={currentParentState ? "Yes" : "No"} 
+                        >{currentParentState ? "Yes" : "No"}</ToggleButton>
                     </ToggleButtonGroup>
                 </Col>
             </Row>

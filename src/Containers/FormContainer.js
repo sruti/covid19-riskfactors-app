@@ -59,7 +59,7 @@ export class FormContainer extends Component {
                         rowData={rowData}
                         key={rowData.title}
                         handleClick={this.handleClick}
-                        currentState={this.state[rowData.state]}
+                        currentParentState={this.state[rowData.stateName]}
                         />
                 })
                 }
@@ -70,7 +70,7 @@ export class FormContainer extends Component {
                             <FormRowContainer
                                 rowData={rowData} key={rowData.title}
                                 handleClick={this.handleClick}
-                                currentState={this.state[rowData.state]}
+                                currentParentState={this.state[rowData.stateName]}
                                 />)}
                     </>
                     :
