@@ -73,42 +73,52 @@ export class FormRowContainer extends Component {
                     backgroundColor: bgcolor,
                     marginTop: "2px",
                     marginBottom: "2px",
-                }}>
-                { rowData.ratio.includes("?") 
+                }}
+            >
+            { rowData.ratio.includes("?") 
+            ? // this is the treatment for the exceptions
+            <>
+            <Row>
+                <Col>
+                    <p>{rowData.title}</p>
+                </Col>
+                <Col>
+                    {/* this is an empty column because exceptions don't have text */}
+                </Col>
+                <Col>
+                    <ToggleButtonGroup 
+                        type="checkbox" 
+                        name="studyOptions" 
+                        value={currentState} 
+                        onChange={this.handleChange}
+                    >
+                        <ToggleButton 
+                            variant={btnvariant} 
+                            value={currentState ? "Yes" : "No"} 
+                        >{currentState ? "Yes" : "No"}</ToggleButton>
+                    </ToggleButtonGroup>
+                </Col>
+            </Row>
+            <Row>
+                {/* if you click on the button, create a new row*/}
+                { currentState 
                 ? 
-                <>
-                <Row>
-                    <Col>
-                        <p>{rowData.title}</p>
-                    </Col>
-                    <Col>
-                    </Col>
-                    <Col>
-                        <ToggleButtonGroup type="checkbox" name="studyOptions" value={currentState} onChange={this.handleChange}>
-                            <ToggleButton variant={btnvariant} value={currentState ? "Yes" : "No"} >{currentState ? "Yes" : "No"}</ToggleButton>
-                        </ToggleButtonGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    {/* if it is one of the two, create another row here */}
-                    { currentState 
-                    ? 
-                        rowData.ratio.includes("dyspnea") 
-                        ? < FormRow 
-                            rowData={{ "state": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
-                            handleChange={this.handleChange} 
-                            handleClick={this.handleClick}
-                            currentState={this.state.dyspnea}/>
-                        : < FormRow 
-                            rowData={{ "state": "leukocytosis", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
-                            handleChange={this.handleChange} 
-                            handleClick={this.handleClick} 
-                            currentState={this.state.leukocytosis}/>
-                    : null }
-                </Row>
-                </>
-                :
-                <Row>
+                    rowData.ratio.includes("dyspnea") 
+                    ? < FormRow 
+                        rowData={{ "state": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick}
+                        currentState={this.state.dyspnea}/>
+                    : < FormRow 
+                        rowData={{ "state": "leukocytosis", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick} 
+                        currentState={this.state.leukocytosis}/>
+                : null }
+            </Row>
+            </>
+            : /////////////////// this is for the non-exceptions /////////////////
+            <Row>
                 <Col>
                     <p>{rowData.title}</p>
                 </Col>
@@ -116,14 +126,20 @@ export class FormRowContainer extends Component {
                     <p> { currentState ? rowData.ratio : null}</p>
                 </Col>
                 <Col>
-                    <ToggleButtonGroup type="checkbox" name="studyOptions" value={currentState} onChange={this.handleChange}>
-                        <ToggleButton variant={btnvariant} value={currentState ? "Yes" : "No"} >{currentState ? "Yes" : "No"}</ToggleButton>
+                    <ToggleButtonGroup 
+                        type="checkbox" 
+                        name="studyOptions" 
+                        value={currentState} 
+                        onChange={this.handleChange}
+                    >
+                        <ToggleButton 
+                            variant={btnvariant} 
+                            value={currentState ? "Yes" : "No"} 
+                        >{currentState ? "Yes" : "No"}</ToggleButton>
                     </ToggleButtonGroup>
                 </Col>
             </Row>
-
-                }
-                
+            }
             </Container>
         )
     }
