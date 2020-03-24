@@ -13,7 +13,7 @@ const mortality = [
     {
         "advanced": [
             { "stateName": "sofa", "title": "↑ SOFA", "ratio": "OR 5.65" },
-            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "?" }, //?Leukocytosis >10 (OR 6.60*)
+            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "P < 0.5" }, //?Leukocytosis >10 (OR 6.60*)
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "P <0.05" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "OR 18.42" },
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62*" },
@@ -48,7 +48,7 @@ const ards = [
     {
         "advanced": [
             { "stateName": "sofa", "title": "↑ SOFA", "ratio": "Excluded" },
-            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "HR 1.14" },
+            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "?" },
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "HR 0.37" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.03" },
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR HR 3.53" },
@@ -83,7 +83,7 @@ const ardsDeath = [
     {
         "advanced": [
             { "stateName": "sofa", "title": "SOFA", "ratio": "Excluded" },
-            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "HR 1.08" },
+            { "stateName": "neutro", "title": "Neutrophilia", "ratio": "?" },
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "Insignificant" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.02" },
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "HR 3.53" },
