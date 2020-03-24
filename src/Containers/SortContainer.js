@@ -54,7 +54,7 @@ export default class FormRowContainer extends Component {
                     </>
                     :
                     <div>
-                            <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
+                        <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
                     </div>
                 }
                 

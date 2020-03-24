@@ -53,7 +53,7 @@ export class FormContainer extends Component {
     render() {
 
         return (
-            <section style={{ "border": "black solid 2px" }}>
+            <section style={{ "border": "black solid 2px", "padding": "1%" }}>
                 {this.props.data[0].basic.map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
