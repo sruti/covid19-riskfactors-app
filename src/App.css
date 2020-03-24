@@ -10,3 +10,8 @@ div.rowInForm:hover {
 p{
   margin-top: 0.2em !important;
 }
+
+.mainContainer{
+  border: black solid 2px; 
+  padding: 1% 
+}

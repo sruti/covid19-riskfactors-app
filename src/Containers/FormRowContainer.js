@@ -49,7 +49,7 @@ export class FormRowContainer extends Component {
                 : 
                     bgcolor = "white"
                 break
-            case "?": //"?" leaves it white and regex makes it green; I'm leaving regex because perhaps we want to ask the question
+            case "?":
                 // btnvariant = "outline-danger"
                     bgcolor = "white"
                 break
@@ -73,7 +73,7 @@ export class FormRowContainer extends Component {
         return (
             <>
             { rowData.ratio.includes("?") 
-            ? // this is the treatment for the exceptions
+            ? /////////////////// this is the treatment for the two exceptions ///////////////////
             <Container 
             className = "rowInForm"
                 style={
@@ -99,7 +99,6 @@ export class FormRowContainer extends Component {
                     <p>{rowData.title}</p>
                 </Col>
                 <Col>
-                    {/* this is an empty column because exceptions don't have text */}
                     <p><strong> {currentParentState ? "⭕️ Choose an option below ⭕️ " : null }</strong></p>
                 </Col>
                 <Col>
@@ -117,7 +116,7 @@ export class FormRowContainer extends Component {
                 </Col>
             </Row>
             <Row>
-                {/* if you click on the button, create a new row*/}
+                {/* if you click on the button, create two new rows*/}
                 { currentParentState 
                 ? 
                     rowData.stateName.includes("rr24") 
