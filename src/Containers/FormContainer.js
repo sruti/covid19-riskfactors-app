@@ -34,7 +34,7 @@ export class FormContainer extends Component {
     }
 
     //these two methods could become one
-    handleClick = (title, newOptionValue) => {
+    handleClick = (title) => {
         this.setState(prevState => {
             return {
                 [title]: !prevState[title]

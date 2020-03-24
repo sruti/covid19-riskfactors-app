@@ -19,7 +19,7 @@ export class FormRowContainer extends Component {
     }
 
     // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
-    handleClick = (stateName, val) =>{
+    handleClick = (stateName) =>{
         this.setState( prevState => {      
             return {
                 [stateName]: !prevState[stateName]
@@ -27,8 +27,8 @@ export class FormRowContainer extends Component {
         })
     }
 
-    handleChange = (val) => { 
-            this.props.handleClick(this.props.rowData.stateName, val)
+    handleChange = () => { 
+            this.props.handleClick(this.props.rowData.stateName)
     }
 
     render() {
