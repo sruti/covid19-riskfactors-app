@@ -9,7 +9,7 @@ export default class FormRowContainer extends Component {
 
     state = {
         selected: "Mortality",
-        show: false
+        show: true
     }
 
     handleChange = (val) => {
@@ -29,7 +29,7 @@ export default class FormRowContainer extends Component {
 
     prepareProps = () => {
         let { selected } = this.state
-        if (selected === "Mortality"){
+        if (selected === "Mortality") {
             return mortalityStudy
         } else {
             return ardsStudy
@@ -46,18 +46,18 @@ export default class FormRowContainer extends Component {
                     <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
                 </ToggleButtonGroup >
                 {
-                    this.state.show 
-                    ?
-                    <>
-                        <StudyLegend study={ this.prepareProps() }/>
-                        <Button variant="link" onClick={this.toggleShow}>Hide Legend</Button>
-                    </>
-                    :
-                    <div>
-                        <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
-                    </div>
+                    this.state.show
+                        ?
+                        <>
+                            <StudyLegend study={this.prepareProps()} />
+                            <Button variant="link" onClick={this.toggleShow}>Hide Legend</Button>
+                        </>
+                        :
+                        <div>
+                            <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
+                        </div>
                 }
-                
+
             </>
         )
     }

@@ -19,169 +19,161 @@ export class FormRowContainer extends Component {
     }
 
     // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
-    handleClick = (stateName) =>{
-        this.setState( prevState => {      
+    handleClick = (stateName) => {
+        this.setState(prevState => {
             return {
                 [stateName]: !prevState[stateName]
             }
         })
     }
 
-    handleChange = () => { 
-            this.props.handleClick(this.props.rowData.stateName)
+    handleChange = (val) => {
+        this.props.handleClick(this.props.rowData.stateName)
     }
 
     render() {
         let { rowData, currentParentState } = this.props
-        if (rowData.stateName === "leukocytosis"){
+        if (rowData.stateName === "leukocytosis") {
             console.log(this.state.leukocytosis);
         }
 
-        let btnvariant = "outline-success"
         let bgcolor;
 
         switch (rowData.ratio) {
             case "Insignificant":
-                // btnvariant = "outline-danger"
-                currentParentState 
-                ?
+                currentParentState
+                    ?
                     bgcolor = "lightcoral"
-                : 
+                    :
                     bgcolor = "white"
                 break
             case "?":
-                // btnvariant = "outline-danger"
-                    bgcolor = "white"
+                bgcolor = "white"
                 break
             case "Excluded":
-                // btnvariant = "outline-secondary"
-                currentParentState 
-                ?
+                currentParentState
+                    ?
                     bgcolor = "lightgrey"
-                : 
+                    :
                     bgcolor = "white"
                 break
             default:
-                // btnvariant = "outline-success"
-                currentParentState 
-                ?
+                currentParentState
+                    ?
                     bgcolor = "lightgreen"
-                :
+                    :
                     bgcolor = "white"
         }
 
         return (
             <>
-            { rowData.ratio.includes("?") 
-            ? /////////////////// this is the treatment for the two exceptions ///////////////////
-            <Container 
-            className = "rowInForm"
-                style={
-                    currentParentState ? 
-                    {
-                        backgroundColor: bgcolor,
-                        top: "20%",
-                        marginTop: "1rem",
-                        marginBottom: "2px",
-                        border: "red 1px solid"
-                    }
-                    :
-                    {
-                        backgroundColor: bgcolor,
-                        top: "20%",
-                        marginTop: "1rem",
-                        marginBottom: "2px",
-                    }
-            }
-            >
-            <Row>
-                <Col>
-                    <p>{rowData.title}</p>
-                </Col>
-                <Col>
-                    <p><strong> {currentParentState ? "⭕️ Choose an option below ⭕️ " : null }</strong></p>
-                </Col>
-                <Col>
-                    <ToggleButtonGroup 
-                        type="checkbox" 
-                        name="studyOptions" 
-                        value={currentParentState} 
-                        onChange={this.handleChange}
+                {rowData.ratio.includes("?")
+                    ? /////////////////// this is the treatment for the two exceptions ///////////////////
+                    <Container
+                        className="rowInForm"
+                        style={
+                            currentParentState ?
+                                {
+                                    backgroundColor: bgcolor,
+                                    top: "10%",
+                                    paddingTop: "0.5rem",
+                                    border: "red 1px solid"
+                                }
+                                :
+                                {
+                                    backgroundColor: bgcolor,
+                                    top: "10%",
+                                    paddingTop: "0.5rem",
+                                }
+                        }
                     >
-                        <ToggleButton 
-                            variant={btnvariant} 
-                            value={currentParentState ? "Yes" : "No"} 
-                        >{currentParentState ? "Yes" : "No"}</ToggleButton>
-                    </ToggleButtonGroup>
-                </Col>
-            </Row>
-            <Row>
-                {/* if you click on the button, create two new rows*/}
-                { currentParentState 
-                ? 
-                    rowData.stateName.includes("rr24") 
-                    ? <> 
-                    < FormRow 
-                        rowData={dyspneaYes} 
-                        handleChange={this.handleChange} 
-                        handleClick={this.handleClick}
-                        currentParentState={this.state.dyspneaYes}/>
-                    < FormRow 
-                        rowData={dyspneaNo} 
-                        handleChange={this.handleChange} 
-                        handleClick={this.handleClick}
-                        currentParentState={this.state.dyspneaNo}/>
-                    </>
-                    : 
-                    <>
-                    < FormRow 
-                        rowData={leukocytosisYes} 
-                        handleChange={this.handleChange} 
-                        handleClick={this.handleClick} 
-                        currentParentState={this.state.leukocytosisYes}/>
-                    < FormRow 
-                        rowData={leukocytosisNo} 
-                        handleChange={this.handleChange} 
-                        handleClick={this.handleClick} 
-                        currentParentState={this.state.leukocytosisNo}/>
-                    </>
-                : null }
-            </Row>
-            </Container>
-            : /////////////////// this is for the non-exceptions /////////////////
-            <Container 
-            className = "rowInForm"
-                style={{
-                    backgroundColor: bgcolor,
-                    top: "20%",
-                    marginTop: "1rem",
-                    marginBottom: "2px",
-                }}
-            >
-            <Row>
-                <Col>
-                    <p>{rowData.title}</p>
-                </Col>
-                <Col>
-                    <p> { currentParentState ? rowData.ratio : null}</p>
-                </Col>
-                <Col>
-                    <ToggleButtonGroup 
-                        type="checkbox" 
-                        name="studyOptions" 
-                        value={currentParentState} 
-                        onChange={this.handleChange}
+                        <Row>
+                            <Col>
+                                <p>{rowData.title}</p>
+                            </Col>
+                            <Col>
+                                <p><strong> {currentParentState ? "⭕️ Choose an option below ⭕️" : null}</strong></p>
+                            </Col>
+                            <Col>
+                                <ToggleButtonGroup
+                                    type="checkbox"
+                                    name="studyOptions"
+                                    value={currentParentState}
+                                    onChange={this.handleChange}
+                                >
+                                    <ToggleButton
+                                        variant={currentParentState ? "dark" : "outline-dark"}
+                                        value={"✓"}
+                                    >✓</ToggleButton>
+                                </ToggleButtonGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            {/* if you click on the button, create two new rows*/}
+                            {currentParentState
+                                ?
+                                rowData.stateName.includes("rr24")
+                                    ? <>
+                                        < FormRow
+                                            rowData={dyspneaYes}
+                                            handleChange={this.handleChange}
+                                            handleClick={this.handleClick}
+                                            currentParentState={this.state.dyspneaYes} />
+                                        < FormRow
+                                            rowData={dyspneaNo}
+                                            handleChange={this.handleChange}
+                                            handleClick={this.handleClick}
+                                            currentParentState={this.state.dyspneaNo} />
+                                    </>
+                                    :
+                                    <>
+                                        < FormRow
+                                            rowData={leukocytosisYes}
+                                            handleChange={this.handleChange}
+                                            handleClick={this.handleClick}
+                                            currentParentState={this.state.leukocytosisYes} />
+                                        < FormRow
+                                            rowData={leukocytosisNo}
+                                            handleChange={this.handleChange}
+                                            handleClick={this.handleClick}
+                                            currentParentState={this.state.leukocytosisNo} />
+                                    </>
+                                : null}
+                        </Row>
+                    </Container>
+                    : /////////////////// this is for the non-exceptions /////////////////
+                    <Container
+                        className="rowInForm"
+                        style={{
+                            backgroundColor: bgcolor,
+                            top: "20%",
+                            paddingTop: "0.5rem",
+                        }}
                     >
-                        <ToggleButton 
-                            variant={btnvariant} 
-                            value={currentParentState ? "Yes" : "No"} 
-                        >{currentParentState ? "Yes" : "No"}</ToggleButton>
-                    </ToggleButtonGroup>
-                </Col>
-            </Row>
-            </Container>
-            }
-        </>
+                        <Row>
+                            <Col>
+                                <p>{rowData.title}</p>
+                            </Col>
+                            <Col>
+                                <p> {currentParentState ? rowData.ratio : null}</p>
+                            </Col>
+                            <Col>
+                                <ToggleButtonGroup
+                                    type="checkbox"
+                                    name="studyOptions"
+                                    value={currentParentState}
+                                    onChange={this.handleChange}
+                                >
+                                    <ToggleButton
+                                        variant={currentParentState ? "dark" : "outline-dark"}
+                                        value={"✓"}
+                                    >✓</ToggleButton>
+                                </ToggleButtonGroup>
+                            </Col>
+                        </Row>
+                    </Container>
+                }
+            </>
         )
     }
 }
