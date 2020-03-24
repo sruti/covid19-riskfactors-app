@@ -69,9 +69,11 @@ export class FormRowContainer extends Component {
 
         return (
             <Container 
+            className = "rowInForm"
                 style={{
                     backgroundColor: bgcolor,
-                    marginTop: "2px",
+                    top: "20%",
+                    marginTop: "1rem",
                     marginBottom: "2px",
                 }}
             >
