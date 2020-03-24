@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
+import { dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes } from '../data.js'
 
 
 export class FormRowContainer extends Component {
@@ -111,12 +112,12 @@ export class FormRowContainer extends Component {
                     rowData.stateName.includes("rr24") 
                     ? <> 
                     < FormRow 
-                        rowData={{ "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }} 
+                        rowData={dyspneaYes} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick}
                         currentParentState={this.state.dyspneaYes}/>
                     < FormRow 
-                        rowData={{ "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }} 
+                        rowData={dyspneaNo} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick}
                         currentParentState={this.state.dyspneaNo}/>
@@ -124,12 +125,12 @@ export class FormRowContainer extends Component {
                     : 
                     <>
                     < FormRow 
-                        rowData={{ "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }} 
+                        rowData={leukocytosisYes} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick} 
                         currentParentState={this.state.leukocytosisYes}/>
                     < FormRow 
-                        rowData={{ "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }} 
+                        rowData={leukocytosisNo} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick} 
                         currentParentState={this.state.leukocytosisNo}/>

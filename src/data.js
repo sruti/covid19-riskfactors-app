@@ -102,4 +102,12 @@ const ardsDeath = [
         ]
     }]
 
-export { ards, ardsDeath, mortality }
+    const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
+
+    const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
+
+    const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
+
+    const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
+
+export { ards, ardsDeath, mortality, dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes }
