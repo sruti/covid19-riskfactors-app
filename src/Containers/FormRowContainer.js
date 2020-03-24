@@ -71,18 +71,29 @@ export class FormRowContainer extends Component {
         }
 
         return (
-            <Container 
-            className = "rowInForm"
-                style={{
-                    backgroundColor: bgcolor,
-                    top: "20%",
-                    marginTop: "1rem",
-                    marginBottom: "2px",
-                }}
-            >
+            <>
             { rowData.ratio.includes("?") 
             ? // this is the treatment for the exceptions
-            <>
+            <Container 
+            className = "rowInForm"
+                style={
+                    currentParentState ? 
+                    {
+                        backgroundColor: bgcolor,
+                        top: "20%",
+                        marginTop: "1rem",
+                        marginBottom: "2px",
+                        border: "red 1px solid"
+                    }
+                    :
+                    {
+                        backgroundColor: bgcolor,
+                        top: "20%",
+                        marginTop: "1rem",
+                        marginBottom: "2px",
+                    }
+            }
+            >
             <Row>
                 <Col>
                     <p>{rowData.title}</p>
@@ -137,8 +148,17 @@ export class FormRowContainer extends Component {
                     </>
                 : null }
             </Row>
-            </>
+            </Container>
             : /////////////////// this is for the non-exceptions /////////////////
+            <Container 
+            className = "rowInForm"
+                style={{
+                    backgroundColor: bgcolor,
+                    top: "20%",
+                    marginTop: "1rem",
+                    marginBottom: "2px",
+                }}
+            >
             <Row>
                 <Col>
                     <p>{rowData.title}</p>
@@ -160,8 +180,9 @@ export class FormRowContainer extends Component {
                     </ToggleButtonGroup>
                 </Col>
             </Row>
-            }
             </Container>
+            }
+        </>
         )
     }
 }
