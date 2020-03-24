@@ -28,7 +28,6 @@ export class FormRowContainer extends Component {
     }
 
     handleChange = (val) => {
-        console.log(val)
         this.props.handleClick(this.props.rowData.stateName)
     }
 
