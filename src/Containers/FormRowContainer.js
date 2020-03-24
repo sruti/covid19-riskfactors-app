@@ -11,8 +11,10 @@ export class FormRowContainer extends Component {
 
     // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
     state = {
-        leukocytosis: false,
-        dyspnea: false,
+        leukocytosisYes: false,
+        leukocytosisNo: false,
+        dypneaYes: true,
+        dypneaNo: true,
     }
 
     // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
@@ -46,7 +48,7 @@ export class FormRowContainer extends Component {
                 : 
                     bgcolor = "white"
                 break
-            case /\?/: //"?" leaves it white and regex makes it green; I'm leaving regex because perhaps we want to ask the question
+            case "?": //"?" leaves it white and regex makes it green; I'm leaving regex because perhaps we want to ask the question
                 // btnvariant = "outline-danger"
                     bgcolor = "white"
                 break
@@ -105,17 +107,32 @@ export class FormRowContainer extends Component {
                 {/* if you click on the button, create a new row*/}
                 { currentParentState 
                 ? 
-                    rowData.ratio.includes("dyspnea") 
-                    ? < FormRow 
-                        rowData={{ "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p=<0.05" }} 
+                    rowData.ratio.includes("dypnea") 
+                    ? <> 
+                    < FormRow 
+                        rowData={{ "stateName": "dypneaYes", "title": "Dypnea", "ratio": "p=<0.05" }} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick}
-                        currentParentState={this.state.dyspnea}/>
-                    : < FormRow 
-                        rowData={{ "stateName": "leukocytosis", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
+                        currentParentState={this.state.dypneaYes}/>
+                    < FormRow 
+                        rowData={{ "stateName": "dypneaNo", "title": "Dypnea", "ratio": "Insignificant" }} 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick}
+                        currentParentState={this.state.dypneaNo}/>
+                    </>
+                    : 
+                    <>
+                    < FormRow 
+                        rowData={{ "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "(OR 6.60*)" }} 
                         handleChange={this.handleChange} 
                         handleClick={this.handleClick} 
-                        currentParentState={this.state.leukocytosis}/>
+                        currentParentState={this.state.leukocytosisYes}/>
+                        < FormRow 
+                        rowData={{ "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }} 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick} 
+                        currentParentState={this.state.leukocytosisNo}/>
+                    </>
                 : null }
             </Row>
             </>
