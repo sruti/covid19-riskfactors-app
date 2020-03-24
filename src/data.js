@@ -1,10 +1,10 @@
 const mortality = [
     {
         "basic": [
-            { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
+            { "stateName": "age", "title": "Age (≥65yr)", "ratio": "OR 1.10" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
             { "stateName": "rr24", "title": "RR>24", "ratio": "OR 8.89*" },
-            { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "Excluded" },
+            { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "Excluded" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },
             { "stateName": "cad", "title": "CAD", "ratio": "OD 21.40*" },
@@ -19,7 +19,7 @@ const mortality = [
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR 4.62*" },
             { "stateName": "ldh", "title": "LDH >245", "ratio": "OR 45.43*" },
             { "stateName": "plateles", "title": "Low Platelets", "ratio": "P <0.05" },
-            { "stateName": "pt", "title": "PT >/= 16", "ratio": "OR 4.62*" },
+            { "stateName": "pt", "title": "PT ≥ 16", "ratio": "OR 4.62*" },
             { "stateName": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "OR 13.75*" },
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "OR 4.39*" },
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "OR 80.07*" },
@@ -36,10 +36,10 @@ const mortality = [
 const ards = [
     {
         "basic": [
-            { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "HR 3.26" },
+            { "stateName": "age", "title": "Age (≥65yr)", "ratio": "HR 3.26" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
             { "stateName": "rr24", "title": "RR>24", "ratio": "?" }, // ?dyspnea (green)
-            { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 1.77" },
+            { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "HR 1.77" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "HR 1.82" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "HR 2.34" },
             { "stateName": "cad", "title": "CAD", "ratio": "Insignificant" },
@@ -54,7 +54,7 @@ const ards = [
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR HR 3.53" },
             { "stateName": "ldh", "title": "LDH >245", "ratio": "HR 1.61" },
             { "stateName": "plateles", "title": "Low Platelets", "ratio": "Insignificant" },
-            { "stateName": "pt", "title": "PT >/= 16", "ratio": "HR 1.56" },
+            { "stateName": "pt", "title": "PT ≥ 16", "ratio": "HR 1.56" },
             { "stateName": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "Excluded" },
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant" },
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded" },
@@ -71,10 +71,10 @@ const ards = [
 const ardsDeath = [
     {
         "basic": [
-            { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "HR 6.17" },
+            { "stateName": "age", "title": "Age (≥65yr)", "ratio": "HR 6.17" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
             { "stateName": "rr24", "title": "RR>24", "ratio": "Insignificant" },
-            { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 0.41" },
+            { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "HR 0.41" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "Insignificant" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "Insignificant" },
             { "stateName": "cad", "title": "CAD", "ratio": "Insignificant" },
@@ -82,14 +82,14 @@ const ardsDeath = [
     },
     {
         "advanced": [
-            { "stateName": "sofa", "title": "SOFA", "ratio": "Excluded" },
+            { "stateName": "sofa", "title": "↑ SOFA", "ratio": "Excluded" },
             { "stateName": "neutro", "title": "Neutrophilia", "ratio": "HR 1.08" },
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "Insignificant" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.02" },
             { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "HR 3.53" },
             { "stateName": "ldh", "title": "LDH >245", "ratio": "HR 1.30" },
             { "stateName": "plateles", "title": "Low Platelets", "ratio": "Insignificant" },
-            { "stateName": "pt", "title": "PT >/= 16", "ratio": "HR 1.08" },
+            { "stateName": "pt", "title": "PT ≥ 16", "ratio": "HR 1.08" },
             { "stateName": "procal", "title": "↑ Procalcitonin <0.1", "ratio": "Excluded" },
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant" },
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded" },
@@ -102,12 +102,12 @@ const ardsDeath = [
         ]
     }]
 
-    const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
+const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
 
-    const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
+const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
 
-    const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
+const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 
-    const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
+const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
 
 export { ards, ardsDeath, mortality, dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes }
