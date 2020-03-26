@@ -51,7 +51,7 @@ const ards = [
             { "stateName": "neutro", "title": "Neutrophilia", "ratio": "HR 1.14" },
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "HR 0.37" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.03" },
-            { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "OR HR 3.53" },
+            { "stateName": "ferritin", "title": "Ferritin >300 ug/L", "ratio": "HR 3.53" },
             { "stateName": "ldh", "title": "LDH >245", "ratio": "HR 1.61" },
             { "stateName": "plateles", "title": "Low Platelets", "ratio": "Insignificant" },
             { "stateName": "pt", "title": "PT >/= 16", "ratio": "HR 1.56" },
@@ -61,7 +61,7 @@ const ards = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "HR 4.81" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.49" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05" },
-            { "stateName": "ast", "title": "AST/ALT (U/L)", "ratio": "AST HR 1.02" },
+            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "AST HR 1.02" },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13" }, //this one is white in the diagram  
         ]
@@ -102,12 +102,12 @@ const ardsDeath = [
         ]
     }]
 
-    const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
+const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
 
-    const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
+const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
 
-    const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
+const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 
-    const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
+const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
 
 export { ards, ardsDeath, mortality, dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes }
