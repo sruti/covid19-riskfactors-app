@@ -12,7 +12,7 @@ export class FormContainer extends Component {
         covidExposure: false,
         diabetes: false,
         cad: false,
-        rr24: false,
+        dyspnea: false,
         temp: false,
         sofa: false,
         neutro: false,
@@ -60,7 +60,7 @@ export class FormContainer extends Component {
                         key={rowData.title}
                         handleClick={this.handleClick}
                         currentParentState={this.state[rowData.stateName]}
-                        />
+                    />
                 })
                 }
                 {this.state.show ?
@@ -71,7 +71,7 @@ export class FormContainer extends Component {
                                 rowData={rowData} key={rowData.title}
                                 handleClick={this.handleClick}
                                 currentParentState={this.state[rowData.stateName]}
-                                />)}
+                            />)}
                     </>
                     :
                     <Button variant="link" onClick={this.handleChange}>Labs</Button>

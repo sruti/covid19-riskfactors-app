@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
-import { dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes } from '../data.js'
+import { rr24Yes, rr24No, leukocytosisNo, leukocytosisYes } from '../data.js'
 
 
 export class FormRowContainer extends Component {
@@ -14,8 +14,8 @@ export class FormRowContainer extends Component {
     state = {
         leukocytosisYes: false,
         leukocytosisNo: false,
-        dyspneaYes: false,
-        dyspneaNo: false,
+        rr24Yes: false,
+        rr24No: false,
     }
 
     // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
@@ -112,18 +112,18 @@ export class FormRowContainer extends Component {
                             {/* if you click on the button, create two new rows*/}
                             {currentParentState
                                 ?
-                                rowData.stateName.includes("rr24")
+                                rowData.stateName.includes("dyspnea")
                                     ? <>
                                         < FormRow
-                                            rowData={dyspneaYes}
+                                            rowData={rr24Yes}
                                             handleChange={this.handleChange}
                                             handleClick={this.handleClick}
-                                            currentParentState={this.state.dyspneaYes} />
+                                            currentParentState={this.state.rr24Yes} />
                                         < FormRow
-                                            rowData={dyspneaNo}
+                                            rowData={rr24No}
                                             handleChange={this.handleChange}
                                             handleClick={this.handleClick}
-                                            currentParentState={this.state.dyspneaNo} />
+                                            currentParentState={this.state.rr24No} />
                                     </>
                                     :
                                     <>

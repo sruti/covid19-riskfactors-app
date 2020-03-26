@@ -3,7 +3,7 @@ const mortality = [
         "basic": [
             { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
-            { "stateName": "rr24", "title": "RR>24", "ratio": "OR 8.89*" },
+            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?" },
             { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "Excluded" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },
@@ -38,7 +38,7 @@ const ards = [
         "basic": [
             { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "HR 3.26" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
-            { "stateName": "rr24", "title": "RR>24", "ratio": "?" }, // ?dyspnea (green)
+            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "P <0.05" },
             { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 1.77" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "HR 1.82" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "HR 2.34" },
@@ -73,7 +73,7 @@ const ardsDeath = [
         "basic": [
             { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "HR 6.17" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded" },
-            { "stateName": "rr24", "title": "RR>24", "ratio": "Insignificant" },
+            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "Insignificant" },
             { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "HR 0.41" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "Insignificant" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "Insignificant" },
@@ -82,7 +82,7 @@ const ardsDeath = [
     },
     {
         "advanced": [
-            { "stateName": "sofa", "title": "SOFA", "ratio": "Excluded" },
+            { "stateName": "sofa", "title": "↑ SOFA", "ratio": "Excluded" },
             { "stateName": "neutro", "title": "Neutrophilia", "ratio": "HR 1.08" },
             { "stateName": "lympho", "title": "Lymphopenia (Abs <0.8)", "ratio": "Insignificant" },
             { "stateName": "ddimer", "title": "D-Dimer >1 ug/ml", "ratio": "HR 1.02" },
@@ -102,12 +102,12 @@ const ardsDeath = [
         ]
     }]
 
-const dyspneaYes = { "stateName": "dyspneaYes", "title": "Dyspnea", "ratio": "p=<0.05" }
+const rr24Yes = { "stateName": "rr24Yes", "title": "RR>24", "ratio": "OR 8.89*" }
 
-const dyspneaNo = { "stateName": "dyspneaNo", "title": "No dyspnea", "ratio": "Insignificant" }
+const rr24No = { "stateName": "rr24No", "title": "RR<24", "ratio": "Insignificant" }
 
 const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 
 const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
 
-export { ards, ardsDeath, mortality, dyspneaYes, dyspneaNo, leukocytosisNo, leukocytosisYes }
+export { ards, ardsDeath, mortality, rr24Yes, rr24No, leukocytosisNo, leukocytosisYes }
