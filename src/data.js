@@ -106,9 +106,9 @@ const ardsDeath = [
         ]
     }]
 
-const rr24Yes = { "stateName": "rr24Yes", "title": "RR>24", "ratio": "OR 8.89*" }
+let rr24Yes = { "stateName": "rr24Y", "title": "RR>24", "ratio": "OR 8.89*" }
 
-const rr24No = { "stateName": "rr24No", "title": "RR<24", "ratio": "Insignificant" }
+const rr24No = { "stateName": "rr24N", "title": "RR<24", "ratio": "Insignificant" }
 
 const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 

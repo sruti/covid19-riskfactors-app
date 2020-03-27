@@ -30,8 +30,10 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
-        rr24: false,
-        leukocytosis: false,
+        rr24Yes: false,
+        rr24No: false,
+        leukocytosisYes: false,
+        leukocytosisNo: false,
         alt40: false,
         ast: false,
     }
@@ -54,7 +56,8 @@ export class FormContainer extends Component {
     }
 
     render() {
-
+        // console.log("rr24 in formcont", this.state.rr24 );
+        
         return (
             <section className="mainContainer" >
                 {this.props.data[0].basic.map((rowData) => {
@@ -63,6 +66,8 @@ export class FormContainer extends Component {
                         key={rowData.title}
                         handleClick={this.handleClick}
                         currentParentState={this.state[rowData.stateName]}
+                        rr24Y={this.state.rr24Yes}
+                        rr24N={this.state.rr24No}
                     />
                 })
                 }

@@ -6,6 +6,7 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
+import { rr24Yes, rr24No } from '../data.js'
 
 
 export class FormRowContainer extends Component {
@@ -34,16 +35,18 @@ export class FormRowContainer extends Component {
     }
 
     handleChange = (val) => {
+        console.log("handle change value", val);
+        
         this.props.handleClick(this.props.rowData.stateName, val)
     }
 
     render() {
-        let { rowData, currentParentState } = this.props
+        let { rowData, currentParentState, rr24Y, rr24N } = this.props
 
         // console.log("state", this.state[rowData.stateName])
-        // if (rowData.stateName === "leukocytosis") {
-        //     console.log(this.state.leukocytosis);
-        // }
+        if (rowData.stateName === "rr24Y") {
+            console.log("rr24Yes ratio", rr24Yes.ratio);
+        }
 
         let bgcolor;
 
@@ -75,8 +78,9 @@ export class FormRowContainer extends Component {
 
         return (
             <>
-                {rowData.ratio.includes("?")
-                    ? /////////////////// the exceptions ///////////////////
+                { /////////////////// the exceptions -- they ave "?" in data.js ///////////////////
+                rowData.ratio.includes("?")
+                    ? 
                     <Container
                         className="rowInForm"
                         style={
@@ -119,14 +123,14 @@ export class FormRowContainer extends Component {
                         <Row>
                             {/* if you click on the button, create two new rows*/}
                             {currentParentState
-                                ? rowData.stateName.includes("dyspnea", "ast", "neutro")
+                                ? rowData.stateName.includes("dyspnea", "ast", "neutro") //this works only for dyspnea
                                     ? <>
                                         < FormRow
-                                            rowData={rowData.secondaryState}
+                                            rowData={rr24Yes}
+                                            rowDataNo={rr24No}
                                             handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state[rowData.secondaryState.stateName]}
-                                            secondaryQuestion={this.state[rowData.secondaryState.stateName]}
+                                            handleClick={this.props.handleClick}
+                                            currentParentState={rr24Y}
                                         />
                                     </>
                                     : <>
@@ -192,13 +196,15 @@ export class FormRowContainer extends Component {
                                             name="secondaryQs"
                                             onChange={
                                             (val) => {
-                                                rowData.ratio = val === "N" ? "Insignificant" : rowData.ratioY
+                                                if (val === "N") {
+                                                    rowData.ratio = "Insignificant"
+                                                }
                                                 this.props.handleClick(this.props.rowData.stateName, val)
 
                                             }}
                                         >
                                             <ToggleButton
-                                                variant={this.state[rowData.stateName] ? "dark" : "outline-dark"}
+                                                variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
                                                 value={"Y"}
                                             >Y</ToggleButton>
                                             <ToggleButton
