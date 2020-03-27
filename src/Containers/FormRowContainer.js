@@ -155,7 +155,7 @@ export class FormRowContainer extends Component {
                                 <p>{rowData.title}</p>
                             </Col>
                             <Col>
-                                <p> {currentParentState ? rowData.ratio : null}</p>
+                                <p> {currentParentState ? rowData.ratioTitle : null}</p>
                             </Col>
                             <Col>
                                 <ToggleButtonGroup
