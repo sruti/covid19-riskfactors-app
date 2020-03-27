@@ -3,7 +3,11 @@ const mortality = [
         "basic": [
             { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
-            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?" },
+            {
+                "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "secondaryState": {
+                    "stateName": "rr24", "title": "RR>24", "ratio": "OR 8.89*", "ratioY": "OR 8.89*", "ratioN": "Insignificant"
+                }
+            },
             { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "Excluded" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },
@@ -26,7 +30,7 @@ const mortality = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Excluded" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "P <0.05" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "Excluded" },
-            { "stateName": "ast", "title": "AST/ALT (U/L)", "ratio": "ALT >40" },
+            { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "?" },//ALT >40
             { "stateName": "urea", "title": "↑ Urea", "ratio": "Excluded" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Excluded" },
         ]
@@ -61,7 +65,7 @@ const ards = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "HR 4.81" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.49" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05" },
-            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "AST HR 1.02" },
+            { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "?" }, //AST HR 1.02
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13" }, //this one is white in the diagram  
         ]
@@ -96,11 +100,19 @@ const ardsDeath = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Insignificant" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.19" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.07" },
-            { "stateName": "ast", "title": "AST/ALT (U/L)", "ratio": "P <0.05" }, //this one is white
+            { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "Insignificant" },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Insignificant" },
         ]
     }]
+
+const alt40Yes = { "stateName": "alt40Yes", "title": "ALT >40", "ratio": "OR 2.87" }
+
+const alt40No = { "stateName": "alt40No", "title": "ALT <40", "ratio": "Insignificant" }
+
+const astYes = { "stateName": "astYes", "title": "↑ AST", "ratio": "HR 1.02" }
+
+const astNo = { "stateName": "astNo", "title": "not ↑ AST", "ratio": "Insignificant" }
 
 const rr24Yes = { "stateName": "rr24Yes", "title": "RR>24", "ratio": "OR 8.89*" }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import FormRowContainer from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
 
-
 export class FormContainer extends Component {
 
     state = {
@@ -28,9 +27,21 @@ export class FormContainer extends Component {
         hscrp: false,
         albumin: false,
         bilirubin: false,
-        ast: false,
+        astalt: false,
         urea: false,
         glucose: false,
+        rr24: false,
+        leukocytosis: false,
+        alt40: false,
+        ast: false,
+    }
+
+    secondaryState = {
+        rr24: false,
+        leukocytosis: false,
+        alt40: false,
+        ast: false,
+
     }
 
     //these two methods could become one

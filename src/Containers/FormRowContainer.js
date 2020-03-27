@@ -6,42 +6,70 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
 import { rr24Yes, rr24No, leukocytosisNo, leukocytosisYes } from '../data.js'
+import Button from 'react-bootstrap/Button'
 
 
 export class FormRowContainer extends Component {
 
     // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
+    // state = {
+    //     leukocytosisYes: false,
+    //     leukocytosisNo: false,
+    //     rr24Yes: false,
+    //     rr24No: false,
+    // }
+
     state = {
-        leukocytosisYes: false,
+        rr24: false,
         leukocytosisNo: false,
         rr24Yes: false,
         rr24No: false,
     }
 
     // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
-    handleClick = (stateName) => {
+    handleClick = (stateName, val) => {
+        console.log("hello")
         this.setState(prevState => {
-            return {
-                [stateName]: !prevState[stateName]
+            if (val == "Y") {
+                console.log("here1")
+                console.log(this.state)
+                this.toggleState = true
+                return { [stateName]: true }
+            }
+            else if (val == "N") {
+                console.log("here2")
+                console.log(this.state)
+                this.toggleState = false
+                return { [stateName]: false }
+            }
+            else {
+                console.log("here3")
+                console.log(this.state)
+                return { [stateName]: !prevState[stateName] }
             }
         })
     }
 
     handleChange = (val) => {
-        this.props.handleClick(this.props.rowData.stateName)
+        console.log(val)
+        this.props.handleClick(this.props.rowData.stateName, val)
     }
 
     render() {
+        console.log("rendering")
+        console.log(this.props)
         let { rowData, currentParentState } = this.props
-        if (rowData.stateName === "leukocytosis") {
-            console.log(this.state.leukocytosis);
-        }
+        console.log("cps", currentParentState)
+        // console.log("state", this.state[rowData.stateName])
+        // if (rowData.stateName === "leukocytosis") {
+        //     console.log(this.state.leukocytosis);
+        // }
 
         let bgcolor;
 
         switch (rowData.ratio) {
             case "Insignificant":
-                currentParentState
+                (currentParentState || this.state[rowData.stateName])
                     ?
                     bgcolor = "lightcoral"
                     :
@@ -56,6 +84,7 @@ export class FormRowContainer extends Component {
                     bgcolor = "lightgrey"
                     :
                     bgcolor = "white"
+                console.log("hello")
                 break
             default:
                 currentParentState
@@ -111,6 +140,24 @@ export class FormRowContainer extends Component {
                         <Row>
                             {/* if you click on the button, create two new rows*/}
                             {currentParentState
+                                ? rowData.stateName.includes("dyspnea", "ast", "neutro")
+                                    ? <>
+                                        < FormRow
+                                            rowData={rowData.secondaryState}
+                                            handleChange={this.handleChange}
+                                            handleClick={this.handleClick}
+                                            currentParentState={this.state[rowData.secondaryState.stateName]}
+                                            secondaryQuestion={this.state[rowData.secondaryState.stateName]}
+                                        />
+                                    </>
+                                    : <>
+                                        <Button>N</Button>
+                                    </>
+                                : null
+                            }
+
+                            {/* -------Sylwia's elegant previous code------ */}
+                            {/* {currentParentState
                                 ?
                                 rowData.stateName.includes("dyspnea")
                                     ? <>
@@ -138,7 +185,7 @@ export class FormRowContainer extends Component {
                                             handleClick={this.handleClick}
                                             currentParentState={this.state.leukocytosisNo} />
                                     </>
-                                : null}
+                                : null} */}
                         </Row>
                     </Container>
                     : /////////////////// this is for the non-exceptions /////////////////
@@ -157,22 +204,57 @@ export class FormRowContainer extends Component {
                             <Col>
                                 <p> {currentParentState ? rowData.ratio : null}</p>
                             </Col>
-                            <Col>
-                                <ToggleButtonGroup
-                                    type="checkbox"
-                                    name="studyOptions"
-                                    value={currentParentState}
-                                    onChange={this.handleChange}
-                                >
-                                    <ToggleButton
-                                        variant={currentParentState ? "dark" : "outline-dark"}
-                                        value={"✓"}
-                                    >✓</ToggleButton>
-                                </ToggleButtonGroup>
+                            <Col>{
+                                rowData.stateName.includes("rr24")
+                                    ?
+                                    <>
+                                        <ToggleButtonGroup
+                                            type="radio"
+                                            name="secondaryQs"
+                                            // value={currentParentState}
+                                            onChange={
+                                                // {this.handleChange}
+                                                (val) => {
+                                                    console.log(val)
+                                                    console.log(rowData, this.props)
+                                                    rowData.ratio = val == "N" ? "Insignificant" : rowData.ratioY
+                                                    this.props.handleClick(this.props.rowData.stateName, val)
+
+                                                }}
+                                        >
+                                            <ToggleButton
+                                                variant={this.state[rowData.stateName] ? "dark" : "outline-dark"}
+                                                value={"Y"}
+                                            >Y</ToggleButton>
+                                            <ToggleButton
+                                                variant={this.state[rowData.stateName] ? "dark" : "outline-dark"}
+                                                value={"N"}
+                                            >N</ToggleButton>
+                                        </ToggleButtonGroup>
+
+                                    </>
+                                    :
+                                    <>
+                                        <ToggleButtonGroup
+                                            type="checkbox"
+                                            name="studyOptions"
+                                            // value={currentParentState}
+                                            onChange={this.handleChange}
+                                        >
+                                            <ToggleButton
+                                                variant={currentParentState ? "dark" : "outline-dark"}
+                                                value={"✓"}
+                                            >✓</ToggleButton>
+                                        </ToggleButtonGroup>
+                                    </>
+
+                            }
+
                             </Col>
                         </Row>
                     </Container>
                 }
+
             </>
         )
     }
