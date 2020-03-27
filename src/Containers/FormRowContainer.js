@@ -13,9 +13,7 @@ export class FormRowContainer extends Component {
     // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
     state = {
         rr24: true,
-        leukocytosisNo: false,
         rr24FormRowState: true,
-        rr24N: null,
     }
 
     handleChange = (val) => {        
@@ -133,37 +131,6 @@ export class FormRowContainer extends Component {
                                     </>
                                 : null
                             }
-
-                            {/* -------Sylwia's elegant previous code------ */}
-                            {/* {currentParentState
-                                ?
-                                rowData.stateName.includes("dyspnea")
-                                    ? <>
-                                        < FormRow
-                                            rowData={rr24Object}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.rr24Object} />
-                                        < FormRow
-                                            rowData={rr24No}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.rr24No} />
-                                    </>
-                                    :
-                                    <>
-                                        < FormRow
-                                            rowData={leukocytosisYes}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.leukocytosisYes} />
-                                        < FormRow
-                                            rowData={leukocytosisNo}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.leukocytosisNo} />
-                                    </>
-                                : null} */}
                         </Row>
                     </Container>
                     : /////////////////// this is for the non-exceptions /////////////////

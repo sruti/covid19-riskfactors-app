@@ -41,12 +41,17 @@ export class FormContainer extends Component {
     handleClick = (title, val) => {
         console.log(title);
         console.log(val);
-        
-        this.setState(prevState => {
-            return {
-                [title]: !prevState[title]
-            }
-        })
+        if (title === "rr24FormContState"){
+            this.setState({
+                [title]: true
+            })
+        } else{
+            this.setState(prevState => {
+                return {
+                    [title]: !prevState[title]
+                }
+            })
+        }
     }
 
     handleChange = () => {        
