@@ -27,6 +27,12 @@ export class FormRowContainer extends Component {
         }
     }
 
+    componentWillUnmount = () => {
+        console.log(this.props.currentParentState);
+        
+        this.props.handleClick("dyspnea-go")
+    }
+
     render() {
         // if (this.props.rowData.stateName === "rr24FormRowState") {
         //     console.log(this.props.currentParentState);
