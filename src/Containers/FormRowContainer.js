@@ -76,7 +76,7 @@ export class FormRowContainer extends Component {
         return (
             <>
                 {rowData.ratio.includes("?")
-                    ? /////////////////// this is the treatment for the two exceptions ///////////////////
+                    ? /////////////////// the exceptions ///////////////////
                     <Container
                         className="rowInForm"
                         style={

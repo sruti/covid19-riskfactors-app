@@ -36,14 +36,6 @@ export class FormContainer extends Component {
         ast: false,
     }
 
-    secondaryState = {
-        rr24: false,
-        leukocytosis: false,
-        alt40: false,
-        ast: false,
-
-    }
-
     //these two methods could become one
     handleClick = (title) => {
         this.setState(prevState => {
