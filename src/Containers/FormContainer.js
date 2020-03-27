@@ -39,8 +39,6 @@ export class FormContainer extends Component {
 
     //these two methods could become one
     handleClick = (title, val) => {
-        console.log(title);
-        console.log(val);
         if (title === "rr24FormContState"){
             this.setState({
                 [title]: true

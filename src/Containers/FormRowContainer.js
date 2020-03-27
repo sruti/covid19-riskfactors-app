@@ -10,9 +10,8 @@ import Button from 'react-bootstrap/Button'
 
 export class FormRowContainer extends Component {
 
-    // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
+    // this state exists here only for when this component is recursively a parent
     state = {
-        rr24: true,
         rr24FormRowState: true,
     }
 
