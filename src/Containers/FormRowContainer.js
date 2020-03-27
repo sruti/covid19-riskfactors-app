@@ -156,7 +156,7 @@ export class FormRowContainer extends Component {
                                 <p> {currentParentState ? rowData.ratio : null}</p>
                             </Col>
                             <Col>{
-                                rowData.stateName.includes("rr24") || rowData.stateName.includes("neutro")
+                                rowData.stateName.includes("rr24") || rowData.stateName.includes("leuko")
                                     ?
                                     <>
                                         <ToggleButtonGroup
