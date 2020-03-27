@@ -45,7 +45,6 @@ export class FormContainer extends Component {
             })
         } else if (title === "dyspnea-go") {
             this.setState({
-                dyspnea: false,
                 rr24FormContState: false
             })
         } else {
