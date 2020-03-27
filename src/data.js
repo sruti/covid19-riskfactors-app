@@ -3,11 +3,7 @@ const mortality = [
         "basic": [
             { "stateName": "age", "title": "Age (>/=65yr)", "ratio": "OR 1.10" },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "P <0.05" },
-            {
-                "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "secondaryState": {
-                    "stateName": "rr24", "title": "RR>24", "ratio": "OR 8.89*", "ratioY": "OR 8.89*", "ratioN": "Insignificant"
-                }
-            },
+            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?" },
             { "stateName": "temp", "title": "Temp >/= 39C (102.2F)", "ratio": "Excluded" },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*" },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*" },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormRowContainer from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
+import { rr24Yes } from '../data.js'
 
 export class FormContainer extends Component {
 
@@ -30,8 +31,8 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
-        rr24Yes: false,
-        rr24No: false,
+        rr24Y: false,
+        rr24N: false,
         leukocytosisYes: false,
         leukocytosisNo: false,
         alt40: false,
@@ -56,7 +57,7 @@ export class FormContainer extends Component {
     }
 
     render() {
-        // console.log("rr24 in formcont", this.state.rr24 );
+        // console.log("rr24 in formcont", this.state.rr24Y );
         
         return (
             <section className="mainContainer" >
@@ -66,8 +67,9 @@ export class FormContainer extends Component {
                         key={rowData.title}
                         handleClick={this.handleClick}
                         currentParentState={this.state[rowData.stateName]}
-                        rr24Y={this.state.rr24Yes}
-                        rr24N={this.state.rr24No}
+                        rr24Y={this.state.rr24Y}
+                        rr24N={this.state.rr24N}
+                        rr24Yes={rr24Yes}
                     />
                 })
                 }

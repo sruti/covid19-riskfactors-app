@@ -6,47 +6,35 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
-import { rr24Yes, rr24No } from '../data.js'
 
 
 export class FormRowContainer extends Component {
 
     // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
     state = {
-        rr24: false,
+        rr24: true,
         leukocytosisNo: false,
-        rr24Yes: false,
-        rr24No: false,
+        rr24Y: true,
+        rr24N: null,
     }
 
-    // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
-    handleClick = (stateName, val) => {
-        this.setState(prevState => {
-            if (val === "Y") {
-                return { [stateName]: true }
-            }
-            else if (val === "N") {
-                return { [stateName]: false }
-            }
-            else {
-                return { [stateName]: !prevState[stateName] }
-            }
-        })
-    }
-
-    handleChange = (val) => {
-        console.log("handle change value", val);
-        
+    handleChange = (val) => {        
         this.props.handleClick(this.props.rowData.stateName, val)
     }
 
     render() {
-        let { rowData, currentParentState, rr24Y, rr24N } = this.props
+        // if (this.props.rowData.stateName === "rr24Y") {
+        //     console.log(this.props.currentParentState);
+        //     console.log("rr24 state", this.state.rr24Y);
+        //     console.log("rr24 props", this.props);
+        // }
 
-        // console.log("state", this.state[rowData.stateName])
-        if (rowData.stateName === "rr24Y") {
-            console.log("rr24Yes ratio", rr24Yes.ratio);
-        }
+        // if (this.props.rowData.stateName === "dyspnea") {
+        //     console.log("dyspnea props", this.props);
+        //     console.log("dyspnea props", this.props);
+        // }
+
+        let { rowData, currentParentState, rr24Y, rr24N } = this.props        
 
         let bgcolor;
 
@@ -126,8 +114,7 @@ export class FormRowContainer extends Component {
                                 ? rowData.stateName.includes("dyspnea", "ast", "neutro") //this works only for dyspnea
                                     ? <>
                                         < FormRow
-                                            rowData={rr24Yes}
-                                            rowDataNo={rr24No}
+                                            rowData={this.props.rr24Yes}
                                             handleChange={this.handleChange}
                                             handleClick={this.props.handleClick}
                                             currentParentState={rr24Y}
@@ -198,9 +185,10 @@ export class FormRowContainer extends Component {
                                             (val) => {
                                                 if (val === "N") {
                                                     rowData.ratio = "Insignificant"
+                                                } else {
+                                                    rowData.ratio = "OR 8.89*"
                                                 }
                                                 this.props.handleClick(this.props.rowData.stateName, val)
-
                                             }}
                                         >
                                             <ToggleButton
