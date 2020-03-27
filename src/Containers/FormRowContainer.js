@@ -181,7 +181,6 @@ export class FormRowContainer extends Component {
                                         >
                                             <ToggleButton
                                                 variant={currentParentState ? "dark" : "outline-dark"}
-                                                value={"✓"}
                                             >✓</ToggleButton>
                                         </ToggleButtonGroup>
                                     </>
