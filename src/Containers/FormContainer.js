@@ -40,7 +40,10 @@ export class FormContainer extends Component {
     }
 
     //these two methods could become one
-    handleClick = (title) => {
+    handleClick = (title, val) => {
+        console.log(title);
+        console.log(val);
+        
         this.setState(prevState => {
             return {
                 [title]: !prevState[title]
@@ -48,7 +51,7 @@ export class FormContainer extends Component {
         })
     }
 
-    handleChange = () => {
+    handleChange = () => {        
         this.setState(prevState => {
             return {
                 show: !prevState.show

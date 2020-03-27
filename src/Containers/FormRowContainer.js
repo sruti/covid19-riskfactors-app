@@ -22,6 +22,14 @@ export class FormRowContainer extends Component {
         this.props.handleClick(this.props.rowData.stateName, val)
     }
 
+    changeRatio = (val) => {
+        if (val === "N") {
+            this.props.rowData.ratio = "Insignificant"
+        } else {
+            this.props.rowData.ratio = "OR 8.89*"
+        }
+    }
+
     render() {
         // if (this.props.rowData.stateName === "rr24Y") {
         //     console.log(this.props.currentParentState);
@@ -175,7 +183,7 @@ export class FormRowContainer extends Component {
                                 <p> {currentParentState ? rowData.ratio : null}</p>
                             </Col>
                             <Col>{
-                                rowData.stateName.includes("rr24")
+                                rowData.stateName.includes("rr24Y")
                                     ?
                                     <>
                                         <ToggleButtonGroup
@@ -183,11 +191,7 @@ export class FormRowContainer extends Component {
                                             name="secondaryQs"
                                             onChange={
                                             (val) => {
-                                                if (val === "N") {
-                                                    rowData.ratio = "Insignificant"
-                                                } else {
-                                                    rowData.ratio = "OR 8.89*"
-                                                }
+                                                this.changeRatio(val)
                                                 this.props.handleClick(this.props.rowData.stateName, val)
                                             }}
                                         >
