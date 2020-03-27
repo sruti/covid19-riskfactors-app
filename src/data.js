@@ -106,14 +106,6 @@ const ardsDeath = [
         ]
     }]
 
-const alt40Yes = { "stateName": "alt40Yes", "title": "ALT >40", "ratio": "OR 2.87" }
-
-const alt40No = { "stateName": "alt40No", "title": "ALT <40", "ratio": "Insignificant" }
-
-const astYes = { "stateName": "astYes", "title": "↑ AST", "ratio": "HR 1.02" }
-
-const astNo = { "stateName": "astNo", "title": "not ↑ AST", "ratio": "Insignificant" }
-
 const rr24Yes = { "stateName": "rr24Yes", "title": "RR>24", "ratio": "OR 8.89*" }
 
 const rr24No = { "stateName": "rr24No", "title": "RR<24", "ratio": "Insignificant" }
