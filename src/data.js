@@ -102,12 +102,8 @@ const ardsDeath = [
         ]
     }]
 
-let rr24Yes = { "stateName": "rr24Y", "title": "RR>24", "ratio": "OR 8.89*" }
-
-const rr24No = { "stateName": "rr24N", "title": "RR<24", "ratio": "Insignificant" }
+let rr24Object = { "stateName": "rr24FormContState", "title": "RR>24", "ratio": "OR 8.89*" }
 
 const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 
-const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant" }
-
-export { ards, ardsDeath, mortality, rr24Yes, rr24No, leukocytosisNo, leukocytosisYes }
+export { ards, ardsDeath, mortality, rr24Object, leukocytosisYes }

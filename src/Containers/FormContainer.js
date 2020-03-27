@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FormRowContainer from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
-import { rr24Yes } from '../data.js'
+import { rr24Object } from '../data.js'
 
 export class FormContainer extends Component {
 
@@ -31,10 +31,8 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
-        rr24Y: false,
-        rr24N: false,
-        leukocytosisYes: false,
-        leukocytosisNo: false,
+        rr24FormContState: false,
+        leukocytosisContState: false,
         alt40: false,
         ast: false,
     }
@@ -70,9 +68,8 @@ export class FormContainer extends Component {
                         key={rowData.title}
                         handleClick={this.handleClick}
                         currentParentState={this.state[rowData.stateName]}
-                        rr24Y={this.state.rr24Y}
-                        rr24N={this.state.rr24N}
-                        rr24Yes={rr24Yes}
+                        rr24FormContState={this.state.rr24FormContState}
+                        rr24Object={rr24Object}
                     />
                 })
                 }

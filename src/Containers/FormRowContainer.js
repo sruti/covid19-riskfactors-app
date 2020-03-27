@@ -14,7 +14,7 @@ export class FormRowContainer extends Component {
     state = {
         rr24: true,
         leukocytosisNo: false,
-        rr24Y: true,
+        rr24FormRowState: true,
         rr24N: null,
     }
 
@@ -31,9 +31,9 @@ export class FormRowContainer extends Component {
     }
 
     render() {
-        // if (this.props.rowData.stateName === "rr24Y") {
+        // if (this.props.rowData.stateName === "rr24FormRowState") {
         //     console.log(this.props.currentParentState);
-        //     console.log("rr24 state", this.state.rr24Y);
+        //     console.log("rr24 state", this.state.rr24FormRowState);
         //     console.log("rr24 props", this.props);
         // }
 
@@ -42,7 +42,7 @@ export class FormRowContainer extends Component {
         //     console.log("dyspnea props", this.props);
         // }
 
-        let { rowData, currentParentState, rr24Y, rr24N } = this.props        
+        let { rowData, currentParentState, rr24FormContState, rr24Object } = this.props        
 
         let bgcolor;
 
@@ -122,10 +122,10 @@ export class FormRowContainer extends Component {
                                 ? rowData.stateName.includes("dyspnea", "ast", "neutro") //this works only for dyspnea
                                     ? <>
                                         < FormRow
-                                            rowData={this.props.rr24Yes}
+                                            rowData={rr24Object}
                                             handleChange={this.handleChange}
                                             handleClick={this.props.handleClick}
-                                            currentParentState={rr24Y}
+                                            currentParentState={rr24FormContState}
                                         />
                                     </>
                                     : <>
@@ -140,10 +140,10 @@ export class FormRowContainer extends Component {
                                 rowData.stateName.includes("dyspnea")
                                     ? <>
                                         < FormRow
-                                            rowData={rr24Yes}
+                                            rowData={rr24Object}
                                             handleChange={this.handleChange}
                                             handleClick={this.handleClick}
-                                            currentParentState={this.state.rr24Yes} />
+                                            currentParentState={this.state.rr24Object} />
                                         < FormRow
                                             rowData={rr24No}
                                             handleChange={this.handleChange}
@@ -183,7 +183,7 @@ export class FormRowContainer extends Component {
                                 <p> {currentParentState ? rowData.ratio : null}</p>
                             </Col>
                             <Col>{
-                                rowData.stateName.includes("rr24Y")
+                                rowData.stateName.includes("rr24")
                                     ?
                                     <>
                                         <ToggleButtonGroup
