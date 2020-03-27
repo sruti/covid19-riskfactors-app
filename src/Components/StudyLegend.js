@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 
 
-export default function StudyLegend({ study: { info, citation, comment } }) {
+export default function StudyLegend({ study: { ratios, ratiosEx, info, citation, comment } }) {
 
     return (
         <Container fluid
@@ -13,8 +13,8 @@ export default function StudyLegend({ study: { info, citation, comment } }) {
                 padding: "1% 1% 1% 1%"
             }}
         >
-            <p> <strong>OR: </strong>Odds Ratio</p>
-            <p> <strong>HR: </strong>Hazard Ratio (Bivariate Cox Regression Analysis)</p><br></br>
+            <p><strong>Ratios: </strong>{ratios}</p>
+            <p>Examples: {ratiosEx}</p>
             <p> <strong>Source: </strong>{citation} </p>
             {
                 comment
