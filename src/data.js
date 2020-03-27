@@ -104,6 +104,6 @@ const ardsDeath = [
 
 let rr24Object = { "stateName": "rr24FormContState", "title": "RR>24", "ratio": "OR 8.89*" }
 
-const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
+const leukocytosisObject = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*" }
 
-export { ards, ardsDeath, mortality, rr24Object, leukocytosisYes }
+export { ards, ardsDeath, mortality, rr24Object, leukocytosisObject }

@@ -28,8 +28,6 @@ export class FormRowContainer extends Component {
     }
 
     componentWillUnmount = () => {
-        console.log(this.props.currentParentState);
-        
         this.props.handleClick("dyspnea-go")
     }
 
@@ -45,7 +43,7 @@ export class FormRowContainer extends Component {
         //     console.log("dyspnea props", this.props);
         // }
 
-        let { rowData, currentParentState, rr24FormContState, rr24Object } = this.props        
+        let { rowData, currentParentState, rr24FormContState, rr24Object, leukocytosisContState, leukocytosisObject } = this.props        
 
         let bgcolor;
 
