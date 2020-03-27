@@ -65,9 +65,6 @@ export class FormContainer extends Component {
     }
 
     render() {
-        // console.log("rr24 in formcont", this.state.rr24Y );
-        console.log("rr24", this.state.rr24FormContState);
-        console.log("dyspnea", this.state.dyspnea);
         return (
             <section className="mainContainer" >
                 {this.props.data[0].basic.map((rowData) => {

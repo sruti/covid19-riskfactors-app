@@ -44,12 +44,15 @@ export class FormRowContainer extends Component {
         // }
 
         let { rowData, currentParentState, rr24FormContState, rr24Object, leukocytosisContState, leukocytosisObject } = this.props        
+        // if (rowData.stateName === "leukocytosisContState"){
+        //     console.log(currentParentState);
+        // }
 
         let bgcolor;
 
         switch (rowData.ratio) {
             case "Insignificant":
-                (currentParentState || this.state[rowData.stateName])
+                currentParentState
                     ?
                     bgcolor = "lightcoral"
                     :
@@ -120,7 +123,7 @@ export class FormRowContainer extends Component {
                         <Row>
                             {/* if you click on the button, create two new rows*/}
                             {currentParentState
-                                ? rowData.stateName.includes("dyspnea", "ast", "neutro") //this works only for dyspnea
+                                ? rowData.stateName.includes("dyspnea") //match(/(dyspnea)|(neutro)/)
                                     ? <>
                                         < FormRow
                                             rowData={rr24Object}
@@ -153,7 +156,7 @@ export class FormRowContainer extends Component {
                                 <p> {currentParentState ? rowData.ratio : null}</p>
                             </Col>
                             <Col>{
-                                rowData.stateName.includes("rr24")
+                                rowData.stateName.includes("rr24") || rowData.stateName.includes("neutro")
                                     ?
                                     <>
                                         <ToggleButtonGroup
