@@ -99,14 +99,14 @@ const ardsDeath = [
         ]
     }]
 
-const rr24Yes = { "stateName": "rr24Yes", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑" }
-const rr24No = { "stateName": "rr24No", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
+const rr24YesDataObject = { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑" }
+const rr24NoDataObject = { "stateName": "rr24NoState", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
 //AST/ALT row has two different secondary questions for different studies, so had to split them up
-const alt40Yes = { "stateName": "alt40Yes", "title": "ALT >40", "ratio": "OR 2.87*", "ratioTitle": "*2.87x per unit↑" }
-const alt40No = { "stateName": "alt40No", "title": "ALT <40", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
+const alt40YesDataObject = { "stateName": "alt40YesState", "title": "ALT >40", "ratio": "OR 2.87*", "ratioTitle": "*2.87x per unit↑" }
+const alt40NoDataObject = { "stateName": "alt40NoState", "title": "ALT <40", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
-const astYes = { "stateName": "astYes", "title": "↑ AST", "ratio": "HR 1.02", "ratioTitle": "2% ↑" }
-const astNo = { "stateName": "astNo", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
+const astYesDataObject = { "stateName": "astYesState", "title": "↑ AST", "ratio": "HR 1.02", "ratioTitle": "2% ↑" }
+const astNoDataObject = { "stateName": "astNoState", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
-export { ards, ardsDeath, mortality, rr24Yes, rr24No, alt40Yes, alt40No, astYes, astNo }
+export { ards, ardsDeath, mortality, rr24YesDataObject, rr24NoDataObject, alt40YesDataObject, alt40NoDataObject, astYesDataObject, astNoDataObject }

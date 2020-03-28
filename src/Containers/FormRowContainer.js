@@ -5,22 +5,22 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
-import { rr24Yes, rr24No, alt40Yes, alt40No, astYes, astNo } from '../data.js'
+import { rr24YesDataObject, rr24NoDataObject, alt40YesDataObject, alt40NoDataObject, astYesDataObject, astNoDataObject } from '../data.js'
 
 
 export class FormRowContainer extends Component {
 
-    // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
+    // this state exists here only for when this component is recursively a parent
     state = {
-        alt40Yes: false,
-        alt40No: false,
-        astYes: false,
-        astNo: false,
-        rr24Yes: false,
-        rr24No: false,
+        alt40YesState: false,
+        alt40NoState: false,
+        astYesState: false,
+        astNoState: false,
+        rr24YesState: false,
+        rr24NoState: false,
     }
 
-    // in recursive situation, this component becomes the parent and because of that, we need to place this function here as well as we can pass it
+    // in recursion, this component becomes the parent and function is here as well as in FormCont so we can pass it
     handleClick = (stateName) => {
         this.setState(prevState => {
             return {
@@ -35,10 +35,6 @@ export class FormRowContainer extends Component {
 
     render() {
         let { rowData, currentParentState } = this.props
-        console.log(rowData, currentParentState)
-        if (rowData.stateName === "alt40") {
-            console.log(this.state.alt40);
-        }
 
         let bgcolor;
 
@@ -117,19 +113,19 @@ export class FormRowContainer extends Component {
                                 ?
                                 <>
                                     < FormRow
-                                        rowData={rowData.stateName.includes("dyspnea") ? rr24Yes :
-                                            (rowData.stateName.includes("alt40") ? alt40Yes : astYes)}
+                                        rowData={rowData.stateName.includes("dyspnea") ? rr24YesDataObject :
+                                            (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24Yes :
-                                            (rowData.stateName.includes("alt40") ? this.state.alt40Yes : this.state.astYes)} />
+                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24YesState :
+                                            (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
                                     < FormRow
-                                        rowData={rowData.stateName.includes("dyspnea") ? rr24No :
-                                            (rowData.stateName.includes("alt40") ? alt40No : astNo)}
+                                        rowData={rowData.stateName.includes("dyspnea") ? rr24NoDataObject :
+                                            (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24No :
-                                            (rowData.stateName.includes("alt40") ? this.state.alt40No : this.state.astNo)} />
+                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24NoState :
+                                            (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
                                 </>
                                 : null}
                         </Row>
