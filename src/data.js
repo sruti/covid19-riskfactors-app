@@ -25,7 +25,7 @@ const mortality = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Excluded", "ratioTitle": "Excluded" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "Excluded", "ratioTitle": "Excluded" },
-            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "ALT >40", "ratioTitle": "ALT >40" },
+            { "stateName": "alt40", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "" },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "Excluded", "ratioTitle": "Excluded" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Excluded", "ratioTitle": "Excluded" },
         ]
@@ -59,7 +59,7 @@ const ards = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "HR 4.81", "ratioTitle": "4.81x chance" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.49", "ratioTitle": "51% ↓" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05", "ratioTitle": "5% ↑" },
-            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "AST HR 1.02", "ratioTitle": "2% ↑" },
+            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "" },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13", "ratioTitle": "13% ↑" }, //this one is white in the diagram  
         ]
@@ -93,18 +93,20 @@ const ardsDeath = [
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Insignificant", "ratioTitle": "Insignificant" },
             { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.19", "ratioTitle": "81% ↓" },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.07", "ratioTitle": "7% ↑" },
-            { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05" }, //this one is white
+            { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05" }, //this one is white
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑" },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Insignificant", "ratioTitle": "Insignificant" },
         ]
     }]
 
-const rr24Yes = { "stateName": "rr24Yes", "title": "RR>24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑" }
+const rr24Yes = { "stateName": "rr24Yes", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑" }
+const rr24No = { "stateName": "rr24No", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
-const rr24No = { "stateName": "rr24No", "title": "RR<24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
+//AST/ALT row has two different secondary questions for different studies, so had to split them up
+const alt40Yes = { "stateName": "alt40Yes", "title": "ALT >40", "ratio": "OR 2.87*", "ratioTitle": "*2.87x per unit↑" }
+const alt40No = { "stateName": "alt40No", "title": "ALT <40", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
-const leukocytosisYes = { "stateName": "leukocytosisYes", "title": "Leukocytosis >10", "ratio": "OR 6.60*", "ratioTitle": "*6.60x per unit↑" }
+const astYes = { "stateName": "astYes", "title": "↑ AST", "ratio": "HR 1.02", "ratioTitle": "2% ↑" }
+const astNo = { "stateName": "astNo", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
 
-const leukocytosisNo = { "stateName": "leukocytosisNo", "title": "Leukocytosis <10", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
-
-export { ards, ardsDeath, mortality, rr24Yes, rr24No, leukocytosisNo, leukocytosisYes }
+export { ards, ardsDeath, mortality, rr24Yes, rr24No, alt40Yes, alt40No, astYes, astNo }

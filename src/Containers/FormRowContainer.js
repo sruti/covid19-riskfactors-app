@@ -5,15 +5,17 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
-import { rr24Yes, rr24No, leukocytosisNo, leukocytosisYes } from '../data.js'
+import { rr24Yes, rr24No, alt40Yes, alt40No, astYes, astNo } from '../data.js'
 
 
 export class FormRowContainer extends Component {
 
     // this state exists here only for the two exceptions when this component is recursively a parent of another component of the same type
     state = {
-        leukocytosisYes: false,
-        leukocytosisNo: false,
+        alt40Yes: false,
+        alt40No: false,
+        astYes: false,
+        astNo: false,
         rr24Yes: false,
         rr24No: false,
     }
@@ -33,8 +35,9 @@ export class FormRowContainer extends Component {
 
     render() {
         let { rowData, currentParentState } = this.props
-        if (rowData.stateName === "leukocytosis") {
-            console.log(this.state.leukocytosis);
+        console.log(rowData, currentParentState)
+        if (rowData.stateName === "alt40") {
+            console.log(this.state.alt40);
         }
 
         let bgcolor;
@@ -112,32 +115,22 @@ export class FormRowContainer extends Component {
                             {/* if you click on the button, create two new rows*/}
                             {currentParentState
                                 ?
-                                rowData.stateName.includes("dyspnea")
-                                    ? <>
-                                        < FormRow
-                                            rowData={rr24Yes}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.rr24Yes} />
-                                        < FormRow
-                                            rowData={rr24No}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.rr24No} />
-                                    </>
-                                    :
-                                    <>
-                                        < FormRow
-                                            rowData={leukocytosisYes}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.leukocytosisYes} />
-                                        < FormRow
-                                            rowData={leukocytosisNo}
-                                            handleChange={this.handleChange}
-                                            handleClick={this.handleClick}
-                                            currentParentState={this.state.leukocytosisNo} />
-                                    </>
+                                <>
+                                    < FormRow
+                                        rowData={rowData.stateName.includes("dyspnea") ? rr24Yes :
+                                            (rowData.stateName.includes("alt40") ? alt40Yes : astYes)}
+                                        handleChange={this.handleChange}
+                                        handleClick={this.handleClick}
+                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24Yes :
+                                            (rowData.stateName.includes("alt40") ? this.state.alt40Yes : this.state.astYes)} />
+                                    < FormRow
+                                        rowData={rowData.stateName.includes("dyspnea") ? rr24No :
+                                            (rowData.stateName.includes("alt40") ? alt40No : astNo)}
+                                        handleChange={this.handleChange}
+                                        handleClick={this.handleClick}
+                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24No :
+                                            (rowData.stateName.includes("alt40") ? this.state.alt40No : this.state.astNo)} />
+                                </>
                                 : null}
                         </Row>
                     </Container>

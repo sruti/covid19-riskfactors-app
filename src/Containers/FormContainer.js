@@ -28,7 +28,9 @@ export class FormContainer extends Component {
         hscrp: false,
         albumin: false,
         bilirubin: false,
+        alt40: false,
         ast: false,
+        astalt: false,
         urea: false,
         glucose: false,
     }
@@ -59,6 +61,7 @@ export class FormContainer extends Component {
                         rowData={rowData}
                         key={rowData.title}
                         handleClick={this.handleClick}
+                        section="basic"
                         currentParentState={this.state[rowData.stateName]}
                     />
                 })
@@ -68,8 +71,10 @@ export class FormContainer extends Component {
                         <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
                         {this.props.data[1].advanced.map((rowData) =>
                             <FormRowContainer
-                                rowData={rowData} key={rowData.title}
+                                rowData={rowData}
+                                key={rowData.title}
                                 handleClick={this.handleClick}
+                                section="advanced"
                                 currentParentState={this.state[rowData.stateName]}
                             />)}
                     </>
