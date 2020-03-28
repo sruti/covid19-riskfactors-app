@@ -112,20 +112,25 @@ export class FormRowContainer extends Component {
                             {currentParentState
                                 ?
                                 <>
+                                    {/* depending on the row, conditionally render the correct data */}
                                     < FormRow
-                                        rowData={rowData.stateName.includes("dyspnea") ? rr24YesDataObject :
-                                            (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24YesState :
-                                            (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
+                                        rowData={rowData.stateName.includes("dyspnea") 
+                                        ? rr24YesDataObject 
+                                        : (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
+                                        currentParentState={rowData.stateName.includes("dyspnea") 
+                                        ? this.state.rr24YesState 
+                                        : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
                                     < FormRow
-                                        rowData={rowData.stateName.includes("dyspnea") ? rr24NoDataObject :
-                                            (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        currentParentState={rowData.stateName.includes("dyspnea") ? this.state.rr24NoState :
-                                            (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
+                                        rowData={rowData.stateName.includes("dyspnea") 
+                                        ? rr24NoDataObject 
+                                        : (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
+                                        currentParentState={rowData.stateName.includes("dyspnea") 
+                                        ? this.state.rr24NoState 
+                                        : (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
                                 </>
                                 : null}
                         </Row>
