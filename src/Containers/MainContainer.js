@@ -12,7 +12,7 @@ export class MainContainer extends Component {
     }
 
     handleCounter = (points) => {
-        if (typeof (points) === "number") {
+        if (typeof (points) === "number" && !isNaN(points)) {
             this.setState(prevState => {
                 return {
                     counter: prevState.counter + points
