@@ -33,12 +33,6 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
-        alt40YesState: false,
-        alt40NoState: false,
-        astYesState: false,
-        astNoState: false,
-        rr24YesState: false,
-        rr24NoState: false,
     }
 
     getThePoints = () => {
