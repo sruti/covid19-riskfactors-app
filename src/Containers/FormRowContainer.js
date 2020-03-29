@@ -36,32 +36,18 @@ export class FormRowContainer extends Component {
     render() {
         let { rowData, currentParentState } = this.props
 
-        let bgcolor;
+        var bgcolor = "white";
 
-        switch (rowData.ratio) {
-            case "Insignificant":
-                currentParentState
-                    ?
-                    bgcolor = "lightcoral"
-                    :
-                    bgcolor = "white"
-                break
-            case "?":
-                bgcolor = "white"
-                break
-            case "Excluded":
-                currentParentState
-                    ?
+        if (currentParentState) {
+            switch (rowData.ratio) {
+                case "Insignificant":
+                case "Excluded":
                     bgcolor = "lightgrey"
-                    :
-                    bgcolor = "white"
-                break
-            default:
-                currentParentState
-                    ?
-                    bgcolor = "lightgreen"
-                    :
-                    bgcolor = "white"
+                    break;
+                default:
+                    bgcolor = rowData.stateName.includes("albumin") ? "lightgreen" : "lightcoral"
+            }
+
         }
 
         return (
@@ -116,21 +102,21 @@ export class FormRowContainer extends Component {
                                     < FormRow
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea") 
-                                        ? rr24YesDataObject 
-                                        : (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
-                                        currentParentState={rowData.stateName.includes("dyspnea") 
-                                        ? this.state.rr24YesState 
-                                        : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
+                                        rowData={rowData.stateName.includes("dyspnea")
+                                            ? rr24YesDataObject
+                                            : (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
+                                        currentParentState={rowData.stateName.includes("dyspnea")
+                                            ? this.state.rr24YesState
+                                            : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
                                     < FormRow
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea") 
-                                        ? rr24NoDataObject 
-                                        : (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
-                                        currentParentState={rowData.stateName.includes("dyspnea") 
-                                        ? this.state.rr24NoState 
-                                        : (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
+                                        rowData={rowData.stateName.includes("dyspnea")
+                                            ? rr24NoDataObject
+                                            : (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
+                                        currentParentState={rowData.stateName.includes("dyspnea")
+                                            ? this.state.rr24NoState
+                                            : (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
                                 </>
                                 : null}
                         </Row>
@@ -138,11 +124,15 @@ export class FormRowContainer extends Component {
                     : /////////////////// this is for the non-exceptions /////////////////
                     <Container
                         className="rowInForm"
-                        style={{
-                            backgroundColor: bgcolor,
-                            top: "20%",
-                            paddingTop: "0.5rem",
-                        }}
+                        style={
+                            currentParentState ?
+                                {
+                                    backgroundColor: bgcolor,
+                                    border: ".5px solid rgb(167, 156, 156)"
+                                } :
+                                {
+                                    backgroundColor: bgcolor,
+                                }}
                     >
                         <Row>
                             <Col>

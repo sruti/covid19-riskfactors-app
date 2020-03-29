@@ -7,6 +7,10 @@ div.rowInForm:hover {
   border: 1px solid rgb(43, 40, 40) !important;
 }
 
+div.rowInForm {
+  padding-top: 0.5rem !important;
+}
+
 p{
   margin-top: 0.2em !important;
 }
