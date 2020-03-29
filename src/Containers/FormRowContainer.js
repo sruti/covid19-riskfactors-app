@@ -42,10 +42,12 @@ export class FormRowContainer extends Component {
 
         if (currentParentState) {
             switch (rowData.ratio) {
+                case "?":
+                    break
                 case "Insignificant":
                 case "Excluded":
                     bgcolor = "lightgrey"
-                    break;
+                    break
                 default:
                     bgcolor = rowData.protective ? "lightgreen" : "lightcoral"
             }
