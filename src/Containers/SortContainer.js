@@ -4,6 +4,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 import Button from 'react-bootstrap/Button'
 import { ardsStudy, mortalityStudy } from '../studies.js'
 import StudyLegend from '../Components/StudyLegend'
+import Counter from '../Components/Counter'
 
 export default class FormRowContainer extends Component {
 
@@ -57,7 +58,7 @@ export default class FormRowContainer extends Component {
                             <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
                         </div>
                 }
-
+                <Counter counter={this.props.counter}/>
             </>
         )
     }

@@ -18,8 +18,6 @@ export class MainContainer extends Component {
                     counter: prevState.counter + points
                 }
             })
-        } else {
-            return null
         }
     }
 
@@ -45,7 +43,7 @@ export class MainContainer extends Component {
     render() {
         return (
             <main>
-                <SortContainer handleSort={this.handleSort} />
+                <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
                 <FormContainer data={this.displaySorted()} handleCounter={this.handleCounter} />
             </main>
         )
