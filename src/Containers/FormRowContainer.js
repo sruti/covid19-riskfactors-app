@@ -30,9 +30,15 @@ export class FormRowContainer extends Component {
     }
 
     handleChange = (val) => {
-        console.log(val);
+        let points;
+
+        if (val[0] === false) {
+            points = this.props.rowData.points
+        } else {
+            points = this.props.rowData.points * -1
+        }
         this.props.handleClick(this.props.rowData.stateName)
-        this.props.handleCounter(this.props.rowData.points)
+        this.props.handleCounter(points)
     }
 
     render() {
