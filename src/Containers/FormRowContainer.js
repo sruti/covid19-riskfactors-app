@@ -45,7 +45,7 @@ export class FormRowContainer extends Component {
                     bgcolor = "lightgrey"
                     break;
                 default:
-                    bgcolor = rowData.stateName.includes("albumin") ? "lightgreen" : "lightcoral"
+                    bgcolor = rowData.protective ? "lightgreen" : "lightcoral"
             }
 
         }
