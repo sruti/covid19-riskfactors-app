@@ -76,7 +76,7 @@ export class FormContainer extends Component {
                                 handleClick={this.handleClick}
                                 section="advanced"
                                 currentParentState={this.state[rowData.stateName]}
-                                handleCounter={this.handleCounter}
+                                handleCounter={this.props.handleCounter}
                             />)}
                     </>
                     :
