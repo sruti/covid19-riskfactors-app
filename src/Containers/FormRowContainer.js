@@ -134,7 +134,7 @@ export class FormRowContainer extends Component {
                             currentParentState ?
                                 {
                                     backgroundColor: bgcolor,
-                                    border: ".5px solid rgb(167, 156, 156)"
+                                    border: ".25px solid rgb(92, 87, 87)"
                                 } :
                                 {
                                     backgroundColor: bgcolor,

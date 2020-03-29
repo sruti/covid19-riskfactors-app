@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import {mortality, ards, ardsDeath} from '../data.js'
+import { mortality, ards, ardsDeath } from '../data.js'
 
 export class MainContainer extends Component {
 
@@ -12,7 +12,7 @@ export class MainContainer extends Component {
     }
 
     handleCounter = (points) => {
-        if (typeof(points) === "number"){
+        if (typeof (points) === "number") {
             this.setState(prevState => {
                 return {
                     counter: prevState.counter + points

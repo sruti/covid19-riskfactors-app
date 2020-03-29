@@ -3,6 +3,11 @@
   padding: 1%
 }
 
+div.risk-counter {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important; 
+}
+
 div.rowInForm:hover {
   border: 1px solid rgb(43, 40, 40) !important;
 }
