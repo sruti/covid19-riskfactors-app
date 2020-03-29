@@ -12,11 +12,11 @@ export class MainContainer extends Component {
     }
 
     handleCounter = (points) => {
+        console.log("COUNTER VALUE", points);
+        // debugger
         if (typeof (points) === "number") {
-            this.setState(prevState => {
-                return {
-                    counter: prevState.counter + points
-                }
+            this.setState({
+                counter: points
             })
         }
     }
@@ -41,6 +41,7 @@ export class MainContainer extends Component {
     }
 
     render() {
+        // console.log("POINTS", this.state.counter);
         return (
             <main>
                 <SortContainer handleSort={this.handleSort} counter={this.state.counter} />

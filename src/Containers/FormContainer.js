@@ -33,6 +33,30 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
+        alt40YesState: false,
+        alt40NoState: false,
+        astYesState: false,
+        astNoState: false,
+        rr24YesState: false,
+        rr24NoState: false,
+    }
+
+    getThePoints = () => {
+        // check which state objects are true
+        let stateNamesOfTheSelected = Object.entries(this.state).filter((subArray) => subArray[1] === true).map((array) => array[0]);
+        console.log(stateNamesOfTheSelected);
+
+        // get only the points
+        let points = stateNamesOfTheSelected.map((selected) => this.props.data[0].basic.find((piece) => piece.stateName === selected )).map(object => object.points).map(point => {
+            return point === 'undefined' || isNaN(point) ? point = 0 : point
+        })
+        
+        // // sum it up
+        let sum = points.reduce((point, currentValue) => {
+            return point + currentValue
+        }, 0)
+
+        this.props.handleCounter(sum)
     }
 
     //these two methods could become one
@@ -41,7 +65,8 @@ export class FormContainer extends Component {
             return {
                 [title]: !prevState[title]
             }
-        })
+        }, () => this.getThePoints())
+
     }
 
     handleChange = () => {
@@ -53,6 +78,8 @@ export class FormContainer extends Component {
     }
 
     render() {
+
+
         return (
             <section className="mainContainer" >
                 {this.props.data[0].basic.map((rowData) => {
@@ -63,6 +90,7 @@ export class FormContainer extends Component {
                         section="basic"
                         currentParentState={this.state[rowData.stateName]}
                         handleCounter={this.props.handleCounter}
+                        // stateNamesOfTheSelected = {stateNamesOfTheSelected}
                     />
                 })
                 }
@@ -77,6 +105,8 @@ export class FormContainer extends Component {
                                 section="advanced"
                                 currentParentState={this.state[rowData.stateName]}
                                 handleCounter={this.props.handleCounter}
+                                // countThemUp={this.countThemUp}
+                                // stateNamesOfTheSelected = {stateNamesOfTheSelected}
                             />)}
                     </>
                     :
