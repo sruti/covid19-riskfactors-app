@@ -43,12 +43,11 @@ export class FormContainer extends Component {
 
     getThePoints = () => {
         // check which state objects are true
-        let data = this.props.data
         let stateNamesOfTheSelected = Object.entries(this.state).filter((subArray) => subArray[1] === true).map((array) => array[0]);
         console.log(stateNamesOfTheSelected);
 
         // get only the points
-        let points = stateNamesOfTheSelected.map((selected) => data[0].basic.find((piece) => piece.stateName === selected ) || data[0].advanced.find((piece) => piece.stateName === selected ) ).map(object => object.points).map(point => {
+        let points = stateNamesOfTheSelected.map((selected) => this.props.data[0].basic.find((piece) => piece.stateName === selected )).map(object => object.points).map(point => {
             return point === 'undefined' || isNaN(point) ? point = 0 : point
         })
         
