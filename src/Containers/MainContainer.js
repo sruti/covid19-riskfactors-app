@@ -13,7 +13,6 @@ export class MainContainer extends Component {
 
     handleCounter = (points) => {
         console.log("COUNTER VALUE", points);
-        // debugger
         if (typeof (points) === "number") {
             this.setState({
                 counter: points
