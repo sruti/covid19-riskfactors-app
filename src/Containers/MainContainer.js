@@ -7,6 +7,20 @@ export class MainContainer extends Component {
 
     state = {
         sortValue: "Mortality",
+        counter: 0,
+        showCounter: false,
+    }
+
+    handleCounter = (points) => {
+        if (typeof(points) === "number"){
+            this.setState(prevState => {
+                return {
+                    counter: prevState.counter + points
+                }
+            })
+        } else {
+            return null
+        }
     }
 
     handleSort = (newSortValue) => {
@@ -32,7 +46,7 @@ export class MainContainer extends Component {
         return (
             <main>
                 <SortContainer handleSort={this.handleSort} />
-                <FormContainer data={this.displaySorted()} />
+                <FormContainer data={this.displaySorted()} handleCounter={this.handleCounter} />
             </main>
         )
     }

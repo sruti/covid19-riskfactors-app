@@ -53,7 +53,6 @@ export class FormContainer extends Component {
     }
 
     render() {
-
         return (
             <section className="mainContainer" >
                 {this.props.data[0].basic.map((rowData) => {
@@ -63,6 +62,7 @@ export class FormContainer extends Component {
                         handleClick={this.handleClick}
                         section="basic"
                         currentParentState={this.state[rowData.stateName]}
+                        handleCounter={this.props.handleCounter}
                     />
                 })
                 }
@@ -76,6 +76,7 @@ export class FormContainer extends Component {
                                 handleClick={this.handleClick}
                                 section="advanced"
                                 currentParentState={this.state[rowData.stateName]}
+                                handleCounter={this.handleCounter}
                             />)}
                     </>
                     :

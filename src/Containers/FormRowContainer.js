@@ -31,6 +31,7 @@ export class FormRowContainer extends Component {
 
     handleChange = (val) => {
         this.props.handleClick(this.props.rowData.stateName)
+        this.props.handleCounter(this.props.rowData.points)
     }
 
     render() {
@@ -116,6 +117,7 @@ export class FormRowContainer extends Component {
                                     < FormRow
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
+                                        handleCounter={this.props.handleCounter}
                                         rowData={rowData.stateName.includes("dyspnea") 
                                         ? rr24YesDataObject 
                                         : (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
@@ -125,6 +127,7 @@ export class FormRowContainer extends Component {
                                     < FormRow
                                         handleChange={this.handleChange}
                                         handleClick={this.handleClick}
+                                        handleCounter={this.props.handleCounter}
                                         rowData={rowData.stateName.includes("dyspnea") 
                                         ? rr24NoDataObject 
                                         : (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
