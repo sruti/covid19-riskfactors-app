@@ -7,41 +7,6 @@ export class FormContainer extends Component {
 
     state = {
         show: false,
-        hypertension: false,
-        age: false,
-        covidExposure: false,
-        diabetes: false,
-        cad: false,
-        dyspnea: false,
-        temp: false,
-        sofa: false,
-        neutro: false,
-        lympho: false,
-        ddimer: false,
-        ferritin: false,
-        ldh: false,
-        plateles: false,
-        pt: false,
-        procal: false,
-        cr: false,
-        hstrop: false,
-        hscrp: false,
-        albumin: false,
-        bilirubin: false,
-        alt40: false,
-        ast: false,
-        astalt: false,
-        urea: false,
-        glucose: false,
-    }
-
-    //these two methods could become one
-    handleClick = (title) => {
-        this.setState(prevState => {
-            return {
-                [title]: !prevState[title]
-            }
-        })
     }
 
     handleChange = () => {
@@ -55,28 +20,28 @@ export class FormContainer extends Component {
     render() {
         return (
             <section className="mainContainer" >
-                {this.props.data[0].basic.map((rowData) => {
+                {this.props.data[0][1].map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
-                        handleClick={this.handleClick}
+                        handleClick={this.props.handleClick}
                         section="basic"
-                        currentParentState={this.state[rowData.stateName]}
-                        handleCounter={this.props.handleCounter}
+                        currentParentState={rowData.showing}
+                        exceptions={this.props.exceptions}
                     />
                 })
                 }
                 {this.state.show ?
                     <>
                         <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
-                        {this.props.data[1].advanced.map((rowData) =>
+                        {this.props.data[1][1].map((rowData) =>
                             <FormRowContainer
                                 rowData={rowData}
                                 key={rowData.title}
-                                handleClick={this.handleClick}
+                                handleClick={this.props.handleClick}
                                 section="advanced"
-                                currentParentState={this.state[rowData.stateName]}
-                                handleCounter={this.props.handleCounter}
+                                currentParentState={rowData.showing}
+                                exceptions={this.props.exceptions}
                             />)}
                     </>
                     :

@@ -23,7 +23,7 @@ const mortality = [
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "OR 4.39*", "ratioTitle": "*4.39x per unit↑", "points": 1, "showing": false },
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "OR 80.07*", "ratioTitle": "*80.07x per unit↑", "points": 1, "showing": false },
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
-            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05 (protective)", "points": -, "showing": false1, "protective": true },
+            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05 (protective)", "points": -1, "showing": false, "protective": true },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
             { "stateName": "alt40", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
@@ -57,7 +57,7 @@ const ards = [
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "HR 4.81", "ratioTitle": "4.81x chance", "points": 1, "showing": false },
-            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.49", "ratioTitle": "51% ↓ (protective)", "points": -, "showing": false1, "protective": true },
+            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.49", "ratioTitle": "51% ↓ (protective)", "points": -1, "showing": false, "protective": true },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05", "ratioTitle": "5% ↑", "points": 1, "showing": false },
             { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
@@ -72,7 +72,7 @@ const ardsDeath = [
             { "stateName": "age", "title": "Age (≥65yr)", "ratio": "HR 6.17", "ratioTitle": "6.17x chance", "points": 1, "showing": false },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
             { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
-            { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "HR 0.41", "ratioTitle": "59% ↓ (protective)", "points": -, "showing": false1, "protective": true },
+            { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "HR 0.41", "ratioTitle": "59% ↓ (protective)", "points": -1, "showing": false, "protective": true },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
             { "stateName": "cad", "title": "CAD", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
@@ -91,7 +91,7 @@ const ardsDeath = [
             { "stateName": "cr", "title": "Cr >133 umol/L", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
             { "stateName": "hstrop", "title": "hs-Trop >28 pg/ml", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false},
             { "stateName": "hscrp", "title": "hs-CRP >5 mg/L", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
-            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.19", "ratioTitle": "81% ↓ (protective)", "points": -, "showing": false1, "protective": true },
+            { "stateName": "albumin", "title": "↑ Albumin (g/L)", "ratio": "HR 0.19", "ratioTitle": "81% ↓ (protective)", "points": -1, "showing": false, "protective": true },
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.07", "ratioTitle": "7% ↑", "points": 1, "showing": false },
             { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false }, //this one is white
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
@@ -99,7 +99,7 @@ const ardsDeath = [
         ]
 ]]
 
-const oddBalls = [
+const exceptionObjects = [
     { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑", "points": 1, "showing": false },
     { "stateName": "rr24NoState", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false},
     { "stateName": "alt40YesState", "title": "ALT >40", "ratio": "OR 2.87*", "ratioTitle": "*2.87x per unit↑", "points": 1, "showing": false },
@@ -108,4 +108,4 @@ const oddBalls = [
     { "stateName": "astNoState", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false}
 ]
 
-export { ards, ardsDeath, mortality, oddBalls }
+export { ards, ardsDeath, mortality, exceptionObjects }
