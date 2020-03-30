@@ -144,18 +144,21 @@ export class MainContainer extends Component {
         if (newSortValue === "Mortality") {
             this.setState({
                 sortValue: newSortValue,
-                data: mortality
+                data: mortality,
+                counter: 0
             })
         } else if (newSortValue === "ARDS") {
 
             this.setState({
                 sortValue: newSortValue,
-                data: ards
+                data: ards,
+                counter: 0
             })
         } else {
             this.setState({
                 sortValue: newSortValue,
-                data: ardsDeath
+                data: ardsDeath,
+                counter: 0
             })
         }
     }
