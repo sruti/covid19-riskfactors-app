@@ -9,7 +9,6 @@ import Counter from '../Components/Counter'
 export default class FormRowContainer extends Component {
 
     state = {
-        selected: "Mortality",
         show: true
     }
 
@@ -29,7 +28,7 @@ export default class FormRowContainer extends Component {
     }
 
     prepareProps = () => {
-        let { selected } = this.state
+        let { selected } = this.props
         if (selected === "Mortality") {
             return mortalityStudy
         } else {

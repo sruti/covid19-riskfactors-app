@@ -10,39 +10,6 @@ export class MainContainer extends Component {
         counter: 0,
         data: mortality,
         exceptions: exceptionObjects,
-        hypertension: false,
-        age: false,
-        covidExposure: false,
-        diabetes: false,
-        cad: false,
-        dyspnea: false,
-        temp: false,
-        sofa: false,
-        neutro: false,
-        lympho: false,
-        ddimer: false,
-        ferritin: false,
-        ldh: false,
-        plateles: false,
-        pt: false,
-        procal: false,
-        cr: false,
-        hstrop: false,
-        hscrp: false,
-        albumin: false,
-        bilirubin: false,
-        alt40: false,
-        ast: false,
-        astalt: false,
-        urea: false,
-        glucose: false,
-        il6: false,
-        alt40YesState: false,
-        alt40NoState: false,
-        astYesState: false,
-        astNoState: false,
-        rr24YesState: false,
-        rr24NoState: false,
     }
 
     handleClick = (title, value) => {
@@ -166,8 +133,17 @@ export class MainContainer extends Component {
     render() {
             return (
             <main>
-                <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
-                <FormContainer data={this.state.data} handleClick={this.handleClick} state={this.state} exceptions={this.state.exceptions} />
+                <SortContainer 
+                    handleSort={this.handleSort} 
+                    counter={this.state.counter} 
+                    selected={this.state.sortValue}
+                />
+                <FormContainer 
+                    data={this.state.data} 
+                    handleClick={this.handleClick} 
+                    state={this.state} 
+                    exceptions={this.state.exceptions} 
+                />
             </main>
         )
     }
