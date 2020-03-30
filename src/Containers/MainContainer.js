@@ -110,6 +110,10 @@ export class MainContainer extends Component {
                 }}) 
         }
 
+        if (isNaN(points)){
+            points = 0
+        }
+
         this.setState(prevState => {
             return {
                 [stateKeyToUpdate]: newStateObject,
