@@ -9,6 +9,7 @@ export class MainContainer extends Component {
         sortValue: "Mortality",
         counter: 0,
         showCounter: false,
+        data: []
     }
 
     handleCounter = (points) => {
