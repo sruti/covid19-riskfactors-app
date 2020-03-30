@@ -18,18 +18,19 @@ export class FormContainer extends Component {
     }
 
     render() {
+        let {data, handleClick, state, exceptions} = this.props
         return (
             <section className="mainContainer" >
-                {this.props.data[0][1].map((rowData) => {
+                {data[0][1].map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
-                        handleClick={this.props.handleClick}
+                        handleClick={handleClick}
                         section="basic"
-                        currentParentState={this.props.state[rowData.stateName]}
-                        exceptions={this.props.exceptions}
-                        rr24YesState={this.props.state.rr24YesState}
-                        rr24NoState={this.props.state.rr24NoState}
+                        currentParentState={state[rowData.stateName]}
+                        exceptions={exceptions}
+                        rr24YesState={state.rr24YesState}
+                        rr24NoState={state.rr24NoState}
                     />
                 })
                 }
@@ -40,14 +41,14 @@ export class FormContainer extends Component {
                             <FormRowContainer
                                 rowData={rowData}
                                 key={rowData.title}
-                                handleClick={this.props.handleClick}
+                                handleClick={handleClick}
                                 section="advanced"
-                                currentParentState={this.props.state[rowData.stateName]}
-                                exceptions={this.props.exceptions}
-                                alt40YesState={this.props.state.alt40YesState}
-                                alt40NoState={this.props.state.alt40NoState}
-                                astYesState={this.props.state.astYesState}
-                                astNoState={this.props.state.astNoState}
+                                currentParentState={state[rowData.stateName]}
+                                exceptions={exceptions}
+                                alt40YesState={state.alt40YesState}
+                                alt40NoState={state.alt40NoState}
+                                astYesState={state.astYesState}
+                                astNoState={state.astNoState}
                             />)}
                     </>
                     :

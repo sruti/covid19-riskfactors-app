@@ -12,13 +12,6 @@ export default class FormRowContainer extends Component {
         show: true
     }
 
-    handleChange = (val) => {
-        this.props.handleSort(val)
-        this.setState({
-            selected: val
-        })
-    }
-
     toggleShow = () => {
         this.setState(prevState => {
             return {
@@ -38,9 +31,16 @@ export default class FormRowContainer extends Component {
 
 
     render() {
+        let {handleSort, counter} = this.props
+        
         return (
             <>
-                <ToggleButtonGroup type="radio" name="studyOptions" defaultValue={"Mortality"} onChange={this.handleChange}>
+                <ToggleButtonGroup 
+                    type="radio" 
+                    name="studyOptions" 
+                    defaultValue={"Mortality"} 
+                    onChange={handleSort}
+                >
                     <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
                     <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
                     <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
@@ -57,7 +57,7 @@ export default class FormRowContainer extends Component {
                             <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
                         </div>
                 }
-                <Counter counter={this.props.counter}/>
+                <Counter counter={counter}/>
             </>
         )
     }
