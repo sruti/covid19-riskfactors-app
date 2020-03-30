@@ -12,6 +12,14 @@ export class FormRowContainer extends Component {
         this.props.handleClick(this.props.rowData.stateName)
     }
 
+    changeRatio = (val) => {
+        if (val === "N") {
+            this.props.rowData.ratio = "Insignificant"
+        } else {
+            this.props.rowData.ratio = "OR 8.89*"
+        }
+    }
+
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
         let bgcolor = "white";
@@ -119,17 +127,45 @@ export class FormRowContainer extends Component {
                                 <p> {currentParentState ? rowData.ratioTitle : null}</p>
                             </Col>
                             <Col>
-                                <ToggleButtonGroup
-                                    type="checkbox"
-                                    name="studyOptions"
-                                    value={currentParentState}
-                                    onChange={(value) => handleClick(rowData.stateName, value)}
-                                >
+                            {
+                                rowData.stateName.includes("rr24") || rowData.stateName.includes("leuko")
+                                ?
+                                <>
+                                    <ToggleButtonGroup
+                                        type="radio"
+                                        name="secondaryQs"
+                                        onChange={
+                                        (val) => {                        
+                                            handleClick(rowData.stateName, val)
+                                            this.changeRatio(val)
+                                        }}
+                                    >
+                                        <ToggleButton
+                                            variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                            value={"Y"}
+                                        >Y</ToggleButton>
+                                        <ToggleButton
+                                            variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                            value={"N"}
+                                        >N</ToggleButton>
+                                    </ToggleButtonGroup>
+
+                                </>
+                                :
+                                <>
+                                    <ToggleButtonGroup
+                                        type="checkbox"
+                                        name="studyOptions"
+                                        value={currentParentState}
+                                        onChange={(value) => handleClick(rowData.stateName, value)}
+                                    >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
                                         value={"✓"}
                                     >✓</ToggleButton>
-                                </ToggleButtonGroup>
+                                    </ToggleButtonGroup>
+                                </>
+                            }
                             </Col>
                         </Row>
                     </Container>
