@@ -102,6 +102,7 @@ export class MainContainer extends Component {
             })
         } else {
             stateKeyToUpdate = this.state.exceptions
+            //logic to handle clicking and unclicking of exceptions
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
                     element.showing = !element.showing
@@ -177,11 +178,10 @@ export class MainContainer extends Component {
 
     render() {
         const count = calculateCount(this.state.data, this.state)
-        this.state.count = count
+        this.state.counter = count
         return (
             <main>
-                hello
-                <SortContainer handleSort={this.handleSort} counter={this.state.count} />
+                <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
                 <FormContainer data={this.state.data} handleClick={this.handleClick} state={this.state} exceptions={this.state.exceptions} />
             </main>
         )

@@ -22,10 +22,11 @@ export class FormRowContainer extends Component {
 
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
+        console.log(this.props)
         let bgcolor = "white";
         console.log("cPS", currentParentState)
         if (currentParentState) {
-            console.log(rowData);
+            console.log("rowData", rowData);
             switch (rowData.ratio) {
                 case "?":
                     break
@@ -89,9 +90,7 @@ export class FormRowContainer extends Component {
                                 <>
                                     {/* depending on the row, conditionally render the correct data */}
                                     < FormRow
-                                        handleChange={this.handleChange}
                                         handleClick={this.props.handleClick}
-                                        handleCounter={this.props.handleCounter}
                                         rowData={rowData.stateName.includes("dyspnea")
                                             ? exceptions[0]
                                             : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
@@ -99,9 +98,7 @@ export class FormRowContainer extends Component {
                                             ? this.props.rr24YesState
                                             : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
                                     < FormRow
-                                        handleChange={this.handleChange}
                                         handleClick={this.props.handleClick}
-                                        handleCounter={this.props.handleCounter}
                                         rowData={rowData.stateName.includes("dyspnea")
                                             ? exceptions[1]
                                             : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}

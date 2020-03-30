@@ -28,12 +28,8 @@ export class FormContainer extends Component {
                         section="basic"
                         currentParentState={this.props.state[rowData.stateName]}
                         exceptions={this.props.exceptions}
-                        alt40YesState={this.state.alt40YesState}
-                        alt40NoState={this.state.alt40NoState}
-                        astYesState={this.state.astYesState}
-                        astNoState={this.state.astNoState}
-                        rr24YesState={this.state.rr24YesState}
-                        rr24NoState={this.state.rr24NoState}
+                        rr24YesState={this.props.state.rr24YesState}
+                        rr24NoState={this.props.state.rr24NoState}
                     />
                 })
                 }
@@ -48,6 +44,10 @@ export class FormContainer extends Component {
                                 section="advanced"
                                 currentParentState={this.props.state[rowData.stateName]}
                                 exceptions={this.props.exceptions}
+                                alt40YesState={this.props.state.alt40YesState}
+                                alt40NoState={this.props.state.alt40NoState}
+                                astYesState={this.props.state.astYesState}
+                                astNoState={this.props.state.astNoState}
                             />)}
                     </>
                     :
