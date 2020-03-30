@@ -7,42 +7,6 @@ export class FormContainer extends Component {
 
     state = {
         show: false,
-        hypertension: false,
-        age: false,
-        covidExposure: false,
-        diabetes: false,
-        cad: false,
-        dyspnea: false,
-        temp: false,
-        sofa: false,
-        neutro: false,
-        lympho: false,
-        ddimer: false,
-        ferritin: false,
-        ldh: false,
-        plateles: false,
-        pt: false,
-        procal: false,
-        cr: false,
-        hstrop: false,
-        hscrp: false,
-        albumin: false,
-        bilirubin: false,
-        alt40: false,
-        ast: false,
-        astalt: false,
-        urea: false,
-        glucose: false,
-        il6: false
-    }
-
-    //these two methods could become one
-    handleClick = (title) => {
-        this.setState(prevState => {
-            return {
-                [title]: !prevState[title]
-            }
-        })
     }
 
     handleChange = () => {
@@ -54,30 +18,37 @@ export class FormContainer extends Component {
     }
 
     render() {
+        let { basicData, advancedData, handleClick, state, exceptions } = this.props
         return (
             <section className="mainContainer" >
-                {this.props.data[0].basic.map((rowData) => {
+                {basicData.map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
-                        handleClick={this.handleClick}
+                        handleClick={handleClick}
                         section="basic"
-                        currentParentState={this.state[rowData.stateName]}
-                        handleCounter={this.props.handleCounter}
+                        currentParentState={state[rowData.stateName]}
+                        exceptions={exceptions}
+                        rr24YesState={state.rr24YesState}
+                        rr24NoState={state.rr24NoState}
                     />
                 })
                 }
                 {this.state.show ?
                     <>
                         <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
-                        {this.props.data[1].advanced.map((rowData) =>
+                        {advancedData.map((rowData) =>
                             <FormRowContainer
                                 rowData={rowData}
                                 key={rowData.title}
-                                handleClick={this.handleClick}
+                                handleClick={handleClick}
                                 section="advanced"
-                                currentParentState={this.state[rowData.stateName]}
-                                handleCounter={this.props.handleCounter}
+                                currentParentState={state[rowData.stateName]}
+                                exceptions={exceptions}
+                                alt40YesState={state.alt40YesState}
+                                alt40NoState={state.alt40NoState}
+                                astYesState={state.astYesState}
+                                astNoState={state.astNoState}
                             />)}
                     </>
                     :

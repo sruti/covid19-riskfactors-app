@@ -5,47 +5,16 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
-import { rr24YesDataObject, rr24NoDataObject, alt40YesDataObject, alt40NoDataObject, astYesDataObject, astNoDataObject } from '../data.js'
-
 
 export class FormRowContainer extends Component {
 
-    // this state exists here only for when this component is recursively a parent
-    state = {
-        alt40YesState: false,
-        alt40NoState: false,
-        astYesState: false,
-        astNoState: false,
-        rr24YesState: false,
-        rr24NoState: false,
-    }
-
-    // in recursion, this component becomes the parent and function is here as well as in FormCont so we can pass it
-    handleClick = (stateName) => {
-        this.setState(prevState => {
-            return {
-                [stateName]: !prevState[stateName]
-            }
-        })
-    }
-
-    handleChange = (val) => {
-        let points;
-
-        if (val[0] === false) {
-            points = this.props.rowData.points
-        } else {
-            points = this.props.rowData.points * -1
-        }
+    handleClick = () => {
         this.props.handleClick(this.props.rowData.stateName)
-        this.props.handleCounter(points)
     }
 
     render() {
-        let { rowData, currentParentState } = this.props
-
-        var bgcolor = "white";
-
+        let { rowData, currentParentState, exceptions, handleClick } = this.props
+        let bgcolor = "white";
         if (currentParentState) {
             switch (rowData.ratio) {
                 case "?":
@@ -63,7 +32,7 @@ export class FormRowContainer extends Component {
         return (
             <>
                 {rowData.ratio.includes("?")
-                    ? /////////////////// this is the treatment for the two exceptions ///////////////////
+                    ?
                     <Container
                         className="rowInForm"
                         style={
@@ -94,7 +63,7 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={this.handleChange}
+                                    onChange={(value) => handleClick(rowData.stateName, value)}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
@@ -110,25 +79,21 @@ export class FormRowContainer extends Component {
                                 <>
                                     {/* depending on the row, conditionally render the correct data */}
                                     < FormRow
-                                        handleChange={this.handleChange}
-                                        handleClick={this.handleClick}
-                                        handleCounter={this.props.handleCounter}
+                                        handleClick={this.props.handleClick}
                                         rowData={rowData.stateName.includes("dyspnea")
-                                            ? rr24YesDataObject
-                                            : (rowData.stateName.includes("alt40") ? alt40YesDataObject : astYesDataObject)}
+                                            ? exceptions[0]
+                                            : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
                                         currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.state.rr24YesState
-                                            : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
+                                            ? this.props.rr24YesState
+                                            : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
                                     < FormRow
-                                        handleChange={this.handleChange}
-                                        handleClick={this.handleClick}
-                                        handleCounter={this.props.handleCounter}
+                                        handleClick={this.props.handleClick}
                                         rowData={rowData.stateName.includes("dyspnea")
-                                            ? rr24NoDataObject
-                                            : (rowData.stateName.includes("alt40") ? alt40NoDataObject : astNoDataObject)}
+                                            ? exceptions[1]
+                                            : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}
                                         currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.state.rr24NoState
-                                            : (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
+                                            ? this.props.rr24NoState
+                                            : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} />
                                 </>
                                 : null}
                         </Row>
@@ -158,7 +123,7 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={this.handleChange}
+                                    onChange={(value) => handleClick(rowData.stateName, value)}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}

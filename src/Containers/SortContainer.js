@@ -9,15 +9,7 @@ import Counter from '../Components/Counter'
 export default class FormRowContainer extends Component {
 
     state = {
-        selected: "Mortality",
         show: true
-    }
-
-    handleChange = (val) => {
-        this.props.handleSort(val)
-        this.setState({
-            selected: val
-        })
     }
 
     toggleShow = () => {
@@ -29,7 +21,7 @@ export default class FormRowContainer extends Component {
     }
 
     prepareProps = () => {
-        let { selected } = this.state
+        let { selected } = this.props
         if (selected === "Mortality") {
             return mortalityStudy
         } else {
@@ -39,9 +31,16 @@ export default class FormRowContainer extends Component {
 
 
     render() {
+        let {handleDisplay, counter} = this.props
+        
         return (
             <>
-                <ToggleButtonGroup type="radio" name="studyOptions" defaultValue={"Mortality"} onChange={this.handleChange}>
+                <ToggleButtonGroup 
+                    type="radio" 
+                    name="studyOptions" 
+                    defaultValue={"Mortality"} 
+                    onChange={handleDisplay}
+                >
                     <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
                     <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
                     <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
@@ -58,7 +57,7 @@ export default class FormRowContainer extends Component {
                             <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
                         </div>
                 }
-                <Counter counter={this.props.counter}/>
+                <Counter counter={counter}/>
             </>
         )
     }
