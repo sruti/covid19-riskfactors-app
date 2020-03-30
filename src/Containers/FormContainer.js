@@ -33,6 +33,7 @@ export class FormContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
+        il6: false
     }
 
     //these two methods could become one
