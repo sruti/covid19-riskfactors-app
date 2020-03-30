@@ -28,6 +28,12 @@ export class FormContainer extends Component {
                         section="basic"
                         currentParentState={rowData.showing}
                         exceptions={this.props.exceptions}
+                        alt40YesState={this.state.alt40YesState}
+                        alt40NoState={this.state.alt40NoState}
+                        astYesState={this.state.astYesState}
+                        astNoState={this.state.astNoState}
+                        rr24YesState={this.state.rr24YesState}
+                        rr24NoState={this.state.rr24NoState}
                     />
                 })
                 }

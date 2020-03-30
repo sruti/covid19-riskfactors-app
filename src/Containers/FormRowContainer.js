@@ -22,7 +22,7 @@ export class FormRowContainer extends Component {
 
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
-        // console.log(rowData.stateName);
+        console.log(rowData);
         let bgcolor = "white";
 
         if (currentParentState) {
@@ -73,7 +73,7 @@ export class FormRowContainer extends Component {
                 type="checkbox"
                 name="studyOptions"
                 value={currentParentState}
-                onChange={this.props.handleClick}
+                onChange={(value) => this.props.handleClick(rowData.stateName, value)}
             >
                 <ToggleButton
                     variant={currentParentState ? "dark" : "outline-dark"}
@@ -96,8 +96,8 @@ export class FormRowContainer extends Component {
                 ? exceptions[0]
                 : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
             currentParentState={rowData.stateName.includes("dyspnea")
-                ? this.state.rr24YesState
-                : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
+                ? this.props.rr24YesState
+                : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
         < FormRow
             handleChange={this.handleChange}
             handleClick={this.props.handleClick}
@@ -106,8 +106,8 @@ export class FormRowContainer extends Component {
                 ? exceptions[1]
                 : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}
             currentParentState={rowData.stateName.includes("dyspnea")
-                ? this.state.rr24NoState
-                : (rowData.stateName.includes("alt40") ? this.state.alt40NoState : this.state.astNoState)} />
+                ? this.props.rr24NoState
+                : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} />
     </>
     : null}
         </Row>
