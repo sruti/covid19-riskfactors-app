@@ -13,13 +13,41 @@ export class MainContainer extends Component {
     }
 
     handleClick = (title) => {
-        console.log("hi");
-        // console.log(this.state.data);
-        // this.setState(prevState => {
-        //     return {
-        //         [title]: !prevState[title]
-        //     }
-        // })
+        // const elementToBeUpdated = this.state.data[0][1].find(element => element.stateName === title ) || this.state.data[1][1].find(element => element.stateName === title ) || this.state.exceptions.find(element => element.stateName === title )
+        // debugger
+        let newStateObject;
+        let stateKeyToUpdate; 
+        
+        if (this.state.data[0][1].find(element => element.stateName === title )){
+            stateKeyToUpdate = this.state.data[0][1]
+            newStateObject = stateKeyToUpdate.map(element => {
+            if (element.stateName === title){
+                element.showing = !element.showing
+                return element
+            } else {
+                return element
+            }}) 
+        } else if (this.state.data[1][1].find(element => element.stateName === title )){
+            newStateObject = this.state.data[1][1].map(element => {
+                if (element.stateName === title){
+                    element.showing = !element.showing
+                    return element
+                } else {
+                    return element
+                }}) 
+        } else {
+            newStateObject = this.state.exceptions.map(element => {
+                if (element.stateName === title){
+                    element.showing = !element.showing
+                    return element
+                } else {
+                    return element
+                }}) 
+        }
+
+        this.setState({
+            [stateKeyToUpdate]: newStateObject
+        }, ()=> console.log("UPDATED STATE IN CONSOLE LOG", this.state))
     }
 
     // handleCounter = (points) => {

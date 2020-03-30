@@ -8,25 +8,6 @@ import { FormRowContainer as FormRow } from './FormRowContainer';
 
 export class FormRowContainer extends Component {
 
-    // this state exists here only for when this component is recursively a parent
-    // state = {
-    //     alt40YesState: false,
-    //     alt40NoState: false,
-    //     astYesState: false,
-    //     astNoState: false,
-    //     rr24YesState: false,
-    //     rr24NoState: false,
-    // }
-
-    // in recursion, this component becomes the parent and function is here as well as in FormCont so we can pass it
-    // handleClick = (stateName) => {
-    //     this.setState(prevState => {
-    //         return {
-    //             [stateName]: !prevState[stateName]
-    //         }
-    //     })
-    // }
-
     handleClick = (val) => {
         // let points;
 
@@ -40,7 +21,7 @@ export class FormRowContainer extends Component {
 
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
-        console.log(currentParentState);
+        // console.log(rowData.stateName);
         let bgcolor = "white";
 
         if (currentParentState) {
@@ -108,7 +89,7 @@ export class FormRowContainer extends Component {
         {/* depending on the row, conditionally render the correct data */}
         < FormRow
             handleChange={this.handleChange}
-            handleClick={this.handleClick}
+            handleClick={this.props.handleClick}
             handleCounter={this.props.handleCounter}
             rowData={rowData.stateName.includes("dyspnea")
                 ? exceptions[0]
@@ -118,7 +99,7 @@ export class FormRowContainer extends Component {
                 : (rowData.stateName.includes("alt40") ? this.state.alt40YesState : this.state.astYesState)} />
         < FormRow
             handleChange={this.handleChange}
-            handleClick={this.handleClick}
+            handleClick={this.props.handleClick}
             handleCounter={this.props.handleCounter}
             rowData={rowData.stateName.includes("dyspnea")
                 ? exceptions[1]
@@ -155,7 +136,7 @@ export class FormRowContainer extends Component {
                 type="checkbox"
                 name="studyOptions"
                 value={currentParentState}
-                onChange={this.props.handleClick}
+                onChange={() => this.props.handleClick(rowData.stateName)}
             >
                 <ToggleButton
                     variant={currentParentState ? "dark" : "outline-dark"}
