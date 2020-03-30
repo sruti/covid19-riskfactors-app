@@ -8,10 +8,6 @@ import { FormRowContainer as FormRow } from './FormRowContainer';
 
 export class FormRowContainer extends Component {
 
-    handleClick = () => {
-        this.props.handleClick(this.props.rowData.stateName)
-    }
-
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
         let bgcolor = "white";
@@ -79,7 +75,7 @@ export class FormRowContainer extends Component {
                                 <>
                                     {/* depending on the row, conditionally render the correct data */}
                                     < FormRow
-                                        handleClick={this.props.handleClick}
+                                        handleClick={handleClick}
                                         rowData={rowData.stateName.includes("dyspnea")
                                             ? exceptions[0]
                                             : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
@@ -87,7 +83,7 @@ export class FormRowContainer extends Component {
                                             ? this.props.rr24YesState
                                             : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
                                     < FormRow
-                                        handleClick={this.props.handleClick}
+                                        handleClick={handleClick}
                                         rowData={rowData.stateName.includes("dyspnea")
                                             ? exceptions[1]
                                             : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}

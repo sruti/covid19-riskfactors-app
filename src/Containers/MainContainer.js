@@ -45,7 +45,7 @@ export class MainContainer extends Component {
         rr24NoState: false,
     }
 
-    handleClick = (title, value) => {
+    handleClick = (title, value) => {        
         let newStateObject;
         let stateKeyToUpdate;
         let points;
