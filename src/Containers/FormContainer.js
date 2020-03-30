@@ -18,10 +18,10 @@ export class FormContainer extends Component {
     }
 
     render() {
-        let {data, handleClick, state, exceptions} = this.props
+        let {basicData, advancedData, handleClick, state, exceptions} = this.props
         return (
             <section className="mainContainer" >
-                {data[0][1].map((rowData) => {
+                {basicData.map((rowData) => {
                     return <FormRowContainer
                         rowData={rowData}
                         key={rowData.title}
@@ -37,7 +37,7 @@ export class FormContainer extends Component {
                 {this.state.show ?
                     <>
                         <Button variant="link" onClick={this.handleChange}>Hide Labs</Button>
-                        {this.props.data[1][1].map((rowData) =>
+                        {advancedData.map((rowData) =>
                             <FormRowContainer
                                 rowData={rowData}
                                 key={rowData.title}

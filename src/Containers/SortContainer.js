@@ -31,7 +31,7 @@ export default class FormRowContainer extends Component {
 
 
     render() {
-        let {handleSort, counter} = this.props
+        let {handleDisplay, counter} = this.props
         
         return (
             <>
@@ -39,7 +39,7 @@ export default class FormRowContainer extends Component {
                     type="radio" 
                     name="studyOptions" 
                     defaultValue={"Mortality"} 
-                    onChange={handleSort}
+                    onChange={handleDisplay}
                 >
                     <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
                     <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
