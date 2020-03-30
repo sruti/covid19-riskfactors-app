@@ -126,18 +126,22 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: mortality,
-            }, ()=> this.calculateCount(this.state.data, this.state))
+            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
+                return ["rr24YesState", "rr24NoState", "alt40YesState", "alt40NoState"].includes(factor.stateName)
+            })))
         } else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
                 data: ards,
-            }, ()=> this.calculateCount(this.state.data, this.state))
+            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
+                return ["astNoState", "astYesState"].includes(factor.stateName)
+            })))
         } else {
             this.setState({
                 displayValue: newdisplayValue,
                 data: ardsDeath,
-            }, ()=> this.calculateCount(this.state.data, this.state))
+            }, () => this.calculateCount(this.state.data, this.state, []))
         }
     }
 
@@ -145,8 +149,8 @@ export class MainContainer extends Component {
         let newBasicArray = [...data]
         let newArr = []
         let excludedArr = []
-        for(let i = 0; i < newBasicArray.length; i++){
-            if (this.state[newBasicArray[i]["stateName"]]){
+        for (let i = 0; i < newBasicArray.length; i++) {
+            if (this.state[newBasicArray[i]["stateName"]]) {
                 if (newBasicArray[i]["ratio"] === "Excluded" || newBasicArray[i]["ratio"] === "Insignificant") {
                     excludedArr = [...excludedArr, newBasicArray[i]]
                 }
@@ -154,7 +158,7 @@ export class MainContainer extends Component {
                     newArr = [...newArr, newBasicArray[i]]
                 }
             } else {
-                    newArr = [...newArr, newBasicArray[i]]
+                newArr = [...newArr, newBasicArray[i]]
             }
         }
         const sortedArr = [...newArr, ...excludedArr]
@@ -162,35 +166,40 @@ export class MainContainer extends Component {
     }
 
 
-    calculateCount = (data, state) => {
-    //calculates the count every time a new study renders based on the current state
-    let count = 0
-    data[0][1].map(factor => {
-        return count = count + (state[factor.stateName] ? factor.points : 0)
-    })
-    data[1][1].map(factor => {
-        return count = count + (state[factor.stateName] ? factor.points : 0)
-    })
-    this.setState({
-        counter: count
-    })
-}
+    calculateCount = (data, state, exceptions) => {
+        //calculates the count every time a study renders based on the current state
+        let count = 0
+        data[0][1].map(factor => {
+            return count = count + (state[factor.stateName] ? factor.points : 0)
+        })
+        data[1][1].map(factor => {
+            return count = count + (state[factor.stateName] ? factor.points : 0)
+        })
+        console.log(exceptions)
+        exceptions.map(factor => {
+            console.log(factor, state[factor.stateName])
+            return count = count + (state[factor.stateName] ? factor.points : 0)
+        })
+        this.setState({
+            counter: count
+        })
+    }
 
     render() {
-            let {counter, displayValue, data, exceptions} = this.state
-            return (
+        let { counter, displayValue, data, exceptions } = this.state
+        return (
             <main>
-                <SortContainer 
-                    handleDisplay={this.handleDisplay} 
-                    counter={counter} 
+                <SortContainer
+                    handleDisplay={this.handleDisplay}
+                    counter={counter}
                     selected={displayValue}
                 />
-                <FormContainer 
-                    basicData={this.displaySorted(data[0][1])} 
-                    advancedData={this.displaySorted(data[1][1])} 
-                    handleClick={this.handleClick} 
-                    state={this.state} 
-                    exceptions={exceptions} 
+                <FormContainer
+                    basicData={this.displaySorted(data[0][1])}
+                    advancedData={this.displaySorted(data[1][1])}
+                    handleClick={this.handleClick}
+                    state={this.state}
+                    exceptions={exceptions}
                 />
             </main>
         )
