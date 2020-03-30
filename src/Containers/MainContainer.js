@@ -36,6 +36,7 @@ export class MainContainer extends Component {
         astalt: false,
         urea: false,
         glucose: false,
+        il6: false,
         alt40YesState: false,
         alt40NoState: false,
         astYesState: false,
@@ -48,15 +49,6 @@ export class MainContainer extends Component {
         let newStateObject;
         let stateKeyToUpdate;
         let points;
-        // debugger
-        console.log(title);
-
-        // this.setState(prevState => {
-        //     return {
-        //         [title]: !prevState[title],
-        //         counter: prevState.counter + points,
-        //     }
-        // }, ()=> console.log("UPDATED STATE IN CONSOLE LOG", this.state))
 
         if (this.state.data[0][1].find(element => element.stateName === title)) {
             //logic is to click and unclick and update counter
@@ -64,7 +56,6 @@ export class MainContainer extends Component {
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
                     element.showing = !element.showing
-                    console.log("if", element)
                     if (value[0] === false || value[0] === "undefined") {
                         if (typeof (element.points) === "undefined" || isNaN(element.points)) {
                             points = 0
@@ -89,7 +80,6 @@ export class MainContainer extends Component {
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
                     element.showing = !element.showing
-                    console.log("elseif", element)
                     if (value[0] === false) {
                         points = element.points
                     } else {
@@ -106,7 +96,6 @@ export class MainContainer extends Component {
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
                     element.showing = !element.showing
-                    console.log("else", element)
                     if (value[0] === false) {
                         points = element.points
                     } else {
@@ -129,57 +118,53 @@ export class MainContainer extends Component {
                 [title]: !prevState[title],
                 counter: prevState.counter + points,
             }
-        }, () => console.log("UPDATED STATE IN CONSOLE LOG", this.state))
+        })
     }
-
-    countPoints = (val) => {
-        let points;
-
-
-        return points
-    }
-
-    // handleCounter = (points) => {
-    //     if (typeof (points) === "number" && !isNaN(points)) {
-    //         this.setState(prevState => {
-    //             return {
-    //                 counter: prevState.counter + points
-    //             }
-    //         })
-    //     }
-    // }
 
     handleSort = (newSortValue) => {
         if (newSortValue === "Mortality") {
             this.setState({
                 sortValue: newSortValue,
                 data: mortality,
-            })
+            }, ()=> this.calculateCount(this.state.data, this.state))
         } else if (newSortValue === "ARDS") {
 
             this.setState({
                 sortValue: newSortValue,
                 data: ards,
-            })
+            }, ()=> this.calculateCount(this.state.data, this.state))
         } else {
             this.setState({
                 sortValue: newSortValue,
                 data: ardsDeath,
-            })
+            }, ()=> this.calculateCount(this.state.data, this.state))
         }
     }
 
-    displaySorted = () => {
-        let { sortValue } = this.state
+    // displaySorted = () => {
+    //     let { sortValue } = this.state
 
-        // sorted from the highest to the lowest value
+    //     // sorted from the highest to the lowest value
 
-    }
+    // }
+
+
+    calculateCount = (data, state) => {
+    //calculates the count every time a new study renders based on the current state
+    let count = 0
+    data[0][1].map(factor => {
+        return count = count + (state[factor.stateName] ? factor.points : 0)
+    })
+    data[1][1].map(factor => {
+        return count = count + (state[factor.stateName] ? factor.points : 0)
+    })
+    this.setState({
+        counter: count
+    })
+}
 
     render() {
-        const count = calculateCount(this.state.data, this.state)
-        this.state.counter = count
-        return (
+            return (
             <main>
                 <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
                 <FormContainer data={this.state.data} handleClick={this.handleClick} state={this.state} exceptions={this.state.exceptions} />
@@ -189,20 +174,3 @@ export class MainContainer extends Component {
 }
 
 export default MainContainer
-
-function calculateCount(data, state) {
-    //calculates the count every time a new study renders based on the current state
-    var count = 0
-    data[0][1].map(factor => {
-        count = count + (state[factor.stateName] ? factor.points : 0)
-        console.log(factor.stateName, count)
-    })
-    data[1][1].map(factor => {
-        count = count + (state[factor.stateName] ? factor.points : 0)
-        console.log(factor.stateName, count)
-    })
-    console.log("data", data[0][1])
-    console.log("state", state)
-    console.log(count)
-    return count
-}

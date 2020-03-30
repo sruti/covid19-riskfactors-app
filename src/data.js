@@ -1,7 +1,7 @@
 const mortality = [
     [
         "basic", [
-            { "stateName": "age", "title": "Age (≥65yr)", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1, "showing": false, "showing": false },
+            { "stateName": "age", "title": "Age (≥65yr)", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1, "showing": false },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false },
             { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "showing": false, "points": 0 }, //special case
             { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
@@ -28,6 +28,7 @@ const mortality = [
             { "stateName": "alt40", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false, "points": 0 },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
+            { "stateName": "il6", "title": "IL-6", "ratio": "OR 1.12", "ratioTitle": "1.12x per unit↑", "points": 1, "showing": false }
         ]
     ]
 ]
@@ -61,7 +62,8 @@ const ards = [
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05", "ratioTitle": "5% ↑", "points": 1, "showing": false },
             { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false, "points": 0 },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
-            { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false }, //this one is white in the diagram  
+            { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false }, 
+            { "stateName": "il6", "title": "IL-6", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 1, "showing": false }
         ]
     ]
 ]
@@ -96,6 +98,7 @@ const ardsDeath = [
             { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false }, //this one is white
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
             { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false },
+            { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
         ]
     ]]
 

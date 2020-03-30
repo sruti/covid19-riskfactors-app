@@ -9,24 +9,13 @@ import { FormRowContainer as FormRow } from './FormRowContainer';
 export class FormRowContainer extends Component {
 
     handleClick = () => {
-        // let points;
-
-        // if (val[0] === false) {
-        //     points = this.props.rowData.points
-        // } else {
-        //     points = this.props.rowData.points * -1
-        // }
-        // console.log("TITLE", this.props.rowData.title);
         this.props.handleClick(this.props.rowData.stateName)
     }
 
     render() {
         let { rowData, currentParentState, exceptions, handleClick } = this.props
-        console.log(this.props)
         let bgcolor = "white";
-        console.log("cPS", currentParentState)
         if (currentParentState) {
-            console.log("rowData", rowData);
             switch (rowData.ratio) {
                 case "?":
                     break
@@ -74,7 +63,7 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={(value) => this.props.handleClick(rowData.stateName, value)}
+                                    onChange={(value) => handleClick(rowData.stateName, value)}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
@@ -134,7 +123,7 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={(value) => this.props.handleClick(rowData.stateName, value)}
+                                    onChange={(value) => handleClick(rowData.stateName, value)}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
