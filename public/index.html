@@ -11,7 +11,8 @@
   <meta name="msapplication-TileColor" content="#603cba">
   <meta name="theme-color" content="#ffffff">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Web app to help practitioners garner a basic risk assessment for severity or the development of acute respiratory distress syndrome (ARDS) of COVID patients." />
+  <meta name="description"
+    content="Web app to help practitioners garner a basic risk assessment for severity or the development of acute respiratory distress syndrome (ARDS) of COVID patients." />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -48,5 +49,22 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
+<footer>
+  <!-- Fathom - simple website analytics - https://usefathom.com -->
+  <script>
+    (function (f, a, t, h, o, m) {
+      a[h] = a[h] || function () {
+        (a[h].q = a[h].q || []).push(arguments)
+      };
+      o = f.createElement('script'),
+        m = f.getElementsByTagName('script')[0];
+      o.async = 1; o.src = t; o.id = 'fathom-script';
+      m.parentNode.insertBefore(o, m)
+    })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'GHJLQGVL');
+    fathom('trackPageview');
+  </script>
+  <!-- / Fathom -->
+</footer>
 
 </html>
