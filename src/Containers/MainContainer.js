@@ -9,7 +9,6 @@ export class MainContainer extends Component {
         sortValue: "Mortality",
         counter: 0,
         data: mortality,
-        exceptions: exceptionObjects,
         hypertension: false,
         age: false,
         covidExposure: false,
@@ -172,7 +171,7 @@ export class MainContainer extends Component {
             <main>
                 hello
                 <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
-                <FormContainer data={this.state.data} handleClick={this.handleClick} exceptions={this.state.exceptions}/>
+                <FormContainer data={this.state.data} handleClick={this.handleClick} exceptions={exceptionObjects}/>
             </main>
         )
     }
