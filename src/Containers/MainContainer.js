@@ -12,42 +12,78 @@ export class MainContainer extends Component {
         exceptions: exceptionObjects
     }
 
-    handleClick = (title) => {
-        // const elementToBeUpdated = this.state.data[0][1].find(element => element.stateName === title ) || this.state.data[1][1].find(element => element.stateName === title ) || this.state.exceptions.find(element => element.stateName === title )
-        // debugger
+    handleClick = (title, value) => {
         let newStateObject;
         let stateKeyToUpdate; 
+        let points;     
+        // debugger
+        console.log(title);
         
         if (this.state.data[0][1].find(element => element.stateName === title )){
             stateKeyToUpdate = this.state.data[0][1]
             newStateObject = stateKeyToUpdate.map(element => {
             if (element.stateName === title){
                 element.showing = !element.showing
+                if (value[0] === false || value[0] === "undefined") {
+                    if (typeof(element.points) === "undefined" || isNaN(element.points)){
+                        points = 0
+                    } else {
+                        points = element.points
+                    }
+                } else {
+                    if (typeof(element.points) === "undefined" || isNaN(element.points)){
+                        points = 0
+                    } else {
+                        points = element.points * -1
+                    }
+                }
                 return element
             } else {
                 return element
             }}) 
         } else if (this.state.data[1][1].find(element => element.stateName === title )){
-            newStateObject = this.state.data[1][1].map(element => {
+            stateKeyToUpdate = this.state.data[1][1]
+            newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title){
                     element.showing = !element.showing
+                    if (value[0] === false) {
+                        points = element.points
+                    } else {
+                        points = element.points * -1
+                    }
                     return element
                 } else {
                     return element
                 }}) 
         } else {
-            newStateObject = this.state.exceptions.map(element => {
+            stateKeyToUpdate = this.state.exceptions
+            newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title){
                     element.showing = !element.showing
+                    if (value[0] === false) {
+                        points = element.points
+                    } else {
+                        points = element.points * -1
+                    }
                     return element
                 } else {
                     return element
                 }}) 
         }
 
-        this.setState({
-            [stateKeyToUpdate]: newStateObject
+        this.setState(prevState => {
+            return {
+                [stateKeyToUpdate]: newStateObject,
+                counter: prevState.counter + points,
+            }
         }, ()=> console.log("UPDATED STATE IN CONSOLE LOG", this.state))
+    }
+
+    countPoints = (val) => {
+        let points;
+
+        
+        return points
     }
 
     // handleCounter = (points) => {
@@ -67,6 +103,7 @@ export class MainContainer extends Component {
                 data: mortality
             })
         } else if (newSortValue === "ARDS") {
+
             this.setState({
                 sortValue: newSortValue,
                 data: ards
