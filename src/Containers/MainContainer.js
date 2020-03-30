@@ -9,7 +9,39 @@ export class MainContainer extends Component {
         sortValue: "Mortality",
         counter: 0,
         data: mortality,
-        exceptions: exceptionObjects
+        exceptions: exceptionObjects,
+        hypertension: false,
+        age: false,
+        covidExposure: false,
+        diabetes: false,
+        cad: false,
+        dyspnea: false,
+        temp: false,
+        sofa: false,
+        neutro: false,
+        lympho: false,
+        ddimer: false,
+        ferritin: false,
+        ldh: false,
+        plateles: false,
+        pt: false,
+        procal: false,
+        cr: false,
+        hstrop: false,
+        hscrp: false,
+        albumin: false,
+        bilirubin: false,
+        alt40: false,
+        ast: false,
+        astalt: false,
+        urea: false,
+        glucose: false,
+        alt40YesState: false,
+        alt40NoState: false,
+        astYesState: false,
+        astNoState: false,
+        rr24YesState: false,
+        rr24NoState: false,
     }
 
     handleClick = (title, value) => {
@@ -18,6 +50,13 @@ export class MainContainer extends Component {
         let points;     
         // debugger
         console.log(title);
+
+        // this.setState(prevState => {
+        //     return {
+        //         [title]: !prevState[title],
+        //         counter: prevState.counter + points,
+        //     }
+        // }, ()=> console.log("UPDATED STATE IN CONSOLE LOG", this.state))
         
         if (this.state.data[0][1].find(element => element.stateName === title )){
             stateKeyToUpdate = this.state.data[0][1]
@@ -74,6 +113,7 @@ export class MainContainer extends Component {
         this.setState(prevState => {
             return {
                 [stateKeyToUpdate]: newStateObject,
+                [title]: !prevState[title],
                 counter: prevState.counter + points,
             }
         }, ()=> console.log("UPDATED STATE IN CONSOLE LOG", this.state))
