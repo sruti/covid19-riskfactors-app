@@ -175,7 +175,7 @@ export class MainContainer extends Component {
             <main>
                 hello
                 <SortContainer handleSort={this.handleSort} counter={this.state.counter} />
-                <FormContainer data={this.state.data} handleClick={this.handleClick} exceptions={exceptionObjects}/>
+                <FormContainer data={this.state.data} handleClick={this.handleClick} exceptions={this.state.exceptions}/>
             </main>
         )
     }
