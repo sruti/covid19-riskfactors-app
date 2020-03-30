@@ -9,6 +9,7 @@ export class MainContainer extends Component {
         sortValue: "Mortality",
         counter: 0,
         data: mortality,
+        exceptions: exceptionObjects,
         hypertension: false,
         age: false,
         covidExposure: false,
