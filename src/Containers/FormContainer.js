@@ -26,7 +26,7 @@ export class FormContainer extends Component {
                         key={rowData.title}
                         handleClick={this.props.handleClick}
                         section="basic"
-                        currentParentState={rowData.showing}
+                        currentParentState={this.props.state[rowData.stateName]}
                         exceptions={this.props.exceptions}
                         alt40YesState={this.state.alt40YesState}
                         alt40NoState={this.state.alt40NoState}
@@ -46,7 +46,7 @@ export class FormContainer extends Component {
                                 key={rowData.title}
                                 handleClick={this.props.handleClick}
                                 section="advanced"
-                                currentParentState={rowData.showing}
+                                currentParentState={this.props.state[rowData.stateName]}
                                 exceptions={this.props.exceptions}
                             />)}
                     </>
