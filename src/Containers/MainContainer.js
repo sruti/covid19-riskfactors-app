@@ -11,7 +11,7 @@ export class MainContainer extends Component {
         data: icu,
         exceptions: exceptionObjects,
         hypertension: false,
-        age: false,
+        age: true,
         covidExposure: false,
         diabetes: false,
         cad: false,
@@ -126,6 +126,7 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: mortality,
+                age: true,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
                 return ["rr24YesState", "rr24NoState", "alt40YesState", "alt40NoState"].includes(factor.stateName)
             })))
@@ -133,12 +134,14 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: icu,
+                age: true,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions))
         }else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
                 data: ards,
+                age: false,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
                 return ["astNoState", "astYesState"].includes(factor.stateName)
             })))
@@ -146,6 +149,7 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: ardsDeath,
+                age: false,
             }, () => this.calculateCount(this.state.data, this.state, []))
         }
     }
