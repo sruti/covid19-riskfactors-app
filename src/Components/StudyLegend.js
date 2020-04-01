@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 
 
-export default function StudyLegend({ study: { ratios, ratiosEx, info, citation, comment } }) {
+export default function StudyLegend({ study: { ratios, ratiosEx, info, citation, comment, additionalReading } }) {
 
     return (
         <Container fluid
@@ -16,6 +16,11 @@ export default function StudyLegend({ study: { ratios, ratiosEx, info, citation,
             <p><strong>Ratios: </strong>{ratios}</p>
             <p>Examples: {ratiosEx}</p>
             <p> <strong>Source: </strong>{citation} </p>
+            {
+                additionalReading
+                    ? <p> <strong>Recommended Additional Reading: </strong>{additionalReading} </p>
+                    : null
+            }
             {
                 comment
                     ? <p> <strong>Note: </strong>{comment} </p>

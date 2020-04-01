@@ -5,9 +5,9 @@ const mortality = [
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false, "importance": 6 },
             { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "points": 0, "showing": false, "importance": 5 }, //special case
             { "stateName": "temp", "title": "Temp ≥ 39C (102.2F)", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false, "importance": 4 },
-            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x per unit↑", "points": 1, "showing": false, "importance": 3 },
-            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x per unit↑", "points": 1, "showing": false, "importance": 2 },
-            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x per unit↑", "points": 1, "showing": false, "importance": 1 },
+            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x", "points": 1, "showing": false, "importance": 3 },
+            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x", "points": 1, "showing": false, "importance": 2 },
+            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x", "points": 1, "showing": false, "importance": 1 },
         ]
     ],
     [
@@ -27,7 +27,6 @@ const mortality = [
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
             { "stateName": "alt40", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false, "points": 0 },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
-            { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
             { "stateName": "il6", "title": "IL-6", "ratio": "OR 1.12", "ratioTitle": "1.12x per unit↑", "points": 1, "showing": false }
         ]
     ]
@@ -62,7 +61,6 @@ const ards = [
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.05", "ratioTitle": "5% ↑", "points": 1, "showing": false },
             { "stateName": "ast", "title": "↑ AST/ALT (U/L)", "ratio": "?", "ratioTitle": "", "showing": false, "points": 0 },
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
-            { "stateName": "glucose", "title": "↑ Glucose", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
             { "stateName": "il6", "title": "IL-6", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 1, "showing": false }
         ]
     ]
@@ -97,10 +95,16 @@ const ardsDeath = [
             { "stateName": "bilirubin", "title": "↑ Total Bilirubin", "ratio": "HR 1.07", "ratioTitle": "7% ↑", "points": 1, "showing": false },
             { "stateName": "astalt", "title": "↑ AST/ALT (U/L)", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false }, //this one is white
             { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
-            { "stateName": "glucose", "title": "↑ Glucose", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false },
             { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
         ]
     ]]
+
+const icu = [
+    ["basic", [
+
+    ]
+
+]]
 
 const exceptionObjects = [
     { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑", "points": 1, "showing": false },
@@ -111,4 +115,4 @@ const exceptionObjects = [
     { "stateName": "astNoState", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "showing": false }
 ]
 
-export { ards, ardsDeath, mortality, exceptionObjects }
+export { ards, ardsDeath, mortality, exceptionObjects, icu }

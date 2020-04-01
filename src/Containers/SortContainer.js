@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import Button from 'react-bootstrap/Button'
-import { ardsStudy, mortalityStudy } from '../studies.js'
+import { ardsStudy, mortalityStudy, icuStudy } from '../studies.js'
 import StudyLegend from '../Components/StudyLegend'
 import Counter from '../Components/Counter'
 
@@ -24,6 +24,8 @@ export default class FormRowContainer extends Component {
         let { selected } = this.props
         if (selected === "Mortality") {
             return mortalityStudy
+        } else if (selected === "ICU"){
+            return icuStudy
         } else {
             return ardsStudy
         }
