@@ -101,10 +101,12 @@ const ardsDeath = [
 
 const icu = [
     ["basic", [
-
-    ]
-
-]]
+        { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
+    ]],
+    ["advanced", [
+        { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
+    ]]
+]
 
 const exceptionObjects = [
     { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑", "points": 1, "showing": false },
