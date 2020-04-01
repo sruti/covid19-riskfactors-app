@@ -40,10 +40,10 @@ export default class FormRowContainer extends Component {
                 <ToggleButtonGroup 
                     type="radio" 
                     name="studyOptions" 
-                    defaultValue={"Mortality"} 
+                    defaultValue={"ICU"} 
                     onChange={handleDisplay}
                 >   
-                    <ToggleButton value={"ICU"}>Mortality</ToggleButton>
+                    <ToggleButton value={"ICU"}>ICU</ToggleButton>
                     <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
                     <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
                     <ToggleButton value={"Mortality"}>Mortality</ToggleButton>

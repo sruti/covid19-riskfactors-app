@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import { mortality, ards, ardsDeath, exceptionObjects } from '../data.js'
+import { mortality, ards, ardsDeath, exceptionObjects, icu } from '../data.js'
 
 export class MainContainer extends Component {
 
     state = {
         displayValue: "ICU",
         counter: 0,
-        data: mortality,
+        data: icu,
         exceptions: exceptionObjects,
         hypertension: false,
         age: false,
@@ -129,7 +129,12 @@ export class MainContainer extends Component {
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
                 return ["rr24YesState", "rr24NoState", "alt40YesState", "alt40NoState"].includes(factor.stateName)
             })))
-        } else if (newdisplayValue === "ARDS") {
+        } else if (newdisplayValue === "ICU") {
+            this.setState({
+                displayValue: newdisplayValue,
+                data: icu,
+            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions))
+        }else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
@@ -145,7 +150,7 @@ export class MainContainer extends Component {
         }
     }
 
-    displaySorted = (data) => {
+    displaySorted = (data) => {        
         let newBasicArray = [...data]
         let newArr = []
         let excludedArr = []
@@ -175,9 +180,7 @@ export class MainContainer extends Component {
         data[1][1].map(factor => {
             return count = count + (state[factor.stateName] ? factor.points : 0)
         })
-        console.log(exceptions)
         exceptions.map(factor => {
-            console.log(factor, state[factor.stateName])
             return count = count + (state[factor.stateName] ? factor.points : 0)
         })
         this.setState({
@@ -187,6 +190,7 @@ export class MainContainer extends Component {
 
     render() {
         let { counter, displayValue, data, exceptions } = this.state
+        
         return (
             <main>
                 <SortContainer

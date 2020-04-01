@@ -104,7 +104,7 @@ const icu = [
         { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
     ]],
     ["advanced", [
-        { "stateName": "il6", "title": "IL-6", "ratio": "HR 1.03", "ratioTitle": "3% ↑", "points": 1, "showing": false }
+        { "stateName": "urea", "title": "↑ Urea", "ratio": "HR 1.13", "ratioTitle": "13% ↑", "points": 1, "showing": false },
     ]]
 ]
 

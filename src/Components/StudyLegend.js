@@ -14,7 +14,10 @@ export default function StudyLegend({ study: { ratios, ratiosEx, info, citation,
             }}
         >
             <p><strong>Ratios: </strong>{ratios}</p>
-            <p>Examples: {ratiosEx}</p>
+            { ratiosEx 
+            ? <p><strong>Examples: </strong>{ratiosEx}</p>
+            : null 
+            }
             <p> <strong>Source: </strong>{citation} </p>
             {
                 additionalReading
