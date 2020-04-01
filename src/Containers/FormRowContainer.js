@@ -8,7 +8,25 @@ import { FormRowContainer as FormRow } from './FormRowContainer';
 
 export class FormRowContainer extends Component {
 
+    state = {
+        showOtherLabel: false
+    }
+
+    handleButtonRelease = (event) => {        
+        this.setState({
+            showOtherLabel: false
+        })
+    }
+
+    handleButtonPress = (event) => {
+        this.setState({
+            showOtherLabel: true
+        })
+    }
+
     render() {
+        console.log(this.state.showOtherLabel);
+        
         let { rowData, currentParentState, exceptions, handleClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
@@ -111,8 +129,14 @@ export class FormRowContainer extends Component {
                             <Col>
                                 <p>{rowData.title}</p>
                             </Col>
-                            <Col>
-                                <p> {currentParentState ? rowData.ratioTitle : null}</p>
+                            <Col 
+                                onTouchStart={this.handleButtonPress}
+                                onTouchEnd={this.handleButtonRelease} 
+                                onMouseDown={this.handleButtonPress} 
+                                onMouseUp={this.handleButtonRelease} 
+                                onMouseLeave={this.handleButtonRelease}
+                            >
+                                {/* <p> {currentParentState ? rowData.ratioTitle : null}</p> */}
                             </Col>
                             <Col>
                                 <ToggleButtonGroup
