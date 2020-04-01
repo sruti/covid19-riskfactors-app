@@ -8,7 +8,7 @@ export class MainContainer extends Component {
     state = {
         displayValue: "ICU",
         counter: 0,
-        data: mortality,
+        data: icu,
         exceptions: exceptionObjects,
         hypertension: false,
         age: false,
