@@ -42,10 +42,11 @@ export default class FormRowContainer extends Component {
                     name="studyOptions" 
                     defaultValue={"Mortality"} 
                     onChange={handleDisplay}
-                >
-                    <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
+                >   
+                    <ToggleButton value={"ICU"}>Mortality</ToggleButton>
                     <ToggleButton value={"ARDS"}>ARDS</ToggleButton>
                     <ToggleButton value={"ARDS Death"}>ARDS Death</ToggleButton>
+                    <ToggleButton value={"Mortality"}>Mortality</ToggleButton>
                 </ToggleButtonGroup >
                 {
                     this.state.show

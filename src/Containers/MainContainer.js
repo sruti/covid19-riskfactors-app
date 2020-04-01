@@ -6,7 +6,7 @@ import { mortality, ards, ardsDeath, exceptionObjects } from '../data.js'
 export class MainContainer extends Component {
 
     state = {
-        displayValue: "Mortality",
+        displayValue: "ICU",
         counter: 0,
         data: mortality,
         exceptions: exceptionObjects,
