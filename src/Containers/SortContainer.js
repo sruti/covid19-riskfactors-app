@@ -33,7 +33,7 @@ export default class FormRowContainer extends Component {
 
 
     render() {
-        let {handleDisplay, counter} = this.props
+        let {handleDisplay, counter, sum} = this.props
         
         return (
             <>
@@ -60,7 +60,7 @@ export default class FormRowContainer extends Component {
                             <Button variant="link" onClick={this.toggleShow}>Show Legend</Button>
                         </div>
                 }
-                <Counter counter={counter}/>
+                <Counter counter={counter} sum={sum}/>
             </>
         )
     }

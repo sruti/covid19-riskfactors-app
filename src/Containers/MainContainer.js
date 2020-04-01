@@ -8,7 +8,7 @@ export class MainContainer extends Component {
     state = {
         displayValue: "ICU",
         counter: 0,
-        data: icu,
+        data: mortality,
         exceptions: exceptionObjects,
         hypertension: false,
         age: false,
@@ -188,15 +188,27 @@ export class MainContainer extends Component {
         })
     }
 
+    numberOfLabs = () => {
+        // debugger
+        let basicNumber = this.state.data[0][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
+        
+        let advancedNumber = this.state.data[1][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
+        
+        let sum = basicNumber + advancedNumber
+        
+        return sum
+    }
+
     render() {
         let { counter, displayValue, data, exceptions } = this.state
-        
+
         return (
             <main>
                 <SortContainer
                     handleDisplay={this.handleDisplay}
                     counter={counter}
                     selected={displayValue}
+                    sum={this.numberOfLabs()}
                 />
                 <FormContainer
                     basicData={this.displaySorted(data[0][1])}
