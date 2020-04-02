@@ -53,7 +53,7 @@ export class SecondaryQuestionContainer extends Component {
                             onMouseLeave={this.handleButtonRelease}
                         >
                             <p> {(this.props.state[parentStateName + "Yes"] || this.props.state[parentStateName + "No"])
-                                ? showOtherLabel
+                                ? this.state.showOtherLabel
                                     ? rowData.ratio
                                     : rowData.ratioTitle
                                 : null}</p>
