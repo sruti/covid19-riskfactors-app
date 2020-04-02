@@ -24,9 +24,7 @@ export class FormRowContainer extends Component {
         })
     }
 
-    render() {
-        console.log(this.state.showOtherLabel);
-        
+    render() {        
         let { rowData, currentParentState, exceptions, handleClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
@@ -136,20 +134,49 @@ export class FormRowContainer extends Component {
                                 onMouseUp={this.handleButtonRelease} 
                                 onMouseLeave={this.handleButtonRelease}
                             >
-                                {/* <p> {currentParentState ? rowData.ratioTitle : null}</p> */}
+                                <p> {currentParentState ? rowData.ratioTitle : null}</p>
                             </Col>
                             <Col>
-                                <ToggleButtonGroup
-                                    type="checkbox"
-                                    name="studyOptions"
-                                    value={currentParentState}
-                                    onChange={(value) => handleClick(rowData.stateName, value)}
-                                >
-                                    <ToggleButton
-                                        variant={currentParentState ? "dark" : "outline-dark"}
-                                        value={"✓"}
-                                    >✓</ToggleButton>
-                                </ToggleButtonGroup>
+                                {
+                                    // these terms are not correct
+                                    rowData.stateName.includes("dyspnea") || rowData.stateName.includes("leuko")
+                                    ?
+                                    <>
+                                        <ToggleButtonGroup
+                                            type="radio"
+                                            name="studyOptions"
+                                            value={currentParentState}
+                                            onChange={
+                                            (val) => {                        
+                                                handleClick(rowData.stateName, val)
+                                            }}
+                                        >
+                                            <ToggleButton
+                                                variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                                value={"Y"}
+                                            >Y</ToggleButton>
+                                            <ToggleButton
+                                                variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                                value={"N"}
+                                            >N</ToggleButton>
+                                        </ToggleButtonGroup>
+
+                                    </>
+                                    :
+                                    <>
+                                        <ToggleButtonGroup
+                                            type="checkbox"
+                                            name="studyOptions"
+                                            value={currentParentState}
+                                            onChange={(value) => handleClick(rowData.stateName, value)}
+                                        >
+                                        <ToggleButton
+                                            variant={currentParentState ? "dark" : "outline-dark"}
+                                            value={"✓"}
+                                        >✓</ToggleButton>
+                                        </ToggleButtonGroup>
+                                    </>
+                                }
                             </Col>
                         </Row>
                     </Container>
@@ -160,3 +187,4 @@ export class FormRowContainer extends Component {
 }
 
 export default FormRowContainer
+
