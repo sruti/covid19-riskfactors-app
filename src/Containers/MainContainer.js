@@ -7,7 +7,7 @@ export class MainContainer extends Component {
 
     state = {
         displayValue: "ICU",
-        counter: 0,
+        counter: 1,
         data: icu,
         exceptions: exceptionObjects,
         hypertension: false,
@@ -45,17 +45,31 @@ export class MainContainer extends Component {
         rr24NoState: false,
     }
 
-    handleClick = (title, value) => {        
+    handleYNClick = (title, value) => {
+        
+    }
+
+    handleClick = (title, value) => {
+        console.log(`VALUE of ${title}`, value[0]);
+        console.log("STATE of the object", this.state[title]);
+        
+                
         let newStateObject;
         let stateKeyToUpdate;
         let points;
+
+        // 1. find where the element lives: adv or basic -> it's found
+        // 2. check if:
+        // - the value is false or undefined, in which case set the points;
+        // - the value is ok, and then deduct points
+        // - if the points are undefined, points equal 0
+        // 3. setState with the points
 
         if (this.state.data[0][1].find(element => element.stateName === title)) {
             //logic is to click and unclick and update counter
             stateKeyToUpdate = this.state.data[0][1]
             newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {
-                    element.showing = !element.showing
+                if (element.stateName === title) {                    
                     if (value[0] === false || value[0] === "undefined") {
                         if (typeof (element.points) === "undefined" || isNaN(element.points)) {
                             points = 0
@@ -74,12 +88,11 @@ export class MainContainer extends Component {
                     return element
                 }
             })
-        } else if (this.state.data[1][1].find(element => element.stateName === title)) {
+        } else if (this.state.data[1][1].find(element => element.stateName === title)) {            
             //logic to handle clicking and unclicking of advanced data
             stateKeyToUpdate = this.state.data[1][1]
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
-                    element.showing = !element.showing
                     if (value[0] === false) {
                         points = element.points
                     } else {
@@ -95,7 +108,6 @@ export class MainContainer extends Component {
             //logic to handle clicking and unclicking of exceptions
             newStateObject = stateKeyToUpdate.map(element => {
                 if (element.stateName === title) {
-                    element.showing = !element.showing
                     if (value[0] === false) {
                         points = element.points
                     } else {
