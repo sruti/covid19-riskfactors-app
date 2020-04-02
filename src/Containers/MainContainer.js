@@ -126,6 +126,7 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: mortality,
+                counter: 1,
                 age: true,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
                 return ["rr24YesState", "rr24NoState", "alt40YesState", "alt40NoState"].includes(factor.stateName)
@@ -134,6 +135,7 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: icu,
+                counter: 1,
                 age: true,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions))
         }else if (newdisplayValue === "ARDS") {
