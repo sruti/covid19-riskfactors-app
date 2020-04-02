@@ -165,7 +165,7 @@ const ardsDeath = [
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
             { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 },
             {
-                "stateName": "temp", "title": "Fever", "ratio": "HR 0.41", "ratioTitle": "", "points": 0, "protective": true, "pointsYes": -1, "pointsNo": 0,
+                "stateName": "temp", "title": "Fever", "ratio": "?", "ratioTitle": "", "points": 0, "protective": true, "pointsYes": -1, "pointsNo": 0,
                 "secondaryQuestion": {
                     "title": "≥ 39℃ (102.2℉)?",
                     "yes": { "stateName": "tempYes", "ratio": "HR 0.41", "ratioTitle": "59% ↓ (protective) ℹ", "protective": true },
@@ -209,7 +209,7 @@ const icu = [
     ["basic", [
         { "stateName": "age", "title": "Age", "ratio": "66 (57-78) vs. 51 (37-62)", "ratioTitle": "p <0.001 ℹ", "points": 1 },
         { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 },
-        { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p <0.001", "ratioTitle": "p <0.001", "pointsYes": 1, "pointsNo": 0 }, //special case
+        { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1 }, //special case
         { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
         { "stateName": "hypertension", "title": "Hypertension", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1 },
         { "stateName": "diabetes", "title": "Diabetes", "ratio": "p=0.009", "ratioTitle": "p=0.009", "points": 1 },

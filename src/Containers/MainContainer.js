@@ -328,8 +328,8 @@ export class MainContainer extends Component {
         })
         secondaryStates.map(factor => {
             console.log("factorstatename", factor, factor, state[factor])
-            if (factor === "ardsDeath_tempYes") { //hack for accounting for protective factor of fever for ards death
-                return count = count + (state[factor] ? -1 : 0)
+            if (factor === "ardsDeath_tempYes") { //hack to account for ARDS Death, Fever points = -1
+                return count = count + (state["tempYes"] ? -1 : 0)
             }
             else {
                 return count = count + (state[factor] ? 1 : 0)
