@@ -66,7 +66,6 @@ export class SecondaryQuestionContainer extends Component {
                                 onChange={
                                     (val) => {
                                         handleYNClick(parentStateName, val)
-                                        console.log(parentStateName, currentParentState)
                                     }}
                             >
                                 <ToggleButton
