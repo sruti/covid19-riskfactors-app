@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import { mortality, ards, ardsDeath, exceptionObjects, icu } from '../data.js'
+import { mortality, ards, ardsDeath, icu } from '../data.js'
 
 export class MainContainer extends Component {
 
@@ -9,8 +9,8 @@ export class MainContainer extends Component {
         displayValue: "ICU",
         counter: 1,
         data: icu,
-        exceptions: exceptionObjects,
         hypertension: false,
+        exceptions: [],
         age: true,
         covidExposure: false,
         diabetes: false,
@@ -18,7 +18,7 @@ export class MainContainer extends Component {
         dyspnea: false,
         temp: false,
         sofa: false,
-        neutro: false,
+        leuko: false,
         lympho: false,
         ddimer: false,
         ferritin: false,
@@ -37,17 +37,35 @@ export class MainContainer extends Component {
         urea: false,
         glucose: false,
         il6: false,
-        alt40YesState: false,
-        alt40NoState: false,
-        astYesState: false,
-        astNoState: false,
-        rr24YesState: false,
-        rr24NoState: false,
+        alt40Yes: false,
+        alt40No: false,
+        astYes: false,
+        astNo: false,
         dyspneaYes: false,
-        dyspneaNo: false
+        dyspneaNo: false,
+        leukoYes: false,
+        leukoNo: false,
+        ddimerYes: false,
+        ddimerNo: false,
+        ferritinYes: false,
+        ferritinNo: false,
+        ldhYes: false,
+        ldhNo: false,
+        ptYes: false,
+        ptNo: false,
+        crYes: false,
+        crNo: false,
+        hstropYes: false,
+        hstropNo: false,
+        tempYes: false,
+        tempNo: false,
+        ageYes: false,
+        ageNo: false,
+        procalYes: false,
+        procalNo: false
     }
 
-    setColor = (ratio, stateName, protective=false) => {
+    setColor = (ratio, stateName, protective = false) => {
         let bgcolor = "white"
 
         if (this.state[stateName]) {
@@ -66,8 +84,8 @@ export class MainContainer extends Component {
     }
 
     handleYNClick = (title, value) => {
-        // console.log("title", title)
-        // console.log("value", value)
+        console.log("title", title)
+        console.log("value", value)
         // 1. add in state: dyspnea, dyspneaYes, dyspneaNo
         // - dyspnea is there to retain the clickability across the tabs
         // - dyspneaYes and dyspneaNo are there to track what was clicked; they need to reset across tabs
@@ -214,21 +232,21 @@ export class MainContainer extends Component {
                     return element
                 }
             })
-        } else {
-            stateKeyToUpdate = this.state.exceptions
-            //logic to handle clicking and unclicking of exceptions
-            newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {
-                    if (value[0] === false) {
-                        points = element.points
-                    } else {
-                        points = element.points * -1
-                    }
-                    return element
-                } else {
-                    return element
-                }
-            })
+            // } else {
+            //     stateKeyToUpdate = this.state.exceptions
+            //     //logic to handle clicking and unclicking of exceptions
+            //     newStateObject = stateKeyToUpdate.map(element => {
+            //         if (element.stateName === title) {
+            //             if (value[0] === false) {
+            //                 points = element.points
+            //             } else {
+            //                 points = element.points * -1
+            //             }
+            //             return element
+            //         } else {
+            //             return element
+            //         }
+            //     })
         }
 
         if (isNaN(points)) {
@@ -309,9 +327,9 @@ export class MainContainer extends Component {
         data[1][1].map(factor => {
             return count = count + (state[factor.stateName] ? factor.points : 0)
         })
-        exceptions.map(factor => {
-            return count = count + (state[factor.stateName] ? factor.points : 0)
-        })
+        // exceptions.map(factor => {
+        //     return count = count + (state[factor.stateName] ? factor.points : 0)
+        // })
         this.setState({
             counter: count
         })
@@ -345,8 +363,8 @@ export class MainContainer extends Component {
                     handleClick={this.handleClick}
                     handleYNClick={this.handleYNClick}
                     state={this.state}
-                    exceptions={exceptions}
                     setColor={this.setColor}
+                // exceptions={exceptions}
                 />
             </main>
         )

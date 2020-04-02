@@ -54,8 +54,8 @@ export class SecondaryQuestionContainer extends Component {
                         >
                             <p> {(this.props.state[parentStateName + "Yes"] || this.props.state[parentStateName + "No"])
                                 ? showOtherLabel
-                                    ? rowData.ratioTitle
-                                    : rowData.ratio
+                                    ? rowData.ratio
+                                    : rowData.ratioTitle
                                 : null}</p>
                         </Col>
                         <Col>
