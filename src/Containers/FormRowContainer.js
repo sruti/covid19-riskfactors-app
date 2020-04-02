@@ -130,8 +130,8 @@ export class FormRowContainer extends Component {
                             >
                                 <p> {currentParentState 
                                         ? this.state.showOtherLabel 
-                                            ? rowData.ratioTitle 
-                                            : rowData.ratio
+                                            ? rowData.ratio 
+                                            : rowData.ratioTitle
                                         : null}</p>
                             </Col>
                             <Col>
