@@ -23,7 +23,7 @@ export class SecondaryQuestionContainer extends Component {
     }
 
     render() {
-        let { rowData, currentParentState, handleClick } = this.props
+        let { rowData, currentParentState, parentStateName, handleYNClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
             switch (rowData.ratio) {
@@ -72,7 +72,7 @@ export class SecondaryQuestionContainer extends Component {
                                 value={currentParentState}
                                 onChange={
                                     (val) => {
-                                        handleClick(rowData.stateName, val)
+                                        handleYNClick(parentStateName, val)
                                     }}
                             >
                                 <ToggleButton

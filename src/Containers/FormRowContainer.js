@@ -94,9 +94,11 @@ export class FormRowContainer extends Component {
                                     <SecondaryQuestion
                                         handleClick={handleClick}
                                         rowData={rowData.secondaryQuestion}
-                                        currentParentState={this.props.rr24YesState}
+                                        parentStateName={rowData.stateName}
+                                        currentParentState={currentParentState}
                                         handleButtonRelease={this.handleButtonRelease}
                                         handleButtonPress={this.handleButtonPress}
+                                        handleYNClick={handleYNClick}
                                     />
                                     {/* < FormRow
                                         handleClick={handleClick}

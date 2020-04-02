@@ -1,16 +1,20 @@
 const mortality = [
     [
         "basic", [
-            { "stateName": "age", "title": "Age", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1, "showing": false },
-            { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false },
+            { "stateName": "age", "title": "Age", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1 },
+            { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1 },
             {
-                "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "points": 0, "showing": false,
-                "secondaryQuestion": { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑", "points": 1, "showing": false }
+                "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "pointsYes": 1, "pointsNo": 0,
+                "secondaryQuestion": {
+                    "yes": { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑" },
+                    "no": { "stateName": "rr24NoState", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
+                }
+
             }, //special case
-            { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
-            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x", "points": 1, "showing": false },
-            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x", "points": 1, "showing": false },
-            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x", "points": 1, "showing": false },
+            { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
+            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x", "points": 1 },
+            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x", "points": 1 },
+            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x", "points": 1 },
         ]
     ],
     [

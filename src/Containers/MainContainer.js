@@ -48,6 +48,8 @@ export class MainContainer extends Component {
     }
 
     handleYNClick = (title, value) => {
+        console.log("title", title)
+        console.log("value", value)
         // 1. add in state: dyspnea, dyspneaYes, dyspneaNo
         // - dyspnea is there to retain the clickability across the tabs
         // - dyspneaYes and dyspneaNo are there to track what was clicked; they need to reset across tabs
@@ -59,84 +61,91 @@ export class MainContainer extends Component {
         // 7. find the element
         // 8. add/deduct points logic
         // 9. click through
-        
+
         let yes = title + "Yes";
         let no = title + "No";
         let points;
-        let element = this.state.data[0][1].find(element => element.stateName === title) || this.state.data[1][1].find(element => element.stateName === title) || this.state.exceptions.find(element => element.stateName === title) 
+        let element = this.state.data[0][1].find(element => element.stateName === title) || this.state.data[1][1].find(element => element.stateName === title)
         // debugger       
 
-        if (value === "Y"){           
+        if (value === "Y") {
             // this is if the person first clicked no and wants to change the answer 
-            points = (element.noPoints * -1) + element.yesPoints
-            if ( this.state[no]=== true){
+            points = (element.pointsNo * -1) + element.pointsYes
+            if (this.state[no] === true) {
                 this.setState(prevState => {
-                    return {[title]: true,
-                    [yes]: true,
-                    [no]: false,
-                    counter: prevState.counter + points
-                }
+                    return {
+                        [title]: true,
+                        [yes]: true,
+                        [no]: false,
+                        counter: prevState.counter + points
+                    }
                 }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
                 // now, this else if unclicks the earlier clicked yes
             } else if (this.state[yes] === true) {
-                points = element.yesPoints * -1
+                points = element.pointsYes * -1
                 this.setState(prevState => {
-                    return {[title]: false,
-                    [yes]: false,
-                    [no]: false,
-                    counter: prevState.counter + points
-                }
+                    return {
+                        [title]: false,
+                        [yes]: false,
+                        [no]: false,
+                        counter: prevState.counter + points
+                    }
                 }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
                 // and this is when they choose yes the first time
-            } else if (this.state[yes] === false){
-                points = element.yesPoints
+            } else if (this.state[yes] === false) {
+                points = element.pointsYes
                 this.setState(prevState => {
-                    return {[title]: true,
-                    [yes]: true,
-                    [no]: false,
-                    counter: prevState.counter + points
+                    return {
+                        [title]: true,
+                        [yes]: true,
+                        [no]: false,
+                        counter: prevState.counter + points
                     }
-                }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))     
+                }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
             } else {
                 console.log("problem with the conditional on Y branch");
             }
-        } else if (value === "N"){
+        } else if (value === "N") {
             // this is when the person wants to unclick earlier-clicked no
-            if ( this.state[no]=== true){
-                points = element.noPoints * -1
+            if (this.state[no] === true) {
+                points = element.pointsNo * -1
                 this.setState(prevState => {
-                    return {[title]: false,
-                    [yes]: false,
-                    [no]: false, 
-                    counter: prevState.counter + points
-                }
+                    return {
+                        [title]: false,
+                        [yes]: false,
+                        [no]: false,
+                        counter: prevState.counter + points
+                    }
                 }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
                 // now, this else if changes the answer from yes to no
             } else if (this.state[yes] === true) {
-                points = (element.yesPoints * -1) + element.noPoints
+                points = (element.pointsYes * -1) + element.pointsNo
                 this.setState(prevState => {
-                    return {[title]: true,
-                    [yes]: false,
-                    [no]: true,
-                    counter: prevState.counter + points
-                }
+                    return {
+                        [title]: true,
+                        [yes]: false,
+                        [no]: true,
+                        counter: prevState.counter + points
+                    }
                 }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
                 // and this is when they choose no the first time
-            } else if (this.state[yes] === false){
-                points = element.noPoints
+            } else if (this.state[yes] === false) {
+                points = element.pointsNo
                 this.setState(prevState => {
-                    return {[title]: true,
-                    [yes]: false,
-                    [no]: true,
-                    counter: prevState.counter + points}
-                }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))     
+                    return {
+                        [title]: true,
+                        [yes]: false,
+                        [no]: true,
+                        counter: prevState.counter + points
+                    }
+                }, () => console.log(`state of ${title}`, this.state[title], `state of ${no}`, this.state[no], `state of ${yes}`, this.state[yes]))
             } else {
                 console.log("problem with the conditional on N branch");
             }
         }
     }
 
-    handleClick = (title, value) => {                
+    handleClick = (title, value) => {
         let newStateObject;
         let stateKeyToUpdate;
         let points;
@@ -153,7 +162,7 @@ export class MainContainer extends Component {
             //logic is to click and unclick and update counter
             stateKeyToUpdate = this.state.data[0][1]
             newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {                    
+                if (element.stateName === title) {
                     if (value[0] === false || value[0] === "undefined") {
                         if (typeof (element.points) === "undefined" || isNaN(element.points)) {
                             points = 0
@@ -172,7 +181,7 @@ export class MainContainer extends Component {
                     return element
                 }
             })
-        } else if (this.state.data[1][1].find(element => element.stateName === title)) {            
+        } else if (this.state.data[1][1].find(element => element.stateName === title)) {
             //logic to handle clicking and unclicking of advanced data
             stateKeyToUpdate = this.state.data[1][1]
             newStateObject = stateKeyToUpdate.map(element => {
@@ -234,7 +243,7 @@ export class MainContainer extends Component {
                 counter: 1,
                 age: true,
             }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions))
-        }else if (newdisplayValue === "ARDS") {
+        } else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
@@ -252,7 +261,7 @@ export class MainContainer extends Component {
         }
     }
 
-    displaySorted = (data) => {        
+    displaySorted = (data) => {
         let newBasicArray = [...data]
         let newArr = []
         let excludedArr = []
@@ -293,11 +302,11 @@ export class MainContainer extends Component {
     numberOfLabs = () => {
         // debugger
         let basicNumber = this.state.data[0][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
-        
+
         let advancedNumber = this.state.data[1][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
-        
+
         let sum = basicNumber + advancedNumber
-        
+
         return sum
     }
 
