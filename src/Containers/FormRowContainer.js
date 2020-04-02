@@ -25,7 +25,7 @@ export class FormRowContainer extends Component {
     }
 
     render() {        
-        let { rowData, currentParentState, exceptions, handleClick } = this.props
+        let { rowData, currentParentState, exceptions, handleClick, handleYNClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
             switch (rowData.ratio) {
@@ -148,7 +148,7 @@ export class FormRowContainer extends Component {
                                             value={currentParentState}
                                             onChange={
                                             (val) => {                        
-                                                handleClick(rowData.stateName, val)
+                                                handleYNClick(rowData.stateName, val)
                                             }}
                                         >
                                             <ToggleButton

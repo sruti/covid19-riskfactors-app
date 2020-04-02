@@ -103,7 +103,7 @@ const icu = [
     ["basic", [
         { "stateName": "age", "title": "Age", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1, "importance": 7 },
         { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0, "importance": 6 },
-        { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1, "importance": 5 }, //special case
+        { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p <0.001", "ratioTitle": "p <0.001", "yesPoints": 1, "noPoints": 0, "importance": 5 }, //special case
         { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "importance": 4 },
         { "stateName": "hypertension", "title": "Hypertension", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1, "importance": 3 },
         { "stateName": "diabetes", "title": "Diabetes", "ratio": "p=0.009", "ratioTitle": "p=0.009", "points": 1, "importance": 2 },

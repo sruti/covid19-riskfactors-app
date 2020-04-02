@@ -18,7 +18,7 @@ export class FormContainer extends Component {
     }
 
     render() {
-        let { basicData, advancedData, handleClick, state, exceptions } = this.props
+        let { basicData, advancedData, handleClick, state, exceptions, handleYNClick } = this.props
         return (
             <section className="mainContainer" >
                 {basicData.map((rowData) => {
@@ -26,6 +26,7 @@ export class FormContainer extends Component {
                         rowData={rowData}
                         key={rowData.title}
                         handleClick={handleClick}
+                        handleYNClick={handleYNClick}
                         section="basic"
                         currentParentState={state[rowData.stateName]}
                         exceptions={exceptions}
@@ -42,6 +43,7 @@ export class FormContainer extends Component {
                                 rowData={rowData}
                                 key={rowData.title}
                                 handleClick={handleClick}
+                                handleYNClick={handleYNClick}
                                 section="advanced"
                                 currentParentState={state[rowData.stateName]}
                                 exceptions={exceptions}
