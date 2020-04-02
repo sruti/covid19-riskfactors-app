@@ -29,10 +29,11 @@ export class FormContainer extends Component {
                         handleYNClick={handleYNClick}
                         section="basic"
                         currentParentState={state[rowData.stateName]}
-                        exceptions={exceptions}
+                        // exceptions={exceptions}
                         rr24YesState={state.rr24YesState}
                         rr24NoState={state.rr24NoState}
                         setColor={setColor}
+                        state={this.props.state}
                     />
                 })
                 }
@@ -47,12 +48,13 @@ export class FormContainer extends Component {
                                 handleYNClick={handleYNClick}
                                 section="advanced"
                                 currentParentState={state[rowData.stateName]}
-                                exceptions={exceptions}
+                                // exceptions={exceptions}
                                 alt40YesState={state.alt40YesState}
                                 alt40NoState={state.alt40NoState}
                                 astYesState={state.astYesState}
                                 astNoState={state.astNoState}
                                 setColor={setColor}
+                                state={this.props.state}
                             />)}
                     </>
                     :

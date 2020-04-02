@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
-import { mortality, ards, ardsDeath, exceptionObjects, icu } from '../data.js'
+import { mortality, ards, ardsDeath, icu } from '../data.js'
 
 export class MainContainer extends Component {
 
@@ -9,8 +9,8 @@ export class MainContainer extends Component {
         displayValue: "ICU",
         counter: 1,
         data: icu,
-        exceptions: exceptionObjects,
         hypertension: false,
+        exceptions: [],
         age: true,
         covidExposure: false,
         diabetes: false,
@@ -18,7 +18,7 @@ export class MainContainer extends Component {
         dyspnea: false,
         temp: false,
         sofa: false,
-        neutro: false,
+        leuko: false,
         lympho: false,
         ddimer: false,
         ferritin: false,
@@ -37,17 +37,35 @@ export class MainContainer extends Component {
         urea: false,
         glucose: false,
         il6: false,
-        alt40YesState: false,
-        alt40NoState: false,
-        astYesState: false,
-        astNoState: false,
-        rr24YesState: false,
-        rr24NoState: false,
+        alt40Yes: false,
+        alt40No: false,
+        astYes: false,
+        astNo: false,
         dyspneaYes: false,
-        dyspneaNo: false
+        dyspneaNo: false,
+        leukoYes: false,
+        leukoNo: false,
+        ddimerYes: false,
+        ddimerNo: false,
+        ferritinYes: false,
+        ferritinNo: false,
+        ldhYes: false,
+        ldhNo: false,
+        ptYes: false,
+        ptNo: false,
+        crYes: false,
+        crNo: false,
+        hstropYes: false,
+        hstropNo: false,
+        tempYes: false,
+        tempNo: false,
+        ageYes: false,
+        ageNo: false,
+        procalYes: false,
+        procalNo: false
     }
 
-    setColor = (ratio, stateName, protective=false) => {
+    setColor = (ratio, stateName, protective = false) => {
         let bgcolor = "white"
 
         if (this.state[stateName]) {
@@ -66,8 +84,8 @@ export class MainContainer extends Component {
     }
 
     handleYNClick = (title, value) => {
-        // console.log("title", title)
-        // console.log("value", value)
+        console.log("title", title)
+        console.log("counter", this.state.counter)
         // 1. add in state: dyspnea, dyspneaYes, dyspneaNo
         // - dyspnea is there to retain the clickability across the tabs
         // - dyspneaYes and dyspneaNo are there to track what was clicked; they need to reset across tabs
@@ -101,6 +119,7 @@ export class MainContainer extends Component {
                 // now, this else if unclicks the earlier clicked yes
             } else if (this.state[yes] === true) {
                 points = element.pointsYes * -1
+                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: false,
@@ -112,6 +131,7 @@ export class MainContainer extends Component {
                 // and this is when they choose yes the first time
             } else if (this.state[yes] === false) {
                 points = element.pointsYes
+                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -127,6 +147,7 @@ export class MainContainer extends Component {
             // this is when the person wants to unclick earlier-clicked no
             if (this.state[no] === true) {
                 points = element.pointsNo * -1
+                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: false,
@@ -138,6 +159,7 @@ export class MainContainer extends Component {
                 // now, this else if changes the answer from yes to no
             } else if (this.state[yes] === true) {
                 points = (element.pointsYes * -1) + element.pointsNo
+                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -149,6 +171,7 @@ export class MainContainer extends Component {
                 // and this is when they choose no the first time
             } else if (this.state[yes] === false) {
                 points = element.pointsNo
+                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -214,21 +237,21 @@ export class MainContainer extends Component {
                     return element
                 }
             })
-        } else {
-            stateKeyToUpdate = this.state.exceptions
-            //logic to handle clicking and unclicking of exceptions
-            newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {
-                    if (value[0] === false) {
-                        points = element.points
-                    } else {
-                        points = element.points * -1
-                    }
-                    return element
-                } else {
-                    return element
-                }
-            })
+            // } else {
+            //     stateKeyToUpdate = this.state.exceptions
+            //     //logic to handle clicking and unclicking of exceptions
+            //     newStateObject = stateKeyToUpdate.map(element => {
+            //         if (element.stateName === title) {
+            //             if (value[0] === false) {
+            //                 points = element.points
+            //             } else {
+            //                 points = element.points * -1
+            //             }
+            //             return element
+            //         } else {
+            //             return element
+            //         }
+            //     })
         }
 
         if (isNaN(points)) {
@@ -250,32 +273,26 @@ export class MainContainer extends Component {
                 displayValue: newdisplayValue,
                 data: mortality,
                 counter: 1,
-                age: true,
-            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
-                return ["rr24YesState", "rr24NoState", "alt40YesState", "alt40NoState"].includes(factor.stateName)
-            })))
+            }, () => this.calculateCount(this.state.data, this.state, ["dyspneaYes", "leukoYes", "ddimerYes", "ferritinYes", "ldhYes", "ptYes", "crYes", "hstropYes", "alt40Yes"]))
         } else if (newdisplayValue === "ICU") {
             this.setState({
                 displayValue: newdisplayValue,
                 data: icu,
                 counter: 1,
-                age: true,
-            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions))
+            }, () => this.calculateCount(this.state.data, this.state, ["procalYes"]))
         } else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
                 data: ards,
-                age: false,
-            }, () => this.calculateCount(this.state.data, this.state, this.state.exceptions.filter(factor => {
-                return ["astNoState", "astYesState"].includes(factor.stateName)
-            })))
+                counter: 1
+            }, () => this.calculateCount(this.state.data, this.state, ["ageYes", "tempYes", "astYes"]))
         } else {
             this.setState({
                 displayValue: newdisplayValue,
                 data: ardsDeath,
-                age: false,
-            }, () => this.calculateCount(this.state.data, this.state, []))
+                counter: 1
+            }, () => this.calculateCount(this.state.data, this.state, ["ageYes", "ardsDeath_tempYes", "astYes"]))
         }
     }
 
@@ -301,7 +318,7 @@ export class MainContainer extends Component {
     // }
 
 
-    calculateCount = (data, state, exceptions) => {
+    calculateCount = (data, state, secondaryStates) => {
         //calculates the count every time a study renders based on the current state
         let count = 0
         data[0][1].map(factor => {
@@ -310,9 +327,16 @@ export class MainContainer extends Component {
         data[1][1].map(factor => {
             return count = count + (state[factor.stateName] ? factor.points : 0)
         })
-        exceptions.map(factor => {
-            return count = count + (state[factor.stateName] ? factor.points : 0)
+        secondaryStates.map(factor => {
+            console.log("factorstatename", factor, factor, state[factor])
+            if (factor === "ardsDeath_tempYes") { //hack to account for ARDS Death, Fever points = -1
+                return count = count + (state["tempYes"] ? -1 : 0)
+            }
+            else {
+                return count = count + (state[factor] ? 1 : 0)
+            }
         })
+        console.log("I'm actually counting things:", count)
         this.setState({
             counter: count
         })
@@ -346,8 +370,8 @@ export class MainContainer extends Component {
                     handleClick={this.handleClick}
                     handleYNClick={this.handleYNClick}
                     state={this.state}
-                    exceptions={exceptions}
                     setColor={this.setColor}
+                // exceptions={exceptions}
                 />
             </main>
         )

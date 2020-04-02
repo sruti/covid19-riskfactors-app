@@ -12,7 +12,7 @@ export class FormRowContainer extends Component {
         showOtherLabel: false
     }
 
-    handleButtonRelease = (event) => {        
+    handleButtonRelease = (event) => {
         this.setState({
             showOtherLabel: false
         })
@@ -29,7 +29,6 @@ export class FormRowContainer extends Component {
 
         // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
         let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
-
         return (
             <>
                 {rowData.ratio.includes("?")
@@ -66,7 +65,8 @@ export class FormRowContainer extends Component {
                                     value={currentParentState}
                                     onChange={(value) => {
                                         console.log(rowData.stateName, currentParentState)
-                                        handleClick(rowData.stateName, value)}}
+                                        handleClick(rowData.stateName, value)
+                                    }}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
@@ -82,7 +82,10 @@ export class FormRowContainer extends Component {
                                     {/* depending on the row, conditionally render the correct data */}
                                     <SecondaryQuestion
                                         handleClick={handleClick}
-                                        rowData={rowData.secondaryQuestion}
+                                        questionTitle={rowData.secondaryQuestion.title}
+                                        rowData={
+                                            this.props.state[rowData.stateName + "Yes"] ?
+                                                rowData.secondaryQuestion.yes : rowData.secondaryQuestion.no}
                                         parentStateName={rowData.stateName}
                                         currentParentState={currentParentState}
                                         handleButtonRelease={this.handleButtonRelease}
@@ -90,6 +93,7 @@ export class FormRowContainer extends Component {
                                         handleYNClick={handleYNClick}
                                         showOtherLabel={this.state.showOtherLabel}
                                         setColor={setColor}
+                                        state={this.props.state}
                                     />
                                 </>
                                 : null}
@@ -119,11 +123,11 @@ export class FormRowContainer extends Component {
                                 onMouseUp={this.handleButtonRelease}
                                 onMouseLeave={this.handleButtonRelease}
                             >
-                                <p> {currentParentState 
-                                        ? this.state.showOtherLabel 
-                                            ? rowData.ratio 
-                                            : rowData.ratioTitle
-                                        : null}</p>
+                                <p> {currentParentState
+                                    ? this.state.showOtherLabel
+                                        ? rowData.ratio
+                                        : rowData.ratioTitle
+                                    : null}</p>
                             </Col>
                             <Col>
                                 {
@@ -133,8 +137,7 @@ export class FormRowContainer extends Component {
                                         value={currentParentState}
                                         onChange={(value) => {
                                             handleClick(rowData.stateName, value)
-                                            console.log(rowData.stateName, currentParentState)
-                                            }}
+                                        }}
                                     >
                                         <ToggleButton
                                             variant={currentParentState ? "dark" : "outline-dark"}
