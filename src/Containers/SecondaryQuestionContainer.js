@@ -23,7 +23,7 @@ export class SecondaryQuestionContainer extends Component {
     }
 
     render() {
-        let { rowData, currentParentState, parentStateName, handleYNClick } = this.props
+        let { rowData, currentParentState, parentStateName, handleYNClick, showOtherLabel } = this.props
         let bgcolor = "white";
         if (currentParentState) {
             switch (rowData.ratio) {
@@ -63,7 +63,11 @@ export class SecondaryQuestionContainer extends Component {
                             onMouseUp={this.handleButtonRelease}
                             onMouseLeave={this.handleButtonRelease}
                         >
-                            <p> {currentParentState ? rowData.ratioTitle : null}</p>
+                            <p> {currentParentState 
+                                        ? showOtherLabel 
+                                            ? rowData.ratioTitle 
+                                            : rowData.ratio
+                                        : null}</p>
                         </Col>
                         <Col>
                             <ToggleButtonGroup
