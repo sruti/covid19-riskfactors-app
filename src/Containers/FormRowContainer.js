@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { FormRowContainer as FormRow } from './FormRowContainer';
+import { SecondaryQuestionContainer as SecondaryQuestion } from './SecondaryQuestionContainer';
 
 export class FormRowContainer extends Component {
 
@@ -12,7 +13,7 @@ export class FormRowContainer extends Component {
         showOtherLabel: false
     }
 
-    handleButtonRelease = (event) => {        
+    handleButtonRelease = (event) => {
         this.setState({
             showOtherLabel: false
         })
@@ -24,7 +25,7 @@ export class FormRowContainer extends Component {
         })
     }
 
-    render() {        
+    render() {
         let { rowData, currentParentState, exceptions, handleClick, handleYNClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
@@ -90,7 +91,14 @@ export class FormRowContainer extends Component {
                                 ?
                                 <>
                                     {/* depending on the row, conditionally render the correct data */}
-                                    < FormRow
+                                    <SecondaryQuestion
+                                        handleClick={handleClick}
+                                        rowData={rowData.secondaryQuestion}
+                                        currentParentState={this.props.rr24YesState}
+                                        handleButtonRelease={this.handleButtonRelease}
+                                        handleButtonPress={this.handleButtonPress}
+                                    />
+                                    {/* < FormRow
                                         handleClick={handleClick}
                                         rowData={rowData.stateName.includes("dyspnea")
                                             ? exceptions[0]
@@ -105,7 +113,7 @@ export class FormRowContainer extends Component {
                                             : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}
                                         currentParentState={rowData.stateName.includes("dyspnea")
                                             ? this.props.rr24NoState
-                                            : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} />
+                                            : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} /> */}
                                 </>
                                 : null}
                         </Row>
@@ -127,55 +135,28 @@ export class FormRowContainer extends Component {
                             <Col>
                                 <p>{rowData.title}</p>
                             </Col>
-                            <Col 
-                                onTouchStart={this.handleButtonPress}
-                                onTouchEnd={this.handleButtonRelease} 
-                                onMouseDown={this.handleButtonPress} 
-                                onMouseUp={this.handleButtonRelease} 
-                                onMouseLeave={this.handleButtonRelease}
+                            <Col
+                            // onTouchStart={this.handleButtonPress}
+                            // onTouchEnd={this.handleButtonRelease}
+                            // onMouseDown={this.handleButtonPress}
+                            // onMouseUp={this.handleButtonRelease}
+                            // onMouseLeave={this.handleButtonRelease}
                             >
                                 <p> {currentParentState ? rowData.ratioTitle : null}</p>
                             </Col>
                             <Col>
                                 {
-                                    // these terms are not correct
-                                    rowData.stateName.includes("dyspnea") || rowData.stateName.includes("leuko")
-                                    ?
-                                    <>
-                                        <ToggleButtonGroup
-                                            type="radio"
-                                            name="studyOptions"
-                                            value={currentParentState}
-                                            onChange={
-                                            (val) => {                        
-                                                handleYNClick(rowData.stateName, val)
-                                            }}
-                                        >
-                                            <ToggleButton
-                                                variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
-                                                value={"Y"}
-                                            >Y</ToggleButton>
-                                            <ToggleButton
-                                                variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
-                                                value={"N"}
-                                            >N</ToggleButton>
-                                        </ToggleButtonGroup>
-
-                                    </>
-                                    :
-                                    <>
-                                        <ToggleButtonGroup
-                                            type="checkbox"
-                                            name="studyOptions"
-                                            value={currentParentState}
-                                            onChange={(value) => handleClick(rowData.stateName, value)}
-                                        >
+                                    <ToggleButtonGroup
+                                        type="checkbox"
+                                        name="studyOptions"
+                                        value={currentParentState}
+                                        onChange={(value) => handleClick(rowData.stateName, value)}
+                                    >
                                         <ToggleButton
                                             variant={currentParentState ? "dark" : "outline-dark"}
                                             value={"✓"}
                                         >✓</ToggleButton>
-                                        </ToggleButtonGroup>
-                                    </>
+                                    </ToggleButtonGroup>
                                 }
                             </Col>
                         </Row>

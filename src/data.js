@@ -1,13 +1,16 @@
 const mortality = [
     [
         "basic", [
-            { "stateName": "age", "title": "Age", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1, "importance": 7 },
-            { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "importance": 6 },
-            { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "points": 0, "importance": 5 }, //special case
-            { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "importance": 4 },
-            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x", "points": 1, "importance": 3 },
-            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x", "points": 1, "importance": 2 },
-            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x", "points": 1, "importance": 1 },
+            { "stateName": "age", "title": "Age", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑", "points": 1, "showing": false },
+            { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1, "showing": false },
+            {
+                "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "points": 0, "showing": false,
+                "secondaryQuestion": { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "*8.89x per unit↑", "points": 1, "showing": false }
+            }, //special case
+            { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0, "showing": false },
+            { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x", "points": 1, "showing": false },
+            { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x", "points": 1, "showing": false },
+            { "stateName": "cad", "title": "CAD", "ratio": "OR 21.40*", "ratioTitle": "*21.40x", "points": 1, "showing": false },
         ]
     ],
     [
