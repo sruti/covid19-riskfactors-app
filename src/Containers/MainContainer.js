@@ -279,25 +279,26 @@ export class MainContainer extends Component {
         }
     }
 
-    displaySorted = (data) => {
-        let newBasicArray = [...data]
-        let newArr = []
-        let excludedArr = []
-        for (let i = 0; i < newBasicArray.length; i++) {
-            if (this.state[newBasicArray[i]["stateName"]]) {
-                if (newBasicArray[i]["ratio"] === "Excluded" || newBasicArray[i]["ratio"] === "Insignificant") {
-                    excludedArr = [...excludedArr, newBasicArray[i]]
-                }
-                else {
-                    newArr = [...newArr, newBasicArray[i]]
-                }
-            } else {
-                newArr = [...newArr, newBasicArray[i]]
-            }
-        }
-        const sortedArr = [...newArr, ...excludedArr]
-        return sortedArr
-    }
+///////////////// CODE FOR REORDERING OF THE FACTORS ///////////////
+    // displaySorted = (data) => {
+    //     let newBasicArray = [...data]
+    //     let newArr = []
+    //     let excludedArr = []
+    //     for (let i = 0; i < newBasicArray.length; i++) {
+    //         if (this.state[newBasicArray[i]["stateName"]]) {
+    //             if (newBasicArray[i]["ratio"] === "Excluded" || newBasicArray[i]["ratio"] === "Insignificant") {
+    //                 excludedArr = [...excludedArr, newBasicArray[i]]
+    //             }
+    //             else {
+    //                 newArr = [...newArr, newBasicArray[i]]
+    //             }
+    //         } else {
+    //             newArr = [...newArr, newBasicArray[i]]
+    //         }
+    //     }
+    //     const sortedArr = [...newArr, ...excludedArr]
+    //     return sortedArr
+    // }
 
 
     calculateCount = (data, state, exceptions) => {
@@ -340,8 +341,8 @@ export class MainContainer extends Component {
                     sum={this.numberOfLabs()}
                 />
                 <FormContainer
-                    basicData={this.displaySorted(data[0][1])}
-                    advancedData={this.displaySorted(data[1][1])}
+                    basicData={data[0][1]}
+                    advancedData={data[1][1]}
                     handleClick={this.handleClick}
                     handleYNClick={this.handleYNClick}
                     state={this.state}
