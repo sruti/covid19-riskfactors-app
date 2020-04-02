@@ -18,7 +18,7 @@ export class FormContainer extends Component {
     }
 
     render() {
-        let { basicData, advancedData, handleClick, state, exceptions, handleYNClick } = this.props
+        let { basicData, advancedData, handleClick, state, exceptions, handleYNClick, setColor } = this.props
         return (
             <section className="mainContainer" >
                 {basicData.map((rowData) => {
@@ -32,6 +32,7 @@ export class FormContainer extends Component {
                         exceptions={exceptions}
                         rr24YesState={state.rr24YesState}
                         rr24NoState={state.rr24NoState}
+                        setColor={setColor}
                     />
                 })
                 }
@@ -51,6 +52,7 @@ export class FormContainer extends Component {
                                 alt40NoState={state.alt40NoState}
                                 astYesState={state.astYesState}
                                 astNoState={state.astNoState}
+                                setColor={setColor}
                             />)}
                     </>
                     :

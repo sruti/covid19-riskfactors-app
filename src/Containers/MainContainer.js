@@ -47,9 +47,27 @@ export class MainContainer extends Component {
         dyspneaNo: false
     }
 
+    setColor = (ratio, stateName, protective=false) => {
+        let bgcolor = "white"
+
+        if (this.state[stateName]) {
+            switch (ratio) {
+                case "?":
+                    break
+                case "Insignificant":
+                case "Excluded":
+                    bgcolor = "lightgrey"
+                    break
+                default:
+                    bgcolor = protective ? "lightgreen" : "lightcoral"
+            }
+        }
+        return bgcolor
+    }
+
     handleYNClick = (title, value) => {
-        console.log("title", title)
-        console.log("value", value)
+        // console.log("title", title)
+        // console.log("value", value)
         // 1. add in state: dyspnea, dyspneaYes, dyspneaNo
         // - dyspnea is there to retain the clickability across the tabs
         // - dyspneaYes and dyspneaNo are there to track what was clicked; they need to reset across tabs
@@ -328,6 +346,7 @@ export class MainContainer extends Component {
                     handleYNClick={this.handleYNClick}
                     state={this.state}
                     exceptions={exceptions}
+                    setColor={this.setColor}
                 />
             </main>
         )

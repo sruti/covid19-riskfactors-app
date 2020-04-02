@@ -22,21 +22,10 @@ export class SecondaryQuestionContainer extends Component {
         })
     }
 
-    render() {
-        let { rowData, currentParentState, parentStateName, handleYNClick, showOtherLabel } = this.props
-        let bgcolor = "white";
-        if (currentParentState) {
-            switch (rowData.ratio) {
-                case "?":
-                    break
-                case "Insignificant":
-                case "Excluded":
-                    bgcolor = "lightgrey"
-                    break
-                default:
-                    bgcolor = rowData.protective ? "lightgreen" : "lightcoral"
-            }
-        }
+    render() {        
+        let { rowData, setColor, currentParentState, parentStateName, handleYNClick, showOtherLabel } = this.props
+        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
+        let bgcolor = setColor(rowData.ratio, rowData.stateName, false)
 
         return (
             <>
@@ -77,6 +66,7 @@ export class SecondaryQuestionContainer extends Component {
                                 onChange={
                                     (val) => {
                                         handleYNClick(parentStateName, val)
+                                        console.log(parentStateName, currentParentState)
                                     }}
                             >
                                 <ToggleButton

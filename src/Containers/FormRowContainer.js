@@ -25,22 +25,10 @@ export class FormRowContainer extends Component {
     }
 
     render() {
+        let { rowData, currentParentState, handleClick, handleYNClick, setColor } = this.props
 
-        let { rowData, currentParentState, handleClick, handleYNClick } = this.props
-        let bgcolor = "white";
-        if (currentParentState) {
-            switch (rowData.ratio) {
-                case "?":
-                    break
-                case "Insignificant":
-                case "Excluded":
-                    bgcolor = "lightgrey"
-                    break
-                default:
-                    bgcolor = rowData.protective ? "lightgreen" : "lightcoral"
-            }
-
-        }
+        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
+        let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
 
         return (
             <>
@@ -76,7 +64,9 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={(value) => handleClick(rowData.stateName, value)}
+                                    onChange={(value) => {
+                                        console.log(rowData.stateName, currentParentState)
+                                        handleClick(rowData.stateName, value)}}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
@@ -99,6 +89,7 @@ export class FormRowContainer extends Component {
                                         handleButtonPress={this.handleButtonPress}
                                         handleYNClick={handleYNClick}
                                         showOtherLabel={this.state.showOtherLabel}
+                                        setColor={setColor}
                                     />
                                 </>
                                 : null}
@@ -140,7 +131,10 @@ export class FormRowContainer extends Component {
                                         type="checkbox"
                                         name="studyOptions"
                                         value={currentParentState}
-                                        onChange={(value) => handleClick(rowData.stateName, value)}
+                                        onChange={(value) => {
+                                            handleClick(rowData.stateName, value)
+                                            console.log(rowData.stateName, currentParentState)
+                                            }}
                                     >
                                         <ToggleButton
                                             variant={currentParentState ? "dark" : "outline-dark"}
