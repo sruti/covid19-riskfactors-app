@@ -33,6 +33,7 @@ export class FormContainer extends Component {
                         rr24YesState={state.rr24YesState}
                         rr24NoState={state.rr24NoState}
                         setColor={setColor}
+                        state={this.props.state}
                     />
                 })
                 }
