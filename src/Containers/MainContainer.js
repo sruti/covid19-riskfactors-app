@@ -267,7 +267,39 @@ export class MainContainer extends Component {
         })
     }
 
+    resetChildren = () => {
+        this.setState({
+            alt40Yes: false,
+            alt40No: false,
+            astYes: false,
+            astNo: false,
+            dyspneaYes: false,
+            dyspneaNo: false,
+            leukoYes: false,
+            leukoNo: false,
+            ddimerYes: false,
+            ddimerNo: false,
+            ferritinYes: false,
+            ferritinNo: false,
+            ldhYes: false,
+            ldhNo: false,
+            ptYes: false,
+            ptNo: false,
+            crYes: false,
+            crNo: false,
+            hstropYes: false,
+            hstropNo: false,
+            tempYes: false,
+            tempNo: false,
+            ageYes: false,
+            ageNo: false,
+            procalYes: false,
+            procalNo: false
+        })
+    }
+
     handleDisplay = (newdisplayValue) => {
+        this.resetChildren()
         if (newdisplayValue === "Mortality") {
             this.setState({
                 displayValue: newdisplayValue,
@@ -291,7 +323,7 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: ardsDeath,
-                counter: 1
+                counter: 1,
             }, () => this.calculateCount(this.state.data, this.state, ["ageYes", "ardsDeath_tempYes", "astYes"]))
         }
     }
