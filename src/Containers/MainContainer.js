@@ -354,7 +354,7 @@ export class MainContainer extends Component {
     }
 
     render() {
-        let { counter, displayValue, data, exceptions } = this.state
+        let { counter, displayValue, data } = this.state
 
         return (
             <main>

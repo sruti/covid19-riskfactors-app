@@ -6,26 +6,11 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export class SecondaryQuestionContainer extends Component {
-    state = {
-        showOtherLabel: false
-    }
 
-    handleButtonRelease = (event) => {
-        this.setState({
-            showOtherLabel: false
-        })
-    }
-
-    handleButtonPress = (event) => {
-        this.setState({
-            showOtherLabel: true
-        })
-    }
-
-    render() {
-        let { rowData, setColor, questionTitle, currentParentState, parentStateName, handleYNClick, showOtherLabel } = this.props
-        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
-        let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
+    render() {        
+        let { rowData, setColor, currentParentState, parentStateName, handleYNClick, showOtherLabel, handleButtonPress, handleButtonRelease } = this.props
+        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardocoded)
+        let bgcolor = setColor(rowData.ratio, rowData.stateName, false)
 
         return (
             <>
@@ -43,20 +28,20 @@ export class SecondaryQuestionContainer extends Component {
                 >
                     <Row>
                         <Col>
-                            <p>{questionTitle}</p>
+                            <p>{rowData.title}</p>
                         </Col>
                         <Col
-                            onTouchStart={this.handleButtonPress}
-                            onTouchEnd={this.handleButtonRelease}
-                            onMouseDown={this.handleButtonPress}
-                            onMouseUp={this.handleButtonRelease}
-                            onMouseLeave={this.handleButtonRelease}
+                            onTouchStart={handleButtonPress}
+                            onTouchEnd={handleButtonRelease}
+                            onMouseDown={handleButtonPress}
+                            onMouseUp={handleButtonRelease}
+                            onMouseLeave={handleButtonRelease}
                         >
-                            <p> {(this.props.state[parentStateName + "Yes"] || this.props.state[parentStateName + "No"])
-                                ? this.state.showOtherLabel
-                                    ? rowData.ratio
-                                    : rowData.ratioTitle
-                                : null}</p>
+                            <p> {currentParentState 
+                                        ? showOtherLabel 
+                                            ? rowData.ratioTitle 
+                                            : rowData.ratio
+                                        : null}</p>
                         </Col>
                         <Col>
                             <ToggleButtonGroup
@@ -66,14 +51,15 @@ export class SecondaryQuestionContainer extends Component {
                                 onChange={
                                     (val) => {
                                         handleYNClick(parentStateName, val)
+                                        console.log(parentStateName, currentParentState)
                                     }}
                             >
                                 <ToggleButton
-                                    variant={this.props.state[parentStateName + "Yes"] ? "dark" : "outline-dark"}
+                                    variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
                                     value={"Y"}
                                 >Y</ToggleButton>
                                 <ToggleButton
-                                    variant={this.props.state[parentStateName + "No"] ? "dark" : "outline-dark"}
+                                    variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
                                     value={"N"}
                                 >N</ToggleButton>
                             </ToggleButtonGroup>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import FormRowContainer from './FormRowContainer';
 import Button from 'react-bootstrap/Button'
 
-
 export class FormContainer extends Component {
 
     state = {
@@ -18,7 +17,7 @@ export class FormContainer extends Component {
     }
 
     render() {
-        let { basicData, advancedData, handleClick, state, exceptions, handleYNClick, setColor } = this.props
+        let { basicData, advancedData, handleClick, state, handleYNClick, setColor } = this.props
         return (
             <section className="mainContainer" >
                 {basicData.map((rowData) => {
