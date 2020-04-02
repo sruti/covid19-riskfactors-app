@@ -4,13 +4,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import { FormRowContainer as FormRow } from './FormRowContainer';
 import { SecondaryQuestionContainer as SecondaryQuestion } from './SecondaryQuestionContainer';
 
 export class FormRowContainer extends Component {
 
     render() {
-        let { rowData, currentParentState, exceptions, handleClick } = this.props
+        let { rowData, currentParentState, handleClick } = this.props
         let bgcolor = "white";
         if (currentParentState) {
             switch (rowData.ratio) {
@@ -82,22 +81,6 @@ export class FormRowContainer extends Component {
                                         handleButtonRelease={this.handleButtonRelease}
                                         handleButtonPress={this.handleButtonPress}
                                     />
-                                    {/* < FormRow
-                                        handleClick={handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea")
-                                            ? exceptions[0]
-                                            : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
-                                        currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.props.rr24YesState
-                                            : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
-                                    < FormRow
-                                        handleClick={handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea")
-                                            ? exceptions[1]
-                                            : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}
-                                        currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.props.rr24NoState
-                                            : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} /> */}
                                 </>
                                 : null}
                         </Row>
@@ -119,13 +102,7 @@ export class FormRowContainer extends Component {
                             <Col>
                                 <p>{rowData.title}</p>
                             </Col>
-                            <Col
-                            // onTouchStart={this.handleButtonPress}
-                            // onTouchEnd={this.handleButtonRelease}
-                            // onMouseDown={this.handleButtonPress}
-                            // onMouseUp={this.handleButtonRelease}
-                            // onMouseLeave={this.handleButtonRelease}
-                            >
+                            <Col>
                                 <p> {currentParentState ? rowData.ratioTitle : null}</p>
                             </Col>
                             <Col>
