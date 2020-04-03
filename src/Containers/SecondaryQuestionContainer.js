@@ -58,6 +58,7 @@ export class SecondaryQuestionContainer extends Component {
                                     value={"Y"}
                                 >Y</ToggleButton>
                                 <ToggleButton
+                                     
                                     variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
                                     value={"N"}
                                 >N</ToggleButton>
