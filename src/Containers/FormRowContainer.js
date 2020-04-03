@@ -41,7 +41,7 @@ export class FormRowContainer extends Component {
                                     backgroundColor: bgcolor,
                                     top: "10%",
                                     paddingTop: "0.5rem",
-                                    border: "red 1px solid"
+                                    border: "darkblue 1px solid"
                                 }
                                 :
                                 {
