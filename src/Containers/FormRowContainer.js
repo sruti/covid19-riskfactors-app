@@ -64,7 +64,6 @@ export class FormRowContainer extends Component {
                                     name="studyOptions"
                                     value={currentParentState}
                                     onChange={(value) => {
-                                        console.log(rowData.stateName, currentParentState)
                                         handleClick(rowData.stateName, value)
                                     }}
                                 >

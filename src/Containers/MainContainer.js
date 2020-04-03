@@ -10,7 +10,6 @@ export class MainContainer extends Component {
         counter: 1,
         data: icu,
         hypertension: false,
-        exceptions: [],
         age: true,
         covidExposure: false,
         diabetes: false,
@@ -84,8 +83,6 @@ export class MainContainer extends Component {
     }
 
     handleYNClick = (title, value) => {
-        console.log("title", title)
-        console.log("counter", this.state.counter)
         // 1. add in state: dyspnea, dyspneaYes, dyspneaNo
         // - dyspnea is there to retain the clickability across the tabs
         // - dyspneaYes and dyspneaNo are there to track what was clicked; they need to reset across tabs
@@ -119,7 +116,6 @@ export class MainContainer extends Component {
                 // now, this else if unclicks the earlier clicked yes
             } else if (this.state[yes] === true) {
                 points = element.pointsYes * -1
-                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: false,
@@ -131,7 +127,6 @@ export class MainContainer extends Component {
                 // and this is when they choose yes the first time
             } else if (this.state[yes] === false) {
                 points = element.pointsYes
-                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -147,7 +142,6 @@ export class MainContainer extends Component {
             // this is when the person wants to unclick earlier-clicked no
             if (this.state[no] === true) {
                 points = element.pointsNo * -1
-                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: false,
@@ -159,7 +153,6 @@ export class MainContainer extends Component {
                 // now, this else if changes the answer from yes to no
             } else if (this.state[yes] === true) {
                 points = (element.pointsYes * -1) + element.pointsNo
-                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -171,7 +164,6 @@ export class MainContainer extends Component {
                 // and this is when they choose no the first time
             } else if (this.state[yes] === false) {
                 points = element.pointsNo
-                console.log(points)
                 this.setState(prevState => {
                     return {
                         [title]: true,
@@ -328,7 +320,6 @@ export class MainContainer extends Component {
             return count = count + (state[factor.stateName] ? factor.points : 0)
         })
         secondaryStates.map(factor => {
-            console.log("factorstatename", factor, factor, state[factor])
             if (factor === "ardsDeath_tempYes") { //hack to account for ARDS Death, Fever points = -1
                 return count = count + (state["tempYes"] ? -1 : 0)
             }
@@ -336,7 +327,6 @@ export class MainContainer extends Component {
                 return count = count + (state[factor] ? 1 : 0)
             }
         })
-        console.log("I'm actually counting things:", count)
         this.setState({
             counter: count
         })
@@ -354,7 +344,7 @@ export class MainContainer extends Component {
     }
 
     render() {
-        let { counter, displayValue, data, exceptions } = this.state
+        let { counter, displayValue, data } = this.state
 
         return (
             <main>
@@ -371,7 +361,6 @@ export class MainContainer extends Component {
                     handleYNClick={this.handleYNClick}
                     state={this.state}
                     setColor={this.setColor}
-                // exceptions={exceptions}
                 />
             </main>
         )
