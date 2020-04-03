@@ -10,7 +10,10 @@ export class SecondaryQuestionContainer extends Component {
     render() {        
         let { rowData, setColor, currentParentState, parentStateName, handleYNClick, showOtherLabel, handleButtonPress, handleButtonRelease } = this.props
         // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardocoded)
-        let bgcolor = setColor(rowData.ratio, rowData.stateName, false)
+        let protective;
+        parentStateName === "temp" ? protective = true : protective = false;
+        
+        let bgcolor = setColor(rowData.ratio, rowData.stateName, protective)
 
         return (
             <>
