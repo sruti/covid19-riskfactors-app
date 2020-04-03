@@ -8,7 +8,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 export class SecondaryQuestionContainer extends Component {
 
     render() {        
-        let { rowData, setColor, currentParentState, parentStateName, handleYNClick, showOtherLabel, handleButtonPress, handleButtonRelease } = this.props
+        let { rowData, setColor, currentParentState, parentStateName, handleYNClick, showOtherLabel, handleButtonPress, handleButtonRelease, questionTitle, state } = this.props
         // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardocoded)
         let protective;
         parentStateName === "temp" ? protective = true : protective = false;
@@ -31,7 +31,7 @@ export class SecondaryQuestionContainer extends Component {
                 >
                     <Row>
                         <Col>
-                            <p>{rowData.title}</p>
+                            <p>{questionTitle}</p>
                         </Col>
                         <Col
                             onTouchStart={handleButtonPress}
@@ -40,11 +40,11 @@ export class SecondaryQuestionContainer extends Component {
                             onMouseUp={handleButtonRelease}
                             onMouseLeave={handleButtonRelease}
                         >
-                            <p> {currentParentState 
-                                        ? showOtherLabel 
-                                            ? rowData.ratioTitle 
-                                            : rowData.ratio
-                                        : null}</p>
+                            <p> {(this.props.state[parentStateName + "Yes"] || this.props.state[parentStateName + "No"])
+                                ? showOtherLabel
+                                    ? rowData.ratio
+                                    : rowData.ratioTitle
+                                : null}</p>
                         </Col>
                         <Col>
                             <ToggleButtonGroup
@@ -57,12 +57,12 @@ export class SecondaryQuestionContainer extends Component {
                                     }}
                             >
                                 <ToggleButton
-                                    variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                    variant={this.props.state[parentStateName + "Yes"] ? "dark" : "outline-dark"}
                                     value={"Y"}
                                 >Y</ToggleButton>
                                 <ToggleButton
                                      
-                                    variant={this.props[rowData.stateName] ? "dark" : "outline-dark"}
+                                    variant={this.props.state[parentStateName + "No"] ? "dark" : "outline-dark"}
                                     value={"N"}
                                 >N</ToggleButton>
                             </ToggleButtonGroup>
