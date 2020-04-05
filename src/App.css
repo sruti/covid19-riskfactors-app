@@ -34,3 +34,8 @@ p{
   border: black solid 2px; 
   padding: 1% 
 }
+
+.btn:active {
+  background: #fff !important;
+  color: #343a40 !important;
+}
