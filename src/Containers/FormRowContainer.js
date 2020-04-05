@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import { FormRowContainer as FormRow } from './FormRowContainer';
+import { SecondaryQuestionContainer as SecondaryQuestion } from './SecondaryQuestionContainer';
 
 export class FormRowContainer extends Component {
 
@@ -12,7 +12,7 @@ export class FormRowContainer extends Component {
         showOtherLabel: false
     }
 
-    handleButtonRelease = (event) => {        
+    handleButtonRelease = (event) => {
         this.setState({
             showOtherLabel: false
         })
@@ -25,24 +25,10 @@ export class FormRowContainer extends Component {
     }
 
     render() {
-        console.log(this.state.showOtherLabel);
-        
-        let { rowData, currentParentState, exceptions, handleClick } = this.props
-        let bgcolor = "white";
-        if (currentParentState) {
-            switch (rowData.ratio) {
-                case "?":
-                    break
-                case "Insignificant":
-                case "Excluded":
-                    bgcolor = "lightgrey"
-                    break
-                default:
-                    bgcolor = rowData.protective ? "lightgreen" : "lightcoral"
-            }
+        let { rowData, currentParentState, handleClick, handleYNClick, setColor } = this.props
 
-        }
-
+        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
+        let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
         return (
             <>
                 {rowData.ratio.includes("?")
@@ -55,7 +41,7 @@ export class FormRowContainer extends Component {
                                     backgroundColor: bgcolor,
                                     top: "10%",
                                     paddingTop: "0.5rem",
-                                    border: "red 1px solid"
+                                    border: "darkblue 1px solid"
                                 }
                                 :
                                 {
@@ -77,7 +63,9 @@ export class FormRowContainer extends Component {
                                     type="checkbox"
                                     name="studyOptions"
                                     value={currentParentState}
-                                    onChange={(value) => handleClick(rowData.stateName, value)}
+                                    onChange={(value) => {
+                                        handleClick(rowData.stateName, value)
+                                    }}
                                 >
                                     <ToggleButton
                                         variant={currentParentState ? "dark" : "outline-dark"}
@@ -87,27 +75,25 @@ export class FormRowContainer extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            {/* if you click on the button, create two new rows*/}
                             {currentParentState
                                 ?
                                 <>
                                     {/* depending on the row, conditionally render the correct data */}
-                                    < FormRow
+                                    <SecondaryQuestion
                                         handleClick={handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea")
-                                            ? exceptions[0]
-                                            : (rowData.stateName.includes("alt40") ? exceptions[2] : exceptions[4])}
-                                        currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.props.rr24YesState
-                                            : (rowData.stateName.includes("alt40") ? this.props.alt40YesState : this.props.astYesState)} />
-                                    < FormRow
-                                        handleClick={handleClick}
-                                        rowData={rowData.stateName.includes("dyspnea")
-                                            ? exceptions[1]
-                                            : (rowData.stateName.includes("alt40") ? exceptions[3] : exceptions[5])}
-                                        currentParentState={rowData.stateName.includes("dyspnea")
-                                            ? this.props.rr24NoState
-                                            : (rowData.stateName.includes("alt40") ? this.props.alt40NoState : this.props.astNoState)} />
+                                        questionTitle={rowData.secondaryQuestion.title}
+                                        rowData={
+                                            this.props.state[rowData.stateName + "Yes"] ?
+                                                rowData.secondaryQuestion.yes : rowData.secondaryQuestion.no}
+                                        parentStateName={rowData.stateName}
+                                        currentParentState={currentParentState}
+                                        handleButtonRelease={this.handleButtonRelease}
+                                        handleButtonPress={this.handleButtonPress}
+                                        handleYNClick={handleYNClick}
+                                        showOtherLabel={this.state.showOtherLabel}
+                                        setColor={setColor}
+                                        state={this.props.state}
+                                    />
                                 </>
                                 : null}
                         </Row>
@@ -129,27 +115,35 @@ export class FormRowContainer extends Component {
                             <Col>
                                 <p>{rowData.title}</p>
                             </Col>
-                            <Col 
+                            <Col
                                 onTouchStart={this.handleButtonPress}
-                                onTouchEnd={this.handleButtonRelease} 
-                                onMouseDown={this.handleButtonPress} 
-                                onMouseUp={this.handleButtonRelease} 
+                                onTouchEnd={this.handleButtonRelease}
+                                onMouseDown={this.handleButtonPress}
+                                onMouseUp={this.handleButtonRelease}
                                 onMouseLeave={this.handleButtonRelease}
                             >
-                                {/* <p> {currentParentState ? rowData.ratioTitle : null}</p> */}
+                                <p> {currentParentState
+                                    ? this.state.showOtherLabel
+                                        ? rowData.ratio
+                                        : rowData.ratioTitle
+                                    : null}</p>
                             </Col>
                             <Col>
-                                <ToggleButtonGroup
-                                    type="checkbox"
-                                    name="studyOptions"
-                                    value={currentParentState}
-                                    onChange={(value) => handleClick(rowData.stateName, value)}
-                                >
-                                    <ToggleButton
-                                        variant={currentParentState ? "dark" : "outline-dark"}
-                                        value={"✓"}
-                                    >✓</ToggleButton>
-                                </ToggleButtonGroup>
+                                {
+                                    <ToggleButtonGroup
+                                        type="checkbox"
+                                        name="studyOptions"
+                                        value={currentParentState}
+                                        onChange={(value) => {
+                                            handleClick(rowData.stateName, value)
+                                        }}
+                                    >
+                                        <ToggleButton
+                                            variant={currentParentState ? "dark" : "outline-dark"}
+                                            value={"✓"}
+                                        >✓</ToggleButton>
+                                    </ToggleButtonGroup>
+                                }
                             </Col>
                         </Row>
                     </Container>
@@ -160,3 +154,4 @@ export class FormRowContainer extends Component {
 }
 
 export default FormRowContainer
+
