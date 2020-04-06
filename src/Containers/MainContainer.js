@@ -71,7 +71,7 @@ export class MainContainer extends Component {
 
 
     prepareProps = () => {
-        let { selected } = this.props
+        let selected = this.state.displayValue
         if (selected === "Mortality") {
             return mortalityStudy
         } else if (selected === "ICU") {

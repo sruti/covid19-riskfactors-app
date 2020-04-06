@@ -22,7 +22,7 @@ footer.credits {
   font-size: 14px;
   padding: 0.75rem;
 }
-a {
+a.credits {
   color: rgb(59, 65, 71) !important;
 }
 
