@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import SortContainer from './SortContainer';
 import FormContainer from './FormContainer';
+import Button from 'react-bootstrap/Button'
+import StudyLegend from '../Components/StudyLegend'
+import { ardsStudy, mortalityStudy, icuStudy } from '../studies.js'
 import { mortality, ards, ardsDeath, icu } from '../data.js'
 
 export class MainContainer extends Component {
 
     state = {
+        showStudyLegend: true,
+        showHowTo: true,
         displayValue: "ICU",
         counter: 1,
         data: icu,
@@ -62,6 +67,28 @@ export class MainContainer extends Component {
         ageNo: false,
         procalYes: false,
         procalNo: false
+    }
+
+
+    prepareProps = () => {
+        let { selected } = this.props
+        if (selected === "Mortality") {
+            return mortalityStudy
+        } else if (selected === "ICU"){
+            return icuStudy
+        } else {
+            return ardsStudy
+        }
+    }
+    
+    toggleShow = (componentName) => {
+        let slug = "show" + componentName
+
+        this.setState(prevState => {
+            return {
+                [slug]: !prevState[slug]
+            }
+        })
     }
 
     setColor = (ratio, stateName, protective = false) => {
@@ -353,6 +380,8 @@ export class MainContainer extends Component {
                     counter={counter}
                     selected={displayValue}
                     sum={this.numberOfLabs()}
+                    toggleShow={this.toggleShow}
+                    showHowTo={this.state.showHowTo}
                 />
                 <FormContainer
                     basicData={data[0][1]}
@@ -362,6 +391,18 @@ export class MainContainer extends Component {
                     state={this.state}
                     setColor={this.setColor}
                 />
+                {
+                    this.state.showStudyLegend
+                        ?
+                        <>
+                            <StudyLegend study={this.prepareProps()} />
+                            <Button variant="link" onClick={() => this.toggleShow("StudyLegend")}>Hide Legend</Button>
+                        </>
+                        :
+                        <div>
+                            <Button variant="link" onClick={() => this.toggleShow("StudyLegend")}>Show Legend</Button>
+                        </div>
+                }
             </main>
         )
     }
