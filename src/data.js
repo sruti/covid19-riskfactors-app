@@ -1,7 +1,7 @@
 const mortality = [
     [
         "basic", [
-            { "stateName": "age", "title": "Age", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑ ℹ", "points": 1 },
+            { "stateName": "age", "title": "Age ≥ 60", "ratio": "OR 1.10", "ratioTitle": "1.10x per unit↑ ℹ", "points": 1 },
             { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "p <0.05", "ratioTitle": "p <0.05", "points": 1 },
             {
                 "stateName": "dyspnea", "title": "Dyspnea", "ratio": "?", "ratioTitle": "", "points": 0, "pointsYes": 1, "pointsNo": 0,
@@ -11,7 +11,7 @@ const mortality = [
                     "no": { "stateName": "dyspneaNo", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant" }
                 }
 
-            }, //special case
+            },
             { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
             { "stateName": "hypertension", "title": "Hypertension", "ratio": "OR 3.05*", "ratioTitle": "*3.05x ℹ", "points": 1 },
             { "stateName": "diabetes", "title": "Diabetes", "ratio": "OR 2.85*", "ratioTitle": "*2.85x ℹ", "points": 1 },
@@ -207,7 +207,7 @@ const ardsDeath = [
 
 const icu = [
     ["basic", [
-        { "stateName": "age", "title": "Age", "ratio": "66 (57-78) vs. 51 (37-62)", "ratioTitle": "p <0.001 ℹ", "points": 1 },
+        { "stateName": "age", "title": "Age ≥ 60", "ratio": "66 (57-78) vs. 51 (37-62)", "ratioTitle": "p <0.001 ℹ", "points": 1 },
         { "stateName": "covidExposure", "title": "COVID-19 Exposure", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 },
         { "stateName": "dyspnea", "title": "Dyspnea", "ratio": "p <0.001", "ratioTitle": "p <0.001", "points": 1 }, //special case
         { "stateName": "temp", "title": "Fever", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
@@ -241,14 +241,5 @@ const icu = [
         { "stateName": "il6", "title": "↑ IL-6", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 }
     ]]
 ]
-
-// const exceptionObjects = [
-//     { "stateName": "rr24YesState", "title": "RR >24", "ratio": "OR 8.89*", "ratioTitle": "ℹ *8.89x per unit↑", "points": 1 },
-//     { "stateName": "rr24NoState", "title": "RR <24", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 },
-//     { "stateName": "alt40YesState", "title": "ALT >40", "ratio": "OR 2.87*", "ratioTitle": "ℹ *2.87x per unit↑", "points": 1 },
-//     { "stateName": "alt40NoState", "title": "ALT <40", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 },
-//     { "stateName": "astYesState", "title": "↑ AST", "ratio": "HR 1.02", "ratioTitle": "ℹ 2% ↑", "points": 1 },
-//     { "stateName": "astNoState", "title": "Not ↑ AST", "ratio": "Insignificant", "ratioTitle": "Insignificant", "points": 0 }
-// ]
 
 export { ards, ardsDeath, mortality, icu }

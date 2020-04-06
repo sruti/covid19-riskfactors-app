@@ -12,10 +12,10 @@ export class MainContainer extends Component {
         showStudyLegend: true,
         showHowTo: true,
         displayValue: "ICU",
-        counter: 1,
+        counter: 0,
         data: icu,
         hypertension: false,
-        age: true,
+        age: false,
         covidExposure: false,
         diabetes: false,
         cad: false,
@@ -255,26 +255,22 @@ export class MainContainer extends Component {
             this.setState({
                 displayValue: newdisplayValue,
                 data: mortality,
-                counter: 1,
             }, () => this.calculateCount(this.state.data, this.state, ["dyspneaYes", "leukoYes", "ddimerYes", "ferritinYes", "ldhYes", "ptYes", "crYes", "hstropYes", "alt40Yes"]))
         } else if (newdisplayValue === "ICU") {
             this.setState({
                 displayValue: newdisplayValue,
                 data: icu,
-                counter: 1,
             }, () => this.calculateCount(this.state.data, this.state, ["procalYes"]))
         } else if (newdisplayValue === "ARDS") {
 
             this.setState({
                 displayValue: newdisplayValue,
                 data: ards,
-                counter: 1
             }, () => this.calculateCount(this.state.data, this.state, ["ageYes", "tempYes", "astYes"]))
         } else {
             this.setState({
                 displayValue: newdisplayValue,
                 data: ardsDeath,
-                counter: 1
             }, () => this.calculateCount(this.state.data, this.state, ["ageYes", "ardsDeath_tempYes", "astYes"]))
         }
     }
