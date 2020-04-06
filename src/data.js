@@ -218,7 +218,7 @@ const icu = [
     ["advanced", [
         { "stateName": "sofa", "title": "↑ SOFA", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
         { "stateName": "lympho", "title": "Lymphopenia", "ratio": "0.8 (0.5-0.9) vs. 0.9 (0.6-1.2)", "ratioTitle": "p=0.03 ℹ", "points": 1 },
-        { "stateName": "leuko", "title": "Leukocytosis", "ratio": "p=0.003", "ratioTitle": "p=0.003", "points": 1 },
+        { "stateName": "leuko", "title": "Leukocytosis", "ratio": "6.6 (3.6-9.8) vs. 4.3 (3.3-5.4)", "ratioTitle": "p=0.003", "points": 1 },
         { "stateName": "ddimer", "title": "↑ D-Dimer", "ratio": "414 (191-1324) vs. 166 (101-285)", "ratioTitle": "p <0.001 ℹ", "points": 1 },
         { "stateName": "ferritin", "title": "↑ Ferritin", "ratio": "Excluded", "ratioTitle": "Excluded", "points": 0 },
         { "stateName": "ldh", "title": "↑ LDH", "ratio": "435 (302-596) vs. 212 (171-291)", "ratioTitle": "p <0.001 ℹ", "points": 1 },

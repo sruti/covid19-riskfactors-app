@@ -14,11 +14,12 @@ const ardsStudy = {
 }
 
 const icuStudy = {
-    "ratios": "T-test/Mann-Whitney for Continous Chi-Square for Categorical",
+    "ratios": "T-test/Mann-Whitney for // Continous Chi-Square for Categorical",
     "ratiosEx": "",
     "citation": "Wang D, Hu B, Hu C, Zhu F, Liu X, Zhang J, Wang B, Xiang H, Cheng Z, Xiong Y, Zhao Y. Clinical characteristics of 138 hospitalized patients with 2019 novel coronavirus–infected pneumonia in Wuhan, China. Jama. 2020 Feb 7.",
     "additionalReading": "Guan WJ, Ni ZY, Hu Y, Liang WH, Ou CQ, He JX, Liu L, Shan H, Lei CL, Hui DS, Du B. Clinical characteristics of coronavirus disease 2019 in China. New England Journal of Medicine. 2020 Feb 28.",
-    "comment": "*some factors were excluded due to small (n)"
+    "comment": "ℹ️ format is ICU median (IQR) vs. non-ICU median (IQR)",
+    "info": "*some factors were excluded due to small (n)"
 }
 
 export { ardsStudy, mortalityStudy, icuStudy }
