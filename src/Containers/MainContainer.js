@@ -126,7 +126,6 @@ export class MainContainer extends Component {
         let no = title + "No";
         let points;
         let element = this.state.data[0][1].find(element => element.stateName === title) || this.state.data[1][1].find(element => element.stateName === title)
-        // debugger       
 
         if (value === "Y") {
             // this is if the person first clicked no and wants to change the answer 
@@ -256,21 +255,6 @@ export class MainContainer extends Component {
                     return element
                 }
             })
-            // } else {
-            //     stateKeyToUpdate = this.state.exceptions
-            //     //logic to handle clicking and unclicking of exceptions
-            //     newStateObject = stateKeyToUpdate.map(element => {
-            //         if (element.stateName === title) {
-            //             if (value[0] === false) {
-            //                 points = element.points
-            //             } else {
-            //                 points = element.points * -1
-            //             }
-            //             return element
-            //         } else {
-            //             return element
-            //         }
-            //     })
         }
 
         if (isNaN(points)) {
@@ -315,28 +299,6 @@ export class MainContainer extends Component {
         }
     }
 
-    ///////////////// CODE FOR REORDERING OF THE FACTORS ///////////////
-    // displaySorted = (data) => {
-    //     let newBasicArray = [...data]
-    //     let newArr = []
-    //     let excludedArr = []
-    //     for (let i = 0; i < newBasicArray.length; i++) {
-    //         if (this.state[newBasicArray[i]["stateName"]]) {
-    //             if (newBasicArray[i]["ratio"] === "Excluded" || newBasicArray[i]["ratio"] === "Insignificant") {
-    //                 excludedArr = [...excludedArr, newBasicArray[i]]
-    //             }
-    //             else {
-    //                 newArr = [...newArr, newBasicArray[i]]
-    //             }
-    //         } else {
-    //             newArr = [...newArr, newBasicArray[i]]
-    //         }
-    //     }
-    //     const sortedArr = [...newArr, ...excludedArr]
-    //     return sortedArr
-    // }
-
-
     calculateCount = (data, state, secondaryStates) => {
         //calculates the count every time a study renders based on the current state
         let count = 0
@@ -360,7 +322,6 @@ export class MainContainer extends Component {
     }
 
     numberOfLabs = () => {
-        // debugger
         let basicNumber = this.state.data[0][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
 
         let advancedNumber = this.state.data[1][1].filter(object => !object.ratio.includes("Excluded") && !object.ratio.includes("Insignificant")).length
