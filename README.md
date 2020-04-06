@@ -19,7 +19,6 @@ Available here: https://covid-19-mortality.netlify.com/.
     - [Known Issues](#known-issues)
 - [License](#license)
 
----
 ## Getting Started
 For development, you will only need [Node.js](http://nodejs.org/) installed on your environement. 
 
@@ -48,7 +47,6 @@ If everything when fine, you should run
 Just go on [official Node.js website](http://nodejs.org/) & grab the installer.
 Also, be sure to have `git` available in your PATH, `npm` might need it.
 
----
 
 ## Installation
 
@@ -57,14 +55,12 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
     $ cd covid19-riskfactors-app
     $ npm install
 ```
----
 
 ## Start and Watch
 
 ```
     $ npm start
 ```
----
 ## Languages and Tools
 
 ### React
@@ -75,7 +71,6 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
 - [React-Bootstrap](https://react-bootstrap.github.io/)
 
----
 ## Contributing
 Pull requests are welcome. Please make sure that your PR is [well-scoped](https://www.netlify.com/blog/2020/03/31/how-to-scope-down-prs/).
 For major changes, please open an issue first to discuss what you would like to change. 
@@ -92,7 +87,6 @@ Visit [issues](https://github.com/sruti/covid19-riskfactors-app/issues) section.
     </tr>
 </table>
 
----
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
