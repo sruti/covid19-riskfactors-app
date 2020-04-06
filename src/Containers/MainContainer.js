@@ -74,13 +74,13 @@ export class MainContainer extends Component {
         let { selected } = this.props
         if (selected === "Mortality") {
             return mortalityStudy
-        } else if (selected === "ICU"){
+        } else if (selected === "ICU") {
             return icuStudy
         } else {
             return ardsStudy
         }
     }
-    
+
     toggleShow = (componentName) => {
         let slug = "show" + componentName
 
@@ -205,56 +205,35 @@ export class MainContainer extends Component {
     }
 
     handleClick = (title, value) => {
-        let newStateObject;
-        let stateKeyToUpdate;
         let points;
-
         // what code below does:
-        // 1. find where the element lives: adv or basic -> it's found
-        // 2. check if:
+        // 1. check if:
         // - the value is false or undefined, in which case set the points;
         // - the value is ok, and then deduct points
         // - if the points are undefined, points equal 0
-        // 3. setState with the points
+        // 2. setState with the points
 
-        if (this.state.data[0][1].find(element => element.stateName === title)) {
-            //logic is to click and unclick and update counter
-            stateKeyToUpdate = this.state.data[0][1]
-            newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {
-                    if (value[0] === false || value[0] === "undefined") {
-                        if (typeof (element.points) === "undefined" || isNaN(element.points)) {
-                            points = 0
-                        } else {
-                            points = element.points
-                        }
-                    } else {
-                        if (typeof (element.points) === "undefined" || isNaN(element.points)) {
-                            points = 0
-                        } else {
-                            points = element.points * -1
-                        }
-                    }
-                    return element
-                } else {
-                    return element
+        const element = this.state.data.flat().flat().find(element => element.stateName === title)
+        if (value[0] === false || value[0] === "undefined") { //it's been clicked
+            if (typeof (element.points) === "undefined" || isNaN(element.points)) {
+                points = 0
+            } else {
+                points = element.points
+            }
+        } else { //unclicked
+            if (typeof (element.points) === "undefined" || isNaN(element.points)) {
+                points = 0
+            } else { //its child is clicked
+                if (this.state[title + "Yes"]) {
+                    points = element.pointsYes * -1
                 }
-            })
-        } else if (this.state.data[1][1].find(element => element.stateName === title)) {
-            //logic to handle clicking and unclicking of advanced data
-            stateKeyToUpdate = this.state.data[1][1]
-            newStateObject = stateKeyToUpdate.map(element => {
-                if (element.stateName === title) {
-                    if (value[0] === false) {
-                        points = element.points
-                    } else {
-                        points = element.points * -1
-                    }
-                    return element
-                } else {
-                    return element
+                else if (this.state[title + "No"]) {
+                    points = element.pointsNo * -1
                 }
-            })
+                else {
+                    points = element.points * -1
+                }
+            }
         }
 
         if (isNaN(points)) {
@@ -263,7 +242,8 @@ export class MainContainer extends Component {
 
         this.setState(prevState => {
             return {
-                [stateKeyToUpdate]: newStateObject,
+                [title + "Yes"]: prevState[title + "Yes"] && !prevState[title], //changes the child's state based on the parent's
+                [title + "No"]: prevState[title + "No"] && !prevState[title],
                 [title]: !prevState[title],
                 counter: prevState.counter + points,
             }
