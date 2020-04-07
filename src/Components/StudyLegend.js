@@ -3,9 +3,7 @@ import Container from 'react-bootstrap/Container';
 
 
 export default function StudyLegend({ study: { ratios, ratiosEx, info, citation, comment, additionalReading } }) {
-    console.log(ratios)
     return (
-        // <div id="sourcse"></div>
         <Container id="legend" fluid
             style={{
                 backgroundColor: "#007bff40",
