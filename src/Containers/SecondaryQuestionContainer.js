@@ -6,25 +6,9 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export class SecondaryQuestionContainer extends Component {
-    state = {
-        showOtherLabel: false
-    }
-
-    handleButtonRelease = (event) => {
-        this.setState({
-            showOtherLabel: false
-        })
-    }
-
-    handleButtonPress = (event) => {
-        this.setState({
-            showOtherLabel: true
-        })
-    }
 
     render() {
-        let { rowData, setColor, questionTitle, currentParentState, parentStateName, handleYNClick } = this.props
-        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
+        let { rowData, setColor, questionTitle, state, currentParentState, parentStateName, handleYNClick, showOtherLabel, handleButtonRelease, handleButtonPress } = this.props
         let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
 
         return (
@@ -46,14 +30,14 @@ export class SecondaryQuestionContainer extends Component {
                             <p>{questionTitle}</p>
                         </Col>
                         <Col
-                            onTouchStart={this.handleButtonPress}
-                            onTouchEnd={this.handleButtonRelease}
-                            onMouseDown={this.handleButtonPress}
-                            onMouseUp={this.handleButtonRelease}
-                            onMouseLeave={this.handleButtonRelease}
+                            onTouchStart={handleButtonPress}
+                            onTouchEnd={handleButtonRelease}
+                            onMouseDown={handleButtonPress}
+                            onMouseUp={handleButtonRelease}
+                            onMouseLeave={handleButtonRelease}
                         >
-                            <p> {(this.props.state[parentStateName + "Yes"] || this.props.state[parentStateName + "No"])
-                                ? this.state.showOtherLabel
+                            <p> {(state[parentStateName + "Yes"] || state[parentStateName + "No"])
+                                ? showOtherLabel
                                     ? rowData.ratio
                                     : rowData.ratioTitle
                                 : null}</p>
@@ -69,11 +53,11 @@ export class SecondaryQuestionContainer extends Component {
                                     }}
                             >
                                 <ToggleButton
-                                    variant={this.props.state[parentStateName + "Yes"] ? "dark" : "outline-dark"}
+                                    variant={state[parentStateName + "Yes"] ? "dark" : "outline-dark"}
                                     value={"Y"}
                                 >Y</ToggleButton>
                                 <ToggleButton
-                                    variant={this.props.state[parentStateName + "No"] ? "dark" : "outline-dark"}
+                                    variant={state[parentStateName + "No"] ? "dark" : "outline-dark"}
                                     value={"N"}
                                 >N</ToggleButton>
                             </ToggleButtonGroup>

@@ -27,7 +27,6 @@ export class FormRowContainer extends Component {
     render() {
         let { rowData, currentParentState, handleClick, handleYNClick, setColor } = this.props
 
-        // this is a function that determines the color -- it's located in MainContainer; it accepts three arguments: ratio, stateName, and whether sth is protective (which I hardcoded here)
         let bgcolor = setColor(rowData.ratio, rowData.stateName, rowData.protective)
         return (
             <>
